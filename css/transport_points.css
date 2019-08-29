@@ -1,0 +1,207 @@
+@mode 'Flat';
+
+* {
+  font-family: 'Noto Sans Regular'
+    'Noto Sans Adlam Regular'
+    'Noto Sans Adlam Unjoined Regular'
+    'Noto Sans Armenian Regular'
+    'Noto Sans Balinese Regular'
+    'Noto Sans Bamum Regular'
+    'Noto Sans Batak Regular'
+    'Noto Sans Bengali UI Regular'
+    'Noto Sans Buginese Regular'
+    'Noto Sans Buhid Regular'
+    'Noto Sans Canadian Aboriginal Regular'
+    'Noto Sans Chakma Regular'
+    'Noto Sans Cham Regular'
+    'Noto Sans Cherokee Regular'
+    'Noto Sans Coptic Regular'
+    'Noto Sans Devanagari UI Regular'
+    'Noto Sans Ethiopic Regular'
+    'Noto Sans Georgian Regular'
+    'Noto Sans Gujarati UI Regular'
+    'Noto Sans Gurmukhi UI Regular'
+    'Noto Sans Hanunoo Regular'
+    'Noto Sans Hebrew Regular'
+    'Noto Sans Javanese Regular'
+    'Noto Sans Kannada UI Regular'
+    'Noto Sans Kayah Li Regular'
+    'Noto Sans Khmer UI Regular'
+    'Noto Sans Lao UI Regular'
+    'Noto Sans Lepcha Regular'
+    'Noto Sans Limbu Regular'
+    'Noto Sans Lisu Regular'
+    'Noto Sans Malayalam UI Regular'
+    'Noto Sans Mandaic Regular'
+    'Noto Sans Mongolian Regular'
+    'Noto Sans Myanmar UI Regular'
+    'Noto Sans New Tai Lue Regular'
+    'Noto Sans NKo Regular'
+    'Noto Sans Ol Chiki Regular'
+    'Noto Sans Oriya UI Regular'
+    'Noto Sans Osage Regular'
+    'Noto Sans Osmanya Regular'
+    'Noto Sans Samaritan Regular'
+    'Noto Sans Saurashtra Regular'
+    'Noto Sans Shavian Regular'
+    'Noto Sans Sinhala UI Regular'
+    'Noto Sans Sinhala Regular'
+    'Noto Sans Sundanese Regular'
+    'Noto Sans Symbols Regular'
+    'Noto Sans Symbols2 Regular'
+    'Noto Sans Syriac Eastern Regular'
+    'Noto Sans Tagalog Regular'
+    'Noto Sans Tagbanwa Regular'
+    'Noto Sans Tai Le Regular'
+    'Noto Sans Tai Tham Regular'
+    'Noto Sans Tai Viet Regular'
+    'Noto Sans Tamil UI Regular'
+    'Noto Sans Telugu UI Regular'
+    'Noto Sans Thaana Regular'
+    'Noto Sans Thai UI Regular'
+    'Noto Sans Tibetan Regular'
+    'Noto Sans Tifinagh Regular'
+    'Noto Sans Vai Regular'
+    'Noto Sans Yi Regular'
+    'Noto Sans Arabic UI Regular'
+    'Noto Emoji Regular'
+    'Noto Naskh Arabic UI Regular'
+    'DejaVu Sans Book'
+    'HanaMinA Regular'
+    'HanaMinB Regular'
+    'Unifont Medium'
+    'unifont Medium'
+    'Unifont Upper Medium';
+  	label-priority: 2800;
+}
+
+[type = 'subway_entrance'][@sd <= 3000] {
+  mark: symbol('file://symbols/entrance.10.svg');
+
+  :mark {
+    fill: #0092da;
+    size: 14;
+  };
+  [@sd <= 1500] {
+
+    label: [ref];
+    font-fill: #0092da;
+    halo-radius: 1;
+    halo-color: #ffffff;
+
+    font-size: 10;
+    label-anchor: 0.5 1;
+    label-group: true;
+    -gt-label-auto-wrap: 50;
+    label-offset: 0 -14;
+  };
+}
+
+[type = 'station'][@sd <= 200k] {
+  mark: symbol(square);
+  :mark {
+    size: 4;
+    fill: #7981b0;
+  };
+  [@sd <= 100k] {
+    :mark { size: 6; };
+  };
+  [@sd <= 50k] {
+    label: [name];
+    font-fill: #4957ad;
+    halo-radius: 1;
+    halo-color: #ffffff;
+
+    font-size: 10;
+    label-anchor: 0.5 1;
+    label-group: true;
+    -gt-label-auto-wrap: 50;
+    font-weight: bold;
+    label-offset: 0 -9;
+  };
+  [@sd <= 25k] {
+    :mark { size: 9; };
+    font-size: 10;
+    label-offset: 0 -10;
+  };
+  label-priority: 2850;
+}
+[type = 'halt'] {
+  [@sd <= 100k] {
+    mark: symbol(square);
+    :mark {
+      size: 4;
+      fill: #7981b0;
+    };
+    [@sd <= 25k] {
+      :mark { size: 6; };
+    };
+  };
+  [@sd <= 25k] {
+    label: [name];
+    font-fill: #4957ad;
+    halo-radius: 1;
+    halo-color: #ffffff;
+
+    font-size: 10;
+    label-anchor: 0.5 1;
+    label-group: true;
+    -gt-label-auto-wrap: 50;
+    font-weight: bold;
+    label-offset: 0 -9;
+  };
+}
+
+[type = 'tram_stop'] {
+  [@sd <= 100k] {
+    mark: symbol(square);
+    :mark {
+      size: 4;
+      fill: #7981b0;
+    };
+    [@sd <= 25k] {
+      :mark {
+        size: 6;};
+    };
+  };
+  [@sd <= 12.5k] {
+    label: [name];
+    font-fill: #4957ad;
+    halo-radius: 1;
+    halo-color: #ffffff;
+
+    font-size: 10;
+    label-anchor: 0.5 1;
+    label-group: true;
+    -gt-label-auto-wrap: 50;
+    font-weight: bold;
+    label-offset: 0 -10;
+  };
+  label-priority: 2810;
+}
+
+[type = 'motorway_junction'][@sd <= 400k] {
+  label: [ref];
+  font-fill: #960000;
+  halo-radius: 1;
+  halo-color: #ffffff;
+  font-size: 10;
+  label-anchor: 0.5 0.5;
+  label-group: true;
+  -gt-label-auto-wrap: 50;
+  [@sd <= 200k] {
+    [name is not null][ref is null] {
+      label: [name];
+    };
+    /* should be [name]'\n'[ref] */
+    [name is not null][ref is not null] {
+      label: [name]'
+        '[ref];
+    };
+    label: [ref];
+  };
+
+  [@sd <= 25k] { 
+    font-size: 11;
+  };
+}

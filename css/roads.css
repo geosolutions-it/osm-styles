@@ -1,0 +1,1392 @@
+@mode 'Flat';
+
+* {
+  sort-by: 'z_order';
+  rule-evaluation: 'first';
+
+  [class = 'highway' and type in ('motorway', 'motorway_link')][@sd < 15M] {
+    [type = 'motorway'],
+    [type = 'motorway_link'][@sd < 1M] {
+      stroke: #ffffff, #e66e89;
+      z-index: 0, 1;
+      stroke-width:
+        [categorize(@sd,
+          1.8, 400k,
+          1.4, 800k,
+          0.8, 1.5M,
+          0.4, 3M,
+          0.2, 6M,
+          0.1) * 1.8],
+        categorize(@sd,
+          1.8, 400k,
+          1.4, 800k,
+          0.8, 1.5M,
+          0.4, 3M,
+          0.2, 6M,
+          0.1);
+      stroke-linecap: butt, round;
+      [@sd < 200k] {
+        stroke: #c24e6b, #e892a2;
+        [@sd < 100k] {
+          stroke: #dc2a67, #e892a2;
+        };
+        [type = 'motorway'] {
+          stroke-width:  
+            categorize(@sd,
+              27, 1.5k,
+              21, 3k,
+              18, 6k,
+              10, 25k,
+              7, 35k,
+              7, 50k,
+              6, 100k,
+              3, 200k,
+              2),
+            [categorize(@sd,
+              27 - 2, 1.5k,
+              21 - 2, 3k,
+              18 - 2, 6k,
+              10 - 1, 25k,
+              7 - 1, 35k,
+              7 - 1, 50k,
+              6 - 1, 100k,
+              3 - 1, 200k,
+              2 - 1) * 0.9];
+          [bridge = 1][@sd < 100k] {
+            stroke: #000000, #e892a2;
+          };
+        };
+        [type = 'motorway_link'] {
+          stroke-width:  
+            categorize(@sd,
+              16, 1.5k,
+              13, 3k,
+              12, 6k,
+              7.4, 25k,
+              3.8, 35k,
+              3.8, 50k,
+              3, 100k,
+              2, 200k,
+              1.2),
+            [categorize(@sd,
+              16 - 2, 1.5k,
+              13 - 2, 3k,
+              12 - 2, 6k,
+              7.4 - 1.4, 25k,
+              3.8 - 1, 35k,
+              3.8 - 1, 50k,
+              3 - 1, 100k,
+              2 - 1, 200k,
+              1.2 - 1) * 0.9];
+          [bridge = 1][@sd < 100k] {
+            stroke: #000000, #e892a2;
+          };
+        };
+      };
+    }
+
+  };
+
+  [class = 'highway' and type in ('trunk', 'trunk_link')][@sd < 15M] {
+    [type = 'trunk'],
+    [type = 'trunk_link'][@sd < 1M] {
+      stroke: #ffffff, #f5977a;
+      z-index: 0, 1;
+      stroke-width:
+        [categorize(@sd,
+          1.6, 400k,
+          1.2, 800k,
+          0.6, 1.5M,
+          0.2, 3M,
+          0.1, 6M,
+          0.5) * 1.8],
+        categorize(@sd,
+          1.6, 400k,
+          1.2, 800k,
+          0.6, 1.5M,
+          0.2, 3M,
+          0.1, 6M,
+          0.5);
+      stroke-linejoin: round;
+      stroke-linecap: butt, round;
+      [@sd < 200k] {
+        stroke: #cf6649, #f3c380;
+        stroke-width: 
+          categorize(@sd, 27, 1.5k, 21, 3k, 18, 6k, 10, 25k, 5, 100k, 3.5),
+          [categorize(@sd, 27 - 2, 1.5k, 21 - 2, 3k, 18 - 2, 6k, 10 - 1.4, 25k, 5 - 1, 100k, 3.5 - 1)];
+        [bridge = 1][@sd < 100k] {
+          stroke: #000000, #f3c380;
+          stroke-linecap: butt, round;
+          [@sd < 100k] {
+            stroke: #000000, #f9b29c;
+          }
+        };
+        [@sd < 100k] {
+          stroke: #c84e2f, #f9b29c;
+        };
+      };
+    };
+  };
+
+  [class = 'highway' and type in ('primary', 'primary_link')][@sd < 3M] {
+    [type = 'primary'],
+    [type = 'primary_link'][@sd < 1M] {
+      stroke: #ffffff, #f3c380;
+      stroke-width:
+        [categorize(@sd,
+          1.6, 800k,
+          1.2, 1.5M,
+          0.6) * 1.8],
+        categorize(@sd,
+          1.6, 800k,
+          1.2, 1.5M,
+          0.6);
+      stroke-linejoin: round;
+      stroke-linecap: butt, round;
+      z-index: 0, 1;
+      [@sd < 200k] {
+        stroke: #c38a27, #fcd6a4;
+        stroke-width: 
+          categorize(@sd, 27, 1.5k, 21, 3k, 18, 6k, 10, 25k, 5, 100k, 3.5),
+          [categorize(@sd, 27 - 2, 1.5k, 21 - 2, 3k, 18 - 2, 6k, 10 - 1.4, 25k, 5 - 1, 100k, 3.5 - 1)];
+        [bridge = 1][@sd < 100k] {
+          stroke: #000000, #fcd6a4;
+          stroke-linecap: butt, round;
+        };
+        [@sd < 100k] {
+          stroke: #a06b00, #fcd6a4;
+        };
+      };
+    }
+  };
+
+  [class = 'highway' and type in ('secondary', 'secondary_link')][@sd < 1.5M] {
+    stroke: #bfbfbf;
+    stroke-width: 0.4;
+    stroke-linejoin: round;
+    stroke-linecap: butt, round;
+    [@sd < 200k] {
+      z-index: 0, 1;
+      stroke-opacity: 0.4, 1;
+      stroke: #9eae23, #f7fabf;
+      [@sd < 100k] {
+        stroke-opacity: 1, 1;
+        stroke: #707d05, #f7fabf;
+      };
+      stroke-width: 
+        categorize(@sd, 27, 1.5k, 21, 3k, 18, 6k, 10, 12.5k, 9, 25k, 5, 100k, 3.5),
+        [categorize(@sd, 27 - 2, 1.5k, 21 - 2, 3k, 18 - 2, 6k, 10 - 1.5, 12.5k, 9 - 1.5, 25k, 5 - 1, 100k, 3.5 - 0.8)];
+      [bridge = 1][@sd < 100k] {
+        stroke: #000000, #f7fabf;
+      };
+    };
+  };
+
+  [class = 'highway' and type in ('tertiary', 'tertiary_link')][@sd < 800k] {
+    stroke: #bfbfbf;
+    stroke-width: 0.4;
+    stroke-linejoin: round;
+    [@sd < 200k] {
+      stroke-linecap: butt, round;
+      z-index: 0, 1;
+      stroke: #8f8f8f, #FFFFFF;
+      stroke-width: 
+        categorize(@sd, 27, 1.5k, 21, 3k, 18, 6k, 10, 12.5k, 9, 25k, 4, 100k, 2.5),
+        [categorize(@sd, 27 - 2, 1.5k, 21 - 2, 3k, 18 - 2, 6k, 10 - 1.5, 12.5k, 9 - 1.5, 25k, 4 - 1, 100k, 2.5 - 0.8)];
+      [bridge = 1][@sd < 100k] {
+        stroke: #000000, #FFFFFF;
+      };
+    };
+  };
+
+  [class = 'highway' and type = 'road'][@sd < 50k] {
+    stroke-width: 1;
+    stroke: #bfbfbf;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    [@sd < 20k] {
+      stroke: #bbb, #ddd;
+      stroke-linecap: butt, round;
+      stroke-width: 
+        categorize(@sd, 11, 1.5k, 8.5, 3k, 7, 6k, 3.5, 25k, 2),
+        [categorize(@sd, 11 - 2, 1.5k, 8.5 - 2, 3k, 7 - 2, 6k, 3.5 - 1.2, 25k, 2 - 1.1)];
+      [bridge = 1] {
+        stroke: #000000, #ddd;
+      };
+    };
+  };
+
+  [class = 'highway' and type in ('residential', 'unclassified')][@sd < 50k] {
+    stroke: #bfbfbf;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    [type = 'residential'] {
+      stroke-width: 0.4;
+    };
+    [type = 'unclassified'] {
+      stroke-width: 1;
+    };
+    [@sd < 20k] {
+      z-index: 0, 1;
+      stroke-linecap: butt, round;
+      stroke: #bfbfbf, #FFFFFF;
+      stroke-width: 
+        categorize(@sd, 17, 1.5k, 13, 3k, 12, 6k, 6, 12.5k, 5, 25k, 3, 50k, 2.5),
+        [categorize(@sd, 17 - 2, 1.5k, 13 - 2, 3k - 2, 12 - 2, 6k, 6 - 1.4, 12.5k, 5 - 1.4, 25k, 3 - 1.1, 50k, 2.5 - 1)];
+      [bridge = 1] {
+        stroke: #000000, #FFFFFF;
+      };
+    };
+  };
+
+  [class = 'highway' and type = 'living_street'][@sd < 20k] {
+    z-index: 0, 1;
+    stroke: #bfbfbf, #ededed;
+    stroke-width: 
+      categorize(@sd, 17, 1.5k, 13, 3k, 12, 6k, 6, 12.5k, 5, 25k, 3, 50k, 2),
+      [categorize(@sd, 17 - 2, 1.5k, 13 - 2, 3k - 2, 12 - 2, 6k, 6 - 1.4, 12.5k, 5 - 1.4, 25k, 3 - 1.1, 50k, 2 - 1)];
+    stroke-linejoin: round;
+    stroke-linecap: butt, round;
+  };
+
+  [class = 'highway' and type = 'service'][@sd < 20k] {
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    [service not in ('parking_aisle', 'drive-through', 'driveway')] {
+      stroke: #bfbfbf;
+    };
+    [service not in ('parking_aisle', 'drive-through', 'driveway')] {
+      z-index: 0, 1;
+      stroke: #bfbfbf, #ffffff;
+      stroke-linecap: butt, round;
+      stroke-width: 
+        categorize(@sd, 11, 1.5k, 8.5, 3k, 7, 6k, 3.5, 25k, 2),
+        [categorize(@sd, 11 - 1.6, 1.5k, 8.5 - 1.6, 3k, 7 - 1.6, 6k, 3.5 - 1.6, 25k, 2 - 1.2)];
+    };
+    [service in ('parking_aisle', 'drive-through', 'driveway')][@sd < 12.5k] {
+      z-index: 0, 1;
+      stroke: #bfbfbf, #ffffff;
+      stroke-linecap: butt, round;
+      stroke-width: 
+        categorize(@sd, 5.5, 1.5k, 4.75, 3k, 3.5, 6k, 2),
+        [categorize(@sd, 5.5 - 1.6, 1.5k, 4.75 - 1.6, 3k - 1.6, 3.5 - 1.6, 6k, 2 - 1.2)];
+    };
+  };
+
+  [class = 'highway' and type = 'pedestrian'][@sd < 20k] {
+    z-index: 0,1;
+    stroke: #999, #dddde8;
+    stroke-linejoin: round;
+    stroke-linecap: butt, round;
+    stroke-width: 
+      categorize(@sd, 17, 1.5k, 13, 3k, 12, 6k, 6, 12.5k, 5, 25k, 3, 50k, 2),
+      [categorize(@sd, 17 - 1.8, 1.5k, 13 - 1.8, 3k, 12 - 1.8, 6k, 6 - 1.2, 12.5k, 5 - 1.2, 25k, 3 - 1.1, 50k, 2 - 1)];
+  };
+
+  [class = 'highway' and type = 'raceway'][@sd < 20k] {
+    stroke: #FFC0CB;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    stroke-width: 
+      categorize(@sd, 24, 800, 12, 1.5k, 8, 12.5k, 6, 25k, 3, 50k, 2, 100k, 1.2);
+  };
+
+  [class = 'highway' and type = 'platform'][@sd < 12.5k] {
+    stroke: #888888, #bbbbbb;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    stroke-width: 6, 4;
+  };
+
+  [class = 'highway' and type = 'steps'][@sd < 30k] {
+    stroke-dasharray: 2 1;
+    [access <> 'no'][@sd >= 25k] {
+      stroke: #FA8072;
+      stroke-width: 0.7;
+    };
+    [@sd < 25k] {
+      stroke: #ffffff, #FA8072;
+      [access = 'no'] {
+        stroke: #ffffff, #bbbbbb;
+      };
+      stroke-dasharray: 3 0, 1.6 1.4;
+      stroke-linecap: round, butt;
+      stroke-linejoin: round, butt;
+      stroke-width: 5, 3;
+      stroke-opacity: 0.4, 1;
+    }
+  };
+
+  [class = 'highway' and (type = 'bridleway' or (type = 'path' and horse = 'designated'))][@sd < 30k] {
+    stroke-dasharray: 4 2;
+    [access <> 'no'][@sd >= 25k] {
+      stroke: #008000;
+      stroke-width: 0;
+    };
+    [@sd < 25k] {
+      stroke: #ffffff, #008000;
+      [access = 'no'] {
+        stroke: #ffffff, #aaddaa;
+      };
+      stroke-dasharray: 6 0, 4 2;
+      stroke-linecap: round, butt;
+      stroke-linejoin: round, butt;
+      stroke-width: 3, 1;
+      stroke-opacity: 0.4, 1;
+    }
+  };
+
+  [class = 'highway' and type = 'construction'][@sd < 20k] {
+    stroke-width: 
+      categorize(@sd, 8, 12.5k, 4, 50k, 2), 
+      categorize(@sd, 7, 12.5k, 3.5, 50k, 2);
+    stroke-linecap: butt, round;
+    stroke: #9cc, #ffffff;
+    stroke-dasharray: 6 0, [categorize(@sd, '8 6', 12.5k, '6 4', 50k, '4 2')];
+    [construction in ('motorway', 'motorway_link')] {
+      stroke: #e892a2, #ffffff;
+    };
+    [construction in ('trunk', 'trunk_link')] {
+      stroke: #f9b29c, #ffffff;
+    };
+    [construction in ('primary', 'primary_link')] {
+      stroke: #fcd6a4, #ffffff;
+    };
+    [construction in ('secondary', 'secondary_link')] {
+      stroke: #f7fabf, #ffffff;
+    };
+    [construction in ('tertiary', 'tertiary', 'residential', 'unclassified', 'living_street')] {
+      stroke: #aaa;
+      [@sd > 100k] {
+        stroke-opacity: 0;
+      };
+      [@sd <= 100k] {
+        stroke: #aaa, #ffffff;
+        stroke-width: 3, 2;
+        stroke-dasharray: 8 0, 5 3;
+      }
+    };
+    [construction in ('footway', 'cycleway', 'bridleway', 'path', 'track')] {
+      stroke: #aaa;
+      [@sd > 50k] {
+        stroke-opacity: 0;
+      };
+      [@sd <= 50k] {
+        stroke: #aaa, #69f;
+        stroke-width: 3, 1.2;
+        stroke-dasharray: 8 0, 2 6;
+      }
+    };
+    [construction = 'service'] {
+      stroke: #ffffff;
+      [@sd > 100k] {
+        stroke-opacity: 0;
+      };
+    }
+  };
+
+  [class = 'highway' and (type = 'footway' or (type = 'path' and horse <> 'designated' and bicycle <> 'designated'))][@sd < 30k] {
+    stroke: #FA8072;
+    stroke-dasharray: 1 3;
+    stroke-linecap: round;
+    stroke-width: 0.4;
+    stroke-join: round;
+    [access = 'no'][@sd >= 25k] {
+      stroke-opacity: 0;
+    };
+    [@sd < 25k] {
+      stroke: #ffffff, #FA8072;
+      [access = 'no'] {
+        stroke: #ffffff, #bbb;
+      };
+      stroke-dasharray: 4 0, 1 3;
+      stroke-opacity: 0.4, 1;
+      stroke-linecap: butt, round;
+      stroke-width: 
+        categorize(@sd,  2.3, 12.5k,  2), 
+        categorize(@sd,  0.9, 12.5k,  0.6);
+      [surface in ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 'concrete:lanes',
+        'concrete:plates', 'paving_stones', 'metal', 'wood')] {
+          stroke-width: 
+            categorize(@sd,  2.3, 12.5k,  2), 
+            categorize(@sd,  1.3, 1.5k, 1, 3k, 0.9);
+          stroke-dasharray: 
+            4 0, 
+            [categorize(@sd, '3 3', 3k, '3 3.5', 12.5k, '2 3.5')];
+        };
+      [surface in ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 
+        'grass_paver', 'gravel', 'ground', 'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay')] {
+          stroke: #ffffff, #0000FF;
+          [access = 'no'] {
+            stroke: #ffffff, #9999ff;                    
+          };
+          stroke-width: 
+            categorize(@sd,  2.3, 12.5k,  2), 
+            categorize(@sd,  1.3, 1.5k, 1, 3k, 0.9);
+          stroke-dasharray: 
+            4 0, 
+            1 4;
+        };
+      [surface is null] {
+        stroke: #ffffff, #0000FF;
+        [access = 'no'] {
+          stroke: #ffffff, #9999ff;                    
+        };
+        stroke-width: 
+          categorize(@sd,  2.3, 12.5k,  2), 
+          categorize(@sd,  1.3, 1.5k, 1, 3k, 0.9);
+        stroke-dasharray: 
+          4 0, 
+          1 4 2 3;
+      };
+    }
+  };
+
+  [class = 'highway' and (type = 'cycleway' or (type = 'path' and bicycle = 'designated'))][@sd < 30k] {
+    stroke: #0000FF;
+    stroke-dasharray: 1 3;
+    stroke-linecap: round;
+    stroke-join: round;
+    stroke-width: 0.2;
+    [access = 'no'][@sd >= 25k] {
+      stroke-opacity: 0;
+    };
+    [@sd < 25k] {
+      stroke: #ffffff, #0000FF;
+      [access = 'no'] {
+        stroke: #ffffff, #bbb;
+      };
+      stroke-dasharray: 4 0, 1 3;
+      stroke-opacity: 0.4, 1;
+      stroke-width: 
+        categorize(@sd,  2.9, 25k,  2.7), 
+        categorize(@sd,  0.9, 25k, 0.7);
+      stroke-linecap: butt, round;
+      [surface in ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 'concrete:lanes',
+        'concrete:plates', 'paving_stones', 'metal', 'wood')] {
+          stroke-dasharray: 
+            4 0, 
+            categorize(@sd, '3 3', 3k, '3 3.5', 12.5k, '2 3.5');
+        };
+      [surface in ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 
+        'grass_paver', 'gravel', 'ground', 'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay')] {
+          stroke: #ffffff, #0000FF;
+          [access = 'no'] {
+            stroke: #ffffff, #9999ff;                    
+          };
+          stroke-width: 
+            categorize(@sd,  2.3, 12.5k,  2), 
+            categorize(@sd,  1.3, 1.5k, 1, 3k, 0.9);
+          stroke-dasharray: 
+            4 0, 
+            1 4;
+        };
+      [surface is null] {
+        stroke: #ffffff, #0000FF;
+        [access = 'no'] {
+          stroke: #ffffff, #9999ff;                    
+        };
+        stroke-width: 
+          categorize(@sd,  2.3, 12.5k,  2), 
+          categorize(@sd,  1.3, 1.5k, 1, 3k, 0.9);
+        stroke-dasharray: 
+          4 0, 
+          1 4 2 3;
+      };
+    }
+  };
+
+  [class = 'highway' and type = 'track'][@sd < 30k] {
+    stroke: #996600;
+    stroke-dasharray: 5 4 2 4;
+    stroke-linecap: round;
+    stroke-join: round;
+    stroke-width: 0.5;
+    stroke-opacity: 0.8;
+    [access = 'no'][@sd >= 25k] {
+      stroke-opacity: 0;
+    };
+    [@sd < 25k] {
+      stroke-linecap: butt, round;
+      stroke: #ffffff, #996600;
+      stroke-dasharray: 5 0, 5 4 2 4;
+      stroke-opacity: 0.4, 1;
+      [access = 'no'] {
+        stroke: #ffffff, #e2c5bb;
+      };
+      stroke-width: 3.5, 1.5;
+      [tracktype = 'grade1'] {
+        stroke-dasharray: 100 0, 100 0;
+      };
+      [tracktype = 'grade2'] {
+        stroke-dasharray: 15 0, 11 4;
+      };
+      [tracktype = 'grade3'] {
+        stroke-dasharray: 10 0, 4 6;
+      };
+      [tracktype = 'grade4'] {
+        stroke-dasharray: 10 0, 2 8;
+      };
+    }
+  };
+
+  [class = 'railway'][@sd < 3M] {
+    z-index: 0, 1;
+    [class = 'railway' and type = 'rail' and service = ''][@sd < 3M],
+    [class = 'railway' and (type = 'preserved' and service in ('spur', 'siding', 'yard')) or
+    (type = 'rail' and service in ('spur', 'siding', 'yard')) or
+    (type = 'tram' and service in ('spur', 'siding', 'yard'))][@sd < 100k] {
+      stroke: #787878;
+      stroke-width: categorize(@sd,  0.4, 200k, 0.15 ,3M, 0.1);
+      stroke-linejoin: round;
+      [@sd < 100k] {
+        z-index: 1, 2;
+        stroke: #707070, #ffffff;
+        stroke-linejoin: round;
+        stroke-width:
+          categorize(@sd, 
+            2, 15k,
+            1.8, 35k,
+            1.4),
+          categorize(@sd, 
+            0.6, 15k,
+            0.4, 35k,
+            0.2);
+        stroke-linecap: butt, round;
+        stroke-dasharray: 16 0, 8 8;
+        [(type = 'preserved' and service in ('spur', 'siding', 'yard')) or
+        (type = 'rail' and service in ('spur', 'siding', 'yard')) or
+        (type = 'tram' and service in ('spur', 'siding', 'yard'))] {
+          stroke: #aaa, #ffffff;
+          stroke-linejoin: round;
+        };
+      }
+    };
+    [class = 'railway' and type in ('light_rail', 'funicular', 'narrow_gauge')][@sd < 3M] {
+      stroke: [categorize(@sd, '#666666', 100k, '#aaaaaa', 800k, '#cccccc')];
+      stroke-width: categorize(@sd,  2, 100k, 1);
+    };
+    [class = 'railway' and type in ('miniature')][@sd < 25k] {
+      stroke: #999;
+      stroke-width: 1.2, 3;
+      stroke-dasharray: 10 0, 1 10;
+    };
+    [class = 'railway' and type in ('tram')][@sd < 200k],
+    [class = 'railway' and type in ('tram-service')][@sd < 25k] {
+      stroke: [categorize(@sd,  '#444', 100k, '#888888')];
+      stroke-width: categorize(@sd,
+        1.4, 6k,
+        0.75, 10k,
+        0.25, 25k,
+        0.15, 50k,
+        0.1);
+      [type = 'tram-service'] {
+        stroke-width: categorize(@sd, 2, 1.5k, 1.5, 3k, 1, 6k, 0.5);
+      };
+      [layer < 0] {
+        stroke-dasharray: 6 4;
+      };
+    };
+    [class = 'railway' and type in ('subway')][@sd < 200k] {
+      stroke: #999;
+      stroke-width: 1;
+      [layer < 0] {
+        stroke-dasharray: 6 4;
+      };
+    };
+
+    [class = 'railway' and type = 'preserved'][@sd < 200k] {
+      z-index: 1, 2;
+      stroke: #aaa;
+      stroke-width: 1.5;
+      stroke-linejoin: round;
+      [service in ('spur', 'siding', 'yard')] {
+        stroke-width: 1;
+      };
+      [@sd < 100k] {
+        stroke: #999, #ffffff;
+        stroke-width: 3, 1;
+        stroke-linecap: butt, round;
+        stroke-dasharray: 10 0, 0 1 8 1;
+        [service in ('spur', 'siding', 'yard')] {
+          stroke-width: 2, 0.8;
+        }
+      }
+    };
+
+    [class = 'railway' and type = 'monorail'][@sd < 50k] {
+      z-index: 1, 2;
+      stroke: white, #777;
+      stroke-width: 4, 2;
+      stroke-opacity: 0.4, 1;
+      stroke-linecap: round;
+      stroke-linecap: butt, round;
+      stroke-dasharray: 5 0, 2 3;
+    };
+    [class = 'railway' and type = 'construction'][@sd < 100k] {
+      stroke: grey;
+      stroke-width: 2;
+      stroke-linejoin: round;
+      stroke-dasharray: categorize(@sd, '3 3', 25k, '2 3', 50k, '2 4');
+    };
+    [class = 'railway' and type = 'disused'][@sd < 25k] {
+      stroke: #aaa;
+      stroke-width: 2;
+      stroke-linejoin: round;
+      stroke-dasharray: 2 4;
+    };
+    [class = 'railway' and type = 'platform'][@sd < 12.5k] {
+      stroke: grey, #bbb;
+      stroke-width: 6, 4;
+      stroke-linejoin: round;
+    };
+    [class = 'railway' and type = 'turntable'][@sd < 12.5k] {
+      stroke: #999;
+      stroke-width: 1.5;
+    };
+  };
+
+  [class = 'aeroway'][@sd < 400k] {
+    stroke: #bbc;
+    [type = 'runway'] {
+      stroke-width: categorize(@sd, 24, 12.5k, 18, 25k, 12, 50k, 6, 100k, 4, 200k, 2);
+    };
+    [type = 'taxiway'] {
+      stroke-width: categorize(@sd, 8, 12.5k, 6, 25k, 4, 50k, 2, 100k, 1);
+    };
+  };
+
+
+  /* LABELS */
+
+  /* 'Noto Sans CJK JP Regular' cause issue on reder, no visible */
+
+
+  [class = 'highway'][@sd <= 100k] {
+    label-follow-line: true;
+    stroke-opacity: 0;
+    label-max-displacement: 200;
+    label-repeat: 400;
+    /* needed because some labels are rendered outside of road*/
+    label-max-angle-delta: 90;
+    label-priority: 2300;
+    label-group: true;
+    font-fill: #000000;
+    font-family: 'Noto Sans Regular'
+      'Noto Sans Adlam Regular'
+      'Noto Sans Adlam Unjoined Regular'
+      'Noto Sans Armenian Regular'
+      'Noto Sans Balinese Regular'
+      'Noto Sans Bamum Regular'
+      'Noto Sans Batak Regular'
+      'Noto Sans Bengali UI Regular'
+      'Noto Sans Buginese Regular'
+      'Noto Sans Buhid Regular'
+      'Noto Sans Canadian Aboriginal Regular'
+      'Noto Sans Chakma Regular'
+      'Noto Sans Cham Regular'
+      'Noto Sans Cherokee Regular'
+      'Noto Sans Coptic Regular'
+      'Noto Sans Devanagari UI Regular'
+      'Noto Sans Ethiopic Regular'
+      'Noto Sans Georgian Regular'
+      'Noto Sans Gujarati UI Regular'
+      'Noto Sans Gurmukhi UI Regular'
+      'Noto Sans Hanunoo Regular'
+      'Noto Sans Hebrew Regular'
+      'Noto Sans Javanese Regular'
+      'Noto Sans Kannada UI Regular'
+      'Noto Sans Kayah Li Regular'
+      'Noto Sans Khmer UI Regular'
+      'Noto Sans Lao UI Regular'
+      'Noto Sans Lepcha Regular'
+      'Noto Sans Limbu Regular'
+      'Noto Sans Lisu Regular'
+      'Noto Sans Malayalam UI Regular'
+      'Noto Sans Mandaic Regular'
+      'Noto Sans Mongolian Regular'
+      'Noto Sans Myanmar UI Regular'
+      'Noto Sans New Tai Lue Regular'
+      'Noto Sans NKo Regular'
+      'Noto Sans Ol Chiki Regular'
+      'Noto Sans Oriya UI Regular'
+      'Noto Sans Osage Regular'
+      'Noto Sans Osmanya Regular'
+      'Noto Sans Samaritan Regular'
+      'Noto Sans Saurashtra Regular'
+      'Noto Sans Shavian Regular'
+      'Noto Sans Sinhala UI Regular'
+      'Noto Sans Sinhala Regular'
+      'Noto Sans Sundanese Regular'
+      'Noto Sans Symbols Regular'
+      'Noto Sans Symbols2 Regular'
+      'Noto Sans Syriac Eastern Regular'
+      'Noto Sans Tagalog Regular'
+      'Noto Sans Tagbanwa Regular'
+      'Noto Sans Tai Le Regular'
+      'Noto Sans Tai Tham Regular'
+      'Noto Sans Tai Viet Regular'
+      'Noto Sans Tamil UI Regular'
+      'Noto Sans Telugu UI Regular'
+      'Noto Sans Thaana Regular'
+      'Noto Sans Thai UI Regular'
+      'Noto Sans Tibetan Regular'
+      'Noto Sans Tifinagh Regular'
+      'Noto Sans Vai Regular'
+      'Noto Sans Yi Regular'
+      'Noto Sans Arabic UI Regular'
+      'Noto Emoji Regular'
+      'Noto Naskh Arabic UI Regular'
+      'DejaVu Sans Book'
+      'HanaMinA Regular'
+      'HanaMinB Regular'
+      'Unifont Medium'
+      'unifont Medium'
+      'Unifont Upper Medium';
+
+
+    [type in (
+      'motorway_link',
+      'trunk_link',
+      'primary_link',
+      'secondary_link',
+      'tertiary_link'
+    )][@sd < 10k] {
+
+      [oneway = 1] {
+      label: ' ?';
+      };
+      [oneway = -1] {
+      label: '? ';
+      };
+      font-size: categorize(@sd, 12, 1500, 11, 6k, 10);
+      halo-radius: 1;
+      [type = 'motorway'] { halo-color: #e892a2; };
+      [type = 'trunk'] { halo-color: #f9b29c; };
+      [type = 'primary'] { halo-color: #fcd6a4; };
+
+    };
+
+    [type in (
+      'motorway',
+      'trunk',
+      'primary'
+    )],
+    [type = 'construction']
+    [construction in (
+      'motorway',
+      'trunk',
+      'primary'
+    )] {
+      [@sd < 100k] {
+        [oneway = 0],
+        [@sd > 10k] {
+          label: [name];
+        };
+        [oneway = 1][@sd <= 10k] {
+        label: [name]' ?';
+        };
+        [oneway = -1][@sd <= 10k] {
+        label: '? '[name];
+        };
+        font-size: categorize(@sd, 12, 1500, 11, 6k, 10, 25k, 9, 50k, 8);
+        [tunnel = 0] {
+          halo-radius: 1;
+          [type = 'motorway'] { halo-color: #e892a2; };
+          [type = 'trunk'] { halo-color: #f9b29c; };
+          [type = 'primary'] { halo-color: #fcd6a4; };
+        };
+      };
+    };
+
+    [type in (
+      'secondary'
+    )],
+    [type = 'construction']
+    [construction in (
+      'secondary'
+    )] {
+      [@sd < 100k] {
+        [oneway = 0],
+        [@sd > 10k] {
+          label: [name];
+        };
+        [oneway = 1][@sd <= 10k] {
+        label: [name]' ?';
+        };
+        [oneway = -1][@sd <= 10k] {
+        label: '? '[name];
+        };
+        font-size:
+          categorize(@sd, 
+            12, 1500,
+            11, 6k,
+            10, 25k,
+            9, 50k,
+            8);
+        halo-radius: 1;
+        halo-color: #f7fabf;
+      };
+    };
+
+    [type in (
+      'tertiary'
+    )],
+    [type = 'construction']
+    [construction in (
+      'tertiary'
+    )] {
+      [@sd < 50k] {
+        [oneway = 0],
+        [@sd > 10k] {
+          label: [name];
+        };
+        [oneway = 1][@sd <= 10k] {
+        label: [name]' ?';
+        };
+        [oneway = -1][@sd <= 10k] {
+        label: '? '[name];
+        };
+        font-size:
+          categorize(@sd, 
+            12, 1500,
+            11, 6k,
+            9);
+        halo-radius: 1;
+        halo-color: #ffffff;
+      };
+    };
+
+    [type = 'construction']
+    [construction is null or construction = ''] {
+      [@sd < 12.5k] {
+        label: [name];
+        font-size:
+          categorize(@sd, 
+            12, 1500,
+            11, 6k,
+            9);
+        halo-radius: 1;
+        halo-color: #ffffff;
+        [@sd < 1.5k] {
+          label-max-displacement: 400;
+        };
+      };
+    };
+
+    [type in (
+      'residential',
+      'unclassified',
+      'road'
+    )],
+    [type = 'construction']
+    [construction in (
+      'residential',
+      'unclassified',
+      'road'
+    )] {
+      [@sd < 25k] {
+        [oneway = 0],
+        [@sd > 10k] {
+          label: [name];
+        };
+        [oneway = 1][@sd <= 10k] {
+        label: [name]' ?';
+        };
+        [oneway = -1][@sd <= 10k] {
+        label: '? '[name];
+        };
+        font-size:
+          categorize(@sd, 
+            12, 1500,
+            11, 6k,
+            9, 12.5k,
+            8);
+        halo-radius: 1;
+        halo-color: #ffffff;
+        [@sd < 6k] {
+          label-max-displacement: 400;
+        };
+      };
+    };
+
+    [type in (
+      'raceway',
+      'service'
+    )],
+    [type = 'construction']
+    [construction in (
+      'raceway',
+      'service'
+    )] {
+      [@sd < 12.5k] {
+        label: [name];
+        font-size:
+          categorize(@sd, 
+            11, 6k,
+            9);
+        halo-radius: 1;
+        [type = 'raceway'] { halo-color: pink; };
+        [type = 'service'] { halo-color: #ffffff; };
+      };
+    };
+
+    [type in (
+      'living_street',
+      'pedestrian'
+    )],
+    [type = 'construction']
+    [construction in (
+      'living_street',
+      'pedestrian'
+    )] {
+      [@sd < 25k] {
+        label: [name];
+        font-size:
+          categorize(@sd, 
+            12, 1500,
+            11, 6k,
+            9, 12.5k,
+            8);
+        halo-radius: 1;
+        [type = 'living_street'] { halo-color: #ededed; };
+        [type = 'pedestrian'] { halo-color: #dddde8; };
+      };
+    };
+
+    [type = 'track'] {
+      [@sd < 25k] {
+        label: [name];
+        font-size:
+          categorize(@sd, 
+            11, 6k,
+            9, 12.5k,
+            8);
+        halo-radius: 1;
+        halo-color: #ffffff;
+        label-anchor: 0.5 0.5;
+        label-offset: 0 -5;
+        [@sd < 12.5k] {
+          label-offset: 0 -7;
+        };
+        [@sd < 6k] {
+          label-offset: 0 -9;
+        };
+      };
+    };
+
+    [type in (
+      'bridleway',
+      'footway',
+      'cycleway',
+      'path',
+      'steps'
+    )] {
+      [@sd < 12.5k] {
+        label: [name];
+        font-size:
+          categorize(@sd, 
+            11, 6k,
+            9);
+        halo-radius: 1;
+        halo-color: #ffffff;
+        label-anchor: 0.5 0.5;
+        label-offset: 0 -7;
+        [@sd < 6k] {
+          label-offset: 0 -9;
+        };
+      };
+    };
+
+  };
+
+
+  [class = 'railway'][@sd <= 100k] {
+    label-follow-line: true;
+    stroke-opacity: 0;
+    label-max-displacement: 200;
+    label-repeat: 400;
+    label-max-angle-delta: 40;
+    label-priority: 2300;
+    label-group: true;
+    font-fill: #000000;
+    font-family: 'Noto Sans Regular'
+      'Noto Sans Adlam Regular'
+      'Noto Sans Adlam Unjoined Regular'
+      'Noto Sans Armenian Regular'
+      'Noto Sans Balinese Regular'
+      'Noto Sans Bamum Regular'
+      'Noto Sans Batak Regular'
+      'Noto Sans Bengali UI Regular'
+      'Noto Sans Buginese Regular'
+      'Noto Sans Buhid Regular'
+      'Noto Sans Canadian Aboriginal Regular'
+      'Noto Sans Chakma Regular'
+      'Noto Sans Cham Regular'
+      'Noto Sans Cherokee Regular'
+      'Noto Sans Coptic Regular'
+      'Noto Sans Devanagari UI Regular'
+      'Noto Sans Ethiopic Regular'
+      'Noto Sans Georgian Regular'
+      'Noto Sans Gujarati UI Regular'
+      'Noto Sans Gurmukhi UI Regular'
+      'Noto Sans Hanunoo Regular'
+      'Noto Sans Hebrew Regular'
+      'Noto Sans Javanese Regular'
+      'Noto Sans Kannada UI Regular'
+      'Noto Sans Kayah Li Regular'
+      'Noto Sans Khmer UI Regular'
+      'Noto Sans Lao UI Regular'
+      'Noto Sans Lepcha Regular'
+      'Noto Sans Limbu Regular'
+      'Noto Sans Lisu Regular'
+      'Noto Sans Malayalam UI Regular'
+      'Noto Sans Mandaic Regular'
+      'Noto Sans Mongolian Regular'
+      'Noto Sans Myanmar UI Regular'
+      'Noto Sans New Tai Lue Regular'
+      'Noto Sans NKo Regular'
+      'Noto Sans Ol Chiki Regular'
+      'Noto Sans Oriya UI Regular'
+      'Noto Sans Osage Regular'
+      'Noto Sans Osmanya Regular'
+      'Noto Sans Samaritan Regular'
+      'Noto Sans Saurashtra Regular'
+      'Noto Sans Shavian Regular'
+      'Noto Sans Sinhala UI Regular'
+      'Noto Sans Sinhala Regular'
+      'Noto Sans Sundanese Regular'
+      'Noto Sans Symbols Regular'
+      'Noto Sans Symbols2 Regular'
+      'Noto Sans Syriac Eastern Regular'
+      'Noto Sans Tagalog Regular'
+      'Noto Sans Tagbanwa Regular'
+      'Noto Sans Tai Le Regular'
+      'Noto Sans Tai Tham Regular'
+      'Noto Sans Tai Viet Regular'
+      'Noto Sans Tamil UI Regular'
+      'Noto Sans Telugu UI Regular'
+      'Noto Sans Thaana Regular'
+      'Noto Sans Thai UI Regular'
+      'Noto Sans Tibetan Regular'
+      'Noto Sans Tifinagh Regular'
+      'Noto Sans Vai Regular'
+      'Noto Sans Yi Regular'
+      'Noto Sans Arabic UI Regular'
+      'Noto Emoji Regular'
+      'Noto Naskh Arabic UI Regular'
+      'DejaVu Sans Book'
+      'HanaMinA Regular'
+      'HanaMinB Regular'
+      'Unifont Medium'
+      'unifont Medium'
+      'Unifont Upper Medium';
+
+    [type in (
+      'rail',
+      'subway',
+      'narrow_gauge',
+      'light_rail',
+      'preserved',
+      'funicolar',
+      'monorail',
+      'tram'
+    )] {
+      [@sd < 12.5k] {
+        label: [name];
+        font-fill: #666666;
+        halo-radius: 1;
+        halo-color: #ffffff;
+        label-follow-line: true;
+        label-offset: 0 -6;
+        font-size: categorize(@sd, 
+          11, 1.5k,
+          10);
+        [@sd < 1.5k] {
+          label-offset: 0 -7;
+        };
+      };
+    };
+
+    [type = 'rail'] {
+      [highspeed = 'yes'] {
+        [@sd <= 100k] {
+          label: [name];
+          font-fill: #666666;
+          halo-radius: 1;
+          halo-color: #ffffff;
+          font-size: 10;
+          label-offset: 0 -3;
+          label-follow-line: true;
+        };
+        [@sd <= 100k] {
+          label-offset: 0 -6;
+        };
+        [@sd <= 6k] {
+          font-size: 11;
+          label-offset: 0 -7;
+        };
+        [@sd <= 1.5k] {
+          font-size: 12;
+          label-offset: 0 -8;
+        };
+      };
+
+      [highspeed <> 'yes'][usage = 'main'] {
+        [@sd <= 50k] {
+          label: [name];
+          font-fill: #666666;
+          halo-radius: 1;
+          halo-color: #ffffff;
+          font-size: 10;
+          label-offset: 0 -6;
+          label-follow-line: true;
+        };
+        [@sd <= 6k] {
+          font-size: 11;
+          label-offset: 7;
+        };
+        [@sd <= 1.5k] {
+          font-sizee: 12;
+          label-offset: 8;
+        };
+      };
+    };
+
+    [type in (
+      'preserved',
+      'miniature',
+      'disused',
+      'construction'
+    )] {
+      [@sd <= 6k] {
+        label: [name];
+        font-fill: #666666;
+        halo-radius: 1;
+        halo-color: #ffffff;
+        font-size: 10;
+        label-offset: 0 -6;
+        label-follow-line: true;
+
+      };
+      [@sd <= 1.5k] {
+        font-size: 11;
+        label-offset: 0 -7;
+      };
+    };
+
+  };
+
+
+  /* SHIELDS */
+
+  [class = 'highway'][@sd <= 800k] {
+    label-group: true;
+    stroke-opacity: 0;
+    font-family: 'Noto Sans Regular'
+      'Noto Sans Adlam Regular'
+      'Noto Sans Adlam Unjoined Regular'
+      'Noto Sans Armenian Regular'
+      'Noto Sans Balinese Regular'
+      'Noto Sans Bamum Regular'
+      'Noto Sans Batak Regular'
+      'Noto Sans Bengali UI Regular'
+      'Noto Sans Buginese Regular'
+      'Noto Sans Buhid Regular'
+      'Noto Sans Canadian Aboriginal Regular'
+      'Noto Sans Chakma Regular'
+      'Noto Sans Cham Regular'
+      'Noto Sans Cherokee Regular'
+      'Noto Sans Coptic Regular'
+      'Noto Sans Devanagari UI Regular'
+      'Noto Sans Ethiopic Regular'
+      'Noto Sans Georgian Regular'
+      'Noto Sans Gujarati UI Regular'
+      'Noto Sans Gurmukhi UI Regular'
+      'Noto Sans Hanunoo Regular'
+      'Noto Sans Hebrew Regular'
+      'Noto Sans Javanese Regular'
+      'Noto Sans Kannada UI Regular'
+      'Noto Sans Kayah Li Regular'
+      'Noto Sans Khmer UI Regular'
+      'Noto Sans Lao UI Regular'
+      'Noto Sans Lepcha Regular'
+      'Noto Sans Limbu Regular'
+      'Noto Sans Lisu Regular'
+      'Noto Sans Malayalam UI Regular'
+      'Noto Sans Mandaic Regular'
+      'Noto Sans Mongolian Regular'
+      'Noto Sans Myanmar UI Regular'
+      'Noto Sans New Tai Lue Regular'
+      'Noto Sans NKo Regular'
+      'Noto Sans Ol Chiki Regular'
+      'Noto Sans Oriya UI Regular'
+      'Noto Sans Osage Regular'
+      'Noto Sans Osmanya Regular'
+      'Noto Sans Samaritan Regular'
+      'Noto Sans Saurashtra Regular'
+      'Noto Sans Shavian Regular'
+      'Noto Sans Sinhala UI Regular'
+      'Noto Sans Sinhala Regular'
+      'Noto Sans Sundanese Regular'
+      'Noto Sans Symbols Regular'
+      'Noto Sans Symbols2 Regular'
+      'Noto Sans Syriac Eastern Regular'
+      'Noto Sans Tagalog Regular'
+      'Noto Sans Tagbanwa Regular'
+      'Noto Sans Tai Le Regular'
+      'Noto Sans Tai Tham Regular'
+      'Noto Sans Tai Viet Regular'
+      'Noto Sans Tamil UI Regular'
+      'Noto Sans Telugu UI Regular'
+      'Noto Sans Thaana Regular'
+      'Noto Sans Thai UI Regular'
+      'Noto Sans Tibetan Regular'
+      'Noto Sans Tifinagh Regular'
+      'Noto Sans Vai Regular'
+      'Noto Sans Yi Regular'
+      'Noto Sans Arabic UI Regular'
+      'Noto Emoji Regular'
+      'Noto Naskh Arabic UI Regular'
+      'DejaVu Sans Book'
+      'HanaMinA Regular'
+      'HanaMinB Regular'
+      'Unifont Medium'
+      'unifont Medium'
+      'Unifont Upper Medium';
+    label-anchor: 0.5 0.5;
+    label-group: true;
+    font-size: 10;
+    shield: symbol(square);
+    shield-resize: stretch;
+    shield-margin: 4;
+    label-padding: 10;
+    label-priority: 1900;
+
+    [@sd > 100k][strLength(ref) <= 11] {
+      [type = 'motorway'][@sd <= 800k],
+      [type = 'trunk'][@sd <= 400k],
+      [type = 'primary'][@sd <= 200k],
+      [type = 'secondary'][@sd <= 200k] {
+        label: [ref];
+        :shield {
+          size: categorize(@sd, 16, 12.5k, 17)
+        };
+        [type = 'motorway'] {
+          font-fill: #620728;
+          :shield {
+            fill: #eccdd1;
+            stroke: #d39da5;
+          };
+        };
+
+        [type = 'trunk'] {
+          font-fill: #5d1b0b;
+          :shield {
+            fill: #f2d7ce;
+            stroke: #d7a899;
+          };
+        };
+
+        [type = 'primary'] {
+          font-fill: #4c2e00;
+          :shield {
+            fill: #f3e3cf;
+            stroke: #d1b795;
+          };
+        };
+
+        [type = 'secondary'] {
+          font-fill: #323b00;
+          :shield {
+            fill: #eeefd7;
+            stroke: #c4c69c;
+          };
+        };
+      };
+    };
+
+    [type in (
+      'motorway',
+      'trunk',
+      'primary',
+      'secondary',
+      'tertiary'
+    )][@sd <= 100k] {
+      label: [ref];
+      [type = 'motorway'] {
+        font-fill: #620728;
+        :shield {
+          fill: #eccdd1;
+          stroke: #d39da5;
+        };
+      };
+
+      [type = 'trunk'] {
+        font-fill: #5d1b0b;
+        :shield {
+          fill: #f2d7ce;
+          stroke: #d7a899;
+        };
+      };
+
+      [type = 'primary'] {
+        font-fill: #4c2e00;
+        :shield {
+          fill: #f3e3cf;
+          stroke: #d1b795;
+        };
+      };
+
+      [type = 'secondary'] {
+        font-fill: #323b00;
+        :shield {
+          fill: #eeefd7;
+          stroke: #c4c69c;
+        };
+      };
+      [type = 'tertiary'] {
+        font-fill: #3b3b3b;
+        :shield {
+          fill: #f1f1f1;
+          stroke: #c6c6c6;
+        };
+      };
+    };
+
+    [type in (
+      'unclassified',
+      'residential'
+    )][@sd <= 25k] {
+      label: [ref];
+      font-fill: #333333;
+      halo-radius: 2;
+      halo-color: #ffffff;
+      label-repeat: 150;
+      label-max-displacement: 300;
+      label-group: true;
+      font-size: 8;
+      [@sd <= 12.5k] {
+        font-size: 9;
+      };
+      [@sd <= 3k] {
+        font-size: 10;
+      };
+    };
+
+    [type in (
+      'runway',
+      'taxiway'
+    )][@sd <= 25k] {
+      label: [ref];
+      font-fill: #333333;
+      halo-radius: 2;
+      halo-color: #ffffff;
+      label-repeat: 150;
+      label-max-displacement: 300;
+      label-group: true;
+      font-size: 10;
+    };
+  };
+
+}

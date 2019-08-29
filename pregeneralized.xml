@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GeneralizationInfos version="1.0" dataSourceNameSpace="osm" dataSourceName="osm">
+  <!-- ROADS -->
+  <GeneralizationInfo featureName="roads" baseFeatureName="osm_roads" geomPropertyName="geometry">
+    <Generalization distance="200" featureName="osm_roads_gen0" geomPropertyName="geometry" />
+    <Generalization distance="50" featureName="osm_roads_gen1" geomPropertyName="geometry" />
+  </GeneralizationInfo>
+  <!-- LAND USAGES -->
+  <GeneralizationInfo featureName="landusages" baseFeatureName="osm_landusages" geomPropertyName="geometry">
+    <Generalization distance="200" featureName="osm_landusages_gen0" geomPropertyName="geometry" />
+    <Generalization distance="50" featureName="osm_landusages_gen1" geomPropertyName="geometry" />
+  </GeneralizationInfo>
+  <!-- WATER AREAS -->
+  <GeneralizationInfo featureName="waterareas" baseFeatureName="osm_waterareas" geomPropertyName="geometry">
+    <Generalization distance="200" featureName="osm_waterareas_gen0" geomPropertyName="geometry" />
+    <Generalization distance="50" featureName="osm_waterareas_gen1" geomPropertyName="geometry" />
+  </GeneralizationInfo>
+  <!-- WATER WAYS -->
+  <GeneralizationInfo featureName="waterways" baseFeatureName="osm_waterways" geomPropertyName="geometry">
+    <Generalization distance="200" featureName="osm_waterways_gen0" geomPropertyName="geometry" />
+    <Generalization distance="50" featureName="osm_waterways_gen1" geomPropertyName="geometry" />
+  </GeneralizationInfo>
+</GeneralizationInfos>

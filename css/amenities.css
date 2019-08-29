@@ -1,0 +1,1391 @@
+@mode 'Flat';
+
+[type = 'aerodrome'][@sd < 800k],
+[type in ('volcano', 'peak', 'alpine_hut', 'wilderness_hut')][@sd <= 400k],
+[@sd < 25k] {
+  z-index: 1;
+  label: ' ';
+  label-geometry: [centroid(geometry)];
+  label-priority: 2150;
+  :shield {
+    size: 14;
+  };
+
+  /*
+  * Amenities Shops
+  */
+
+  [type in ('art',
+    'music',
+    'musical_instrument',
+    'photo',
+    'photo_studio',
+    'photography',
+    'video_games',
+    'copyshop',
+    'dry_cleaning',
+    'laundry',
+    'pet',
+    'tobacco',
+    'toys',
+    'travel_agency',
+    'chemist',
+    'bicycle',
+    'car',
+    'car_repair',
+    'car_parts',
+    'motorcycle',
+    'outdoor',
+    'sports',
+    'computer',
+    'electronics',
+    'hifi',
+    'mobile_phone',
+    'bed',
+    'furniture',
+    'doityourself',
+    'hardware',
+    'garden_centre',
+    'florist',
+    'beauty',
+    'cosmetics',
+    'perfumery',
+    'hairdresser',
+    'medical_supply',
+    'optician',
+    'variety_store',
+    'bag',
+    'clothes',
+    'fashion',
+    'jewelry',
+    'jewellery',
+    'shoes',
+    'kiosk',
+    'newsagent',
+    'alcohol',
+    'wine',
+    'butcher',
+    'bakery',
+    'beverages',
+    'confectionery',
+    'convenience',
+    'deli',
+    'greengrocer',
+    'farm',
+    'fishmonger',
+    'seafood',
+    'tea',
+    'dairy',
+    'books',
+    'gift',
+    'stationery')] [@sd < 6k] [@sd >= 3k] {
+      shield: symbol(circle);
+      :shield {
+        fill:  #ac39ac;
+        size: 4;
+      };
+    };
+
+  /* Food, beverages  */
+  [type in ('alcohol', 'wine')][@sd < 3k] {
+    shield: symbol('file://symbols/shop/alcohol.svg');
+    :shield { fill: #ac39ac };
+  };
+  [type = 'butcher'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/butcher.svg');
+    :shield { fill:  #ac39ac };
+  };
+  [type = 'bakery'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/bakery.svg');
+    :shield { fill: #ac39ac };
+  };
+  [type = 'beverages'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/beverages.svg');
+    :shield { fill: #ac39ac };
+  };
+  [type = 'coffee'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/coffee.svg');
+    :shield { fill: #ac39ac };
+  };
+  [type = 'confectionery'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/confectionery.svg');
+    :shield { fill: #ac39ac };
+  };
+  [type = 'convenience'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/convenience.svg');
+    :shield { fill:  #ac39ac };
+  };
+  [type = 'deli'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/deli.svg');
+    :shield { fill: #ac39ac };
+  };
+  [type = 'dairy'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/dairy.svg');
+    :shield { fill: #ac39ac };
+  };
+
+  /* declared two times */
+  /*
+  [type = 'ice_cream'][@sd < 3k] {
+  shield: symbol('file://symbols/shop/ice_cream.svg');
+  :shield { fill:  #ac39ac };
+};
+  */
+  [type in ('greengrocer', 'farm')][@sd < 3k] {
+    shield: symbol('file://symbols/shop/greengrocer.svg');
+    :shield { fill: #ac39ac }; 
+  };
+  [type in ('fishmonger', 'seafood')][@sd < 3k] {
+    shield: symbol('file://symbols/shop/seafood.svg');
+    :shield { fill: #ac39ac };
+  };
+  [type = 'tea'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/tea.svg');
+    :shield { fill: #ac39ac };
+  };
+
+  /* General store, department store, mall */
+
+  [type = 'department_store'][@sd < 12.5k] {
+    shield: symbol('file://symbols/shop/department_store.svg');
+    :shield { fill: #ac39ac };
+  };
+  [type in ('kiosk', 'newsagent')][@sd < 3k] {
+    shield: symbol('file://symbols/shop/newsagent.svg');
+    :shield { fill:  #ac39ac };
+  };
+  [type = 'supershieldet'][@sd < 12.5k] {
+    shield: symbol('file://symbols/shop/supershieldet.svg');
+    :shield { fill: #ac39ac };
+  };
+
+  /*Clothing, shoes, accessories*/
+  [type = 'bag'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/bag.svg');
+    :shield { fill: #ac39ac };
+  };
+  [type in ('clothes', 'fashion')][@sd < 3k] {
+    shield: symbol('file://symbols/shop/clothes.svg');
+    :shield { fill: #ac39ac };
+  };
+  [type in ('jewelry', 'jewellery')][@sd < 3k] {
+    shield: symbol('file://symbols/shop/jewelry.svg');
+    :shield { fill: #ac39ac };
+  };
+  [type = 'shoes'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/shoes.svg');
+    :shield { fill: #ac39ac };
+  };
+
+  /* Discount store, charity */
+  [type = 'variety_store'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/variety_store.svg');
+    :shield { fill: #ac39ac };
+  };
+  /* Health and beauty */
+  [type = 'beauty'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/beauty.svg');
+    :shield { fill:  #ac39ac };
+  };
+  [type in ('cosmetics', 'perfumery')][@sd < 3k] {
+    shield: symbol('file://symbols/shop/perfumery.svg');
+    :shield { fill: #ac39ac };
+  };
+  [type = 'hairdresser'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/hairdresser.svg');
+    :shield { fill: #ac39ac };
+  };
+  [type = 'medical_supply'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/medical_supply.svg');
+    :shield {fill: #ac39ac};
+  };
+
+  [type = 'optician'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/optician.svg');
+    :shield { fill: #ac39ac };
+  };
+
+  /* Do-it-yourself, household, building materials, gardening */
+  [type in ('doityourself', 'hardware')][@sd < 3k] {
+    shield: symbol('file://symbols/shop/diy.svg');
+    :shield { fill:  #ac39ac };
+  };
+  [type = 'florist'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/florist.svg');
+    :shield { fill:  #ac39ac };
+  };
+
+  [type = 'garden_centre'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/garden_centre.svg');
+    :shield { fill:  #ac39ac };
+  };
+
+  /* Furniture and interior */
+  [type = 'bed'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/bed.svg');
+    :shield { fill: #ac39ac };
+  };
+  [type = 'furniture'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/furniture.svg');
+    :shield { fill: #ac39ac };
+  };
+
+  /* Electronics */
+  [type = 'computer'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/computer.svg');
+    :shield { fill:  #ac39ac };
+  };
+  [type = 'electronics'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/electronics.svg');
+    :shield { fill: #ac39ac };
+  };
+  [type = 'hifi'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/hifi.svg');
+    :shield { fill:  #ac39ac };
+  };
+  [type = 'mobile_phone'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/mobile_phone.svg');
+    :shield { fill: #ac39ac };
+  };
+
+  /* Outdoors and sport, vehicles */
+  [type = 'bicycle'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/bicycle.svg');
+    :shield { fill:  #ac39ac };
+  };
+  [type = 'car'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/car.svg');
+    :shield { fill:  #ac39ac };
+  };
+  [type = 'car_repair'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/car_repair.svg');
+    :shield { fill: #734a08 };
+  };
+  [type = 'car_parts'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/car_parts.svg');
+    :shield { fill:  #ac39ac };
+  };
+  [type = 'motorcycle'][@sd < 3k] {
+    shield: symbol('file://symbols/motorcycle.svg');
+    :shield { fill: #ac39ac };
+  };
+  [type = 'outdoor'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/outdoor.svg');
+    :shield { fill: #ac39ac };
+  };
+  [type = 'sports'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/sports.svg');
+    :shield { fill: #ac39ac };
+  };
+
+  /* Art, music, hobbies */
+
+  [type = 'art'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/art.svg');
+    :shield { fill:  #ac39ac };
+  };
+  [type = 'music'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/music.svg');
+    :shield { fill: #ac39ac };
+  };
+  [type = 'musical_instrument'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/musical_instrument.svg');
+    :shield { fill: #ac39ac };
+  };
+  [type in ('photo', 'photo_studio', 'photography')][@sd < 3k] {
+    shield: symbol('file://symbols/shop/photo.svg');
+    :shield { fill:  #ac39ac };
+  };
+  [type = 'video_games'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/video_games.svg');
+    :shield { fill: #ac39ac };
+  };
+
+  /* Stationery, gifts, books, newspapers */
+  [type = 'books'][@sd < 3k] {
+    shield: symbol('file://symbols/library.svg');
+    :shield { fill:  #ac39ac };
+  };
+  [type = 'gift'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/gift.svg');
+    :shield { fill: #ac39ac };
+  };
+  /* above newsagent */
+  [type = 'stationery'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/stationery.svg');
+    :shield { fill: #ac39ac };
+  };
+
+  /* Others */
+  [type = 'copyshop'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/copyshop.svg');
+    :shield { fill:  #ac39ac };
+  };
+  [type in ('dry_cleaning', 'laundry')][@sd < 3k] {
+    shield: symbol('file://symbols/shop/laundry.svg');
+    :shield { fill:  #ac39ac };
+  };
+  [type = 'pet'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/pet.svg');
+    :shield { fill:  #ac39ac };
+  };
+  [type = 'tobacco'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/tobacco.svg');
+    :shield { fill: #ac39ac };
+  };
+  [type = 'toys'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/toys.svg');
+    :shield { fill: #ac39ac };
+  };
+  [type = 'travel_agency'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/travel_agency.svg');
+    :shield { fill: #ac39ac };
+  };
+  [type = 'chemist'][@sd < 3k] {
+    shield: symbol('file://symbols/shop/chemist.svg');
+    :shield { fill:  #ac39ac };
+  };
+
+
+
+  /*
+  * Amenities Landform
+  */
+  [type = 'peak'][@sd < 400k] {
+    shield: symbol('file://symbols/peak.svg');
+    shield-size: 8;
+    :shield { fill: #d08f55 };
+  };
+
+  [type = 'volcano'][@sd < 400k] {
+    shield: symbol('file://symbols/peak.svg'); 
+    shield-size: 8;
+    :shield { fill: #d40000 };
+  };
+
+  [type = 'saddle'][@sd < 25k] {
+    shield: symbol('file://symbols/saddle.svg');
+    :shield { fill: #d08f55 };
+  };
+
+  [type = 'cave_entrance'][@sd < 25k] {
+    shield: symbol('file://symbols/cave.svg');
+    :shield { fill: #000000 };
+  };
+  /*
+  * Amenities Culture
+  */
+  [type = 'arts_centre'][@sd < 12.5k] {
+    shield: symbol('file://symbols/shop/art.svg');
+    :shield { fill: #734a08 };
+  };
+  [type = 'cinema'][@sd < 12.5k] {
+    shield: symbol('file://symbols/cinema.svg');
+    :shield { fill: #734a08 };
+  };
+  [type = 'community_centre'][@sd < 6k] {
+    shield: symbol('file://symbols/community_centre.svg');
+    :shield { fill: #734a08 };
+  };
+  /* !!! nozzle basin */
+  [type = 'fountain'] {
+    [@sd < 6k][@sd >= 3k] {
+      shield: symbol(circle), symbol(circle);
+      :nth-shield(1) { fill: #b5d0d0  };
+      :nth-shield(2) { fill: #576ddf };
+    };
+    shield-size: 10, 3;
+    [@sd < 3k] {
+      shield: symbol('file://symbols/fountain.svg');
+      :shield { fill: #576ddf; };
+    };
+  };
+  [type = 'nightclub'][@sd < 6k] {
+    shield: symbol('file://symbols/nightclub.svg');
+    :shield { fill: #734a08 };
+  };
+  [type = 'theatre'][@sd < 12.5k] {
+    shield: symbol('file://symbols/theatre.svg');
+    :shield { fill: #734a08 };
+  };
+
+  /*
+  * Amenities Tourism
+  */
+
+  [type = 'alpine_hut'][@sd < 100k] {
+    shield: symbol('file://symbols/alpinehut.p.16.svg');
+    :shield { fill: #0092da };
+  };
+  [type = 'artwork'][@sd < 6k] {
+    shield: symbol('file://symbols/artwork.svg');
+    :shield { fill: #734a08 };
+  };
+  [type = 'camp_site'][@sd < 12.5k] {
+    shield: symbol('file://symbols/camping.svg');
+    :shield { fill: #0092da };
+  };
+  [type = 'caravan_site'][@sd < 12.5k] {
+    shield: symbol('file://symbols/caravan_park.svg');
+    :shield { fill: #0092da };
+  };
+  /* TODO: SVG */
+  [type = 'chalet'][@sd < 6k] {
+    shield: url('symbols/chalet.p.16.png');
+  };
+  [type = 'hostel'][@sd < 6k] {
+    shield: symbol('file://symbols/hostel.svg');
+    :shield { fill: #0092da };
+  };
+  [type = 'hotel'][@sd < 6k] {
+    shield: symbol('file://symbols/hotel.svg');
+    :shield { fill: #0092da };
+  };
+  [type = 'information'][@sd < 6k] {
+    shield: symbol('file://symbols/information.12.svg');
+    :shield { fill: #734a08 };
+  };
+  [type = 'motel'][@sd < 6k] {
+    shield: symbol('file://symbols/motel.svg');
+    :shield { fill: #0092da };
+  };
+  [type = 'museum'][@sd < 12.5k] {
+    shield: symbol('file://symbols/museum.svg');
+    :shield { fill: #734a08 };
+  };
+  [type = 'picnic_site'][@sd < 12.5k] {
+    shield: symbol('file://symbols/picnic.svg');
+    :shield { fill: #734a08 };
+  };
+  [type = 'viewpoint'][@sd < 12.5k] {
+    shield: symbol('file://symbols/viewpoint.svg');
+    :shield { fill: #734a08 };
+  };
+  [type = 'wilderness_hut'][@sd < 100k],
+  [type = 'shelter'][@sd < 12.5k] {
+    shield: symbol('file://symbols/shelter.svg');
+    [type = 'wilderness_hut'] {
+      shield: symbol('file://symbols/wilderness_hut.svg');
+    };
+    :shield { fill: #0092da };
+  };
+  /*
+  * Amenities Sustenance
+  */
+  [type = 'bar'][@sd < 6k] {
+    shield: symbol('file://symbols/bar.svg');
+    :shield { fill: #734a08 };
+  };
+  [type = 'biergarten'][@sd < 6k] {
+    shield: symbol('file://symbols/biergarten.svg');
+    :shield { fill: #734a08 };
+  };
+  [type = 'cafe'][@sd < 6k] {
+    shield: symbol('file://symbols/cafe.svg');
+    :shield { fill: #734a08 };
+  };
+  [type = 'drinking_water'][@sd < 6k] {
+    shield: symbol('file://symbols/drinking_water.svg');
+    :shield { fill: #734a08 };
+  };
+  [type = 'fast_food'][@sd < 6k] {
+    shield: symbol('file://symbols/fast_food.svg'); 
+    shield-size: 10;
+    :shield { fill: #734a08 };
+  };
+  [type in ('restaurant', 'food_court')][@sd < 6k] {
+    shield: symbol('file://symbols/restaurant.svg');
+    :shield { fill: #734a08 };
+  };
+  [type = 'ice_cream'][@sd < 6k] {
+    shield: symbol('file://symbols/shop/ice_cream.svg');
+    :shield { fill: #734a08 };
+  };
+  [type = 'pub'][@sd < 6k] {
+    shield: symbol('file://symbols/pub.svg');
+    :shield { fill: #734a08 };
+  };
+  /*
+  * Amenities Transportation
+  */
+  [type = 'traffic_signals'][@sd < 6k] {
+    shield: symbol('file://symbols/traffic_light.16.svg');
+    :shield { fill: #0a0a0a };
+  };
+  [type = 'bus_stop'] {
+    :shield { fill: #0092da };
+    [@sd < 12.5k] {
+      shield: symbol(square);
+      shield-size: 6;  
+    };
+    [@sd < 6k] {
+      shield: symbol('file://symbols/bus_stop.12.svg');
+      shield-size: 12;
+    };
+  };
+  [type = 'elevator'][@sd < 3k] {
+    [access is null],
+    [access = 'yes'] {
+      shield: symbol('file://symbols/elevator.12.svg');
+      :shield { fill: #0092da };
+    };
+  };
+  [type = 'bicycle_parking'][@sd < 6k] {
+    shield: symbol('file://symbols/bicycle_parking.svg');
+    :shield { fill: #0092da };
+  };
+  [type = 'bicycle_rental'][@sd < 6k] {
+    shield: symbol('file://symbols/rental_bicycle.svg');
+    :shield { fill: #0092da };
+  };
+  [type = 'bus_station'][@sd < 12.5k] {
+    shield: symbol('file://symbols/bus_station.n.16.svg');
+    :shield { fill: #0092da };
+  };
+  [type = 'car_rental'][@sd < 6k] {
+    shield: symbol('file://symbols/rental_car.svg');
+    :shield { fill: #0092da };
+  };
+  [type = 'car_wash'][@sd < 6k] {
+    shield: symbol('file://symbols/car_wash.svg');
+    :shield { fill: #734a08 };
+  };
+  [type = 'parking'][@sd < 6k] {
+    shield: symbol('file://symbols/parking.svg');
+    :shield { fill: #0092da; };
+  };
+  [type = 'charging_station'][@sd < 6k] {
+    shield: symbol('file://symbols/charging_station.svg');
+    :shield { fill: #0092da };
+  };
+  [type = 'fuel'][@sd < 6k] {
+    shield: symbol('file://symbols/fuel.svg');
+    :shield { fill: #0092da };
+  };
+  /*
+  moved to landusages to filter by area
+  [type = 'parking'][@sd < 6k] {
+  shield: symbol('file://symbols/parking.svg');
+  :shield { fill: #0092da };
+};
+  */
+  [type = 'motorcycle_parking'][@sd < 6k] {
+    shield: symbol('file://symbols/motorcycle_parking.svg');
+    :shield { fill: #0092da };
+  };
+  [type = 'taxi'][@sd < 6k] {
+    shield: symbol('file://symbols/taxi.svg');
+    :shield { fill: #0092da };
+  };
+
+  /*
+  * Amenities Healthcare
+  */
+
+  [type = 'hospital'][@sd < 25k] {
+    shield: symbol('file://symbols/hospital.svg');
+    :shield { fill: #da0092};
+  };
+
+  [type = 'pharmacy'][@sd < 6k] {
+    shield: symbol('file://symbols/pharmacy.svg');
+    :shield { fill: #da0092};
+  };
+
+  [type = 'clinic'][@sd < 12.5k],
+  [type = 'doctors'][@sd < 6k] {
+    shield: symbol('file://symbols/doctors.svg');
+    :shield { fill: #da0092};
+  };
+  [type = 'dentist'][@sd < 6k] {
+    shield: symbol('file://symbols/dentist.svg');
+    :shield { fill: #da0092};
+  };
+  [type = 'social_facility'][@sd < 6k] {
+    shield: symbol('file://symbols/social_facility.svg');
+    :shield { fill: #734a08 };
+  };
+  [type = 'veterinary'][@sd < 6k] {
+    shield: symbol('file://symbols/veterinary.svg');
+    :shield { fill: #da0092};
+  };
+
+  /*
+  * Amenities Financial
+  */
+  [type = 'atm'][@sd < 6k] {
+    shield: symbol('file://symbols/atm.svg');
+    :shield { fill: #734a08 };
+  };
+
+  [type = 'bank'][@sd < 6k] {
+    shield: symbol('file://symbols/bank.svg');
+    :shield { fill: #734a08 };
+  };
+
+  /*
+  * Amenities Religion
+  */
+
+  [type = 'place_of_worship'][@sd < 12.5k] {
+    shield: symbol('file://symbols/place_of_worship.svg');
+    :shield {
+      fill: #000000
+    };
+    [religion = 'christian'] {
+      [denomination = 'jehovahs_witness']{
+        shield: symbol('file://symbols/place_of_worship.svg');
+      };
+      [denomination <> 'jehovahs_witness']{
+        shield: symbol('file://symbols/christian.svg');
+      };
+    };
+    [religion = 'muslim'] {
+      shield: symbol('file://symbols/muslim.svg');
+    };
+    [religion = 'sikh'] {
+      shield: symbol('file://symbols/sikhist.svg');
+    };
+    [religion = 'jewish'] {
+      shield: symbol('file://symbols/jewish.svg');
+    };
+    [religion = 'hindu'] {
+      shield: symbol('file://symbols/hinduist.svg');
+    };
+    [religion = 'buddhist'] {
+      shield: symbol('file://symbols/buddhist.svg');
+    };
+    [religion = 'shinto'] {
+      shield: symbol('file://symbols/shintoist.svg');
+    };
+    [religion = 'taoist'] {
+      shield: symbol('file://symbols/taoist.svg');
+    };
+  };
+
+  /*
+  * Amenities Misc
+  */
+
+  [type = 'ford'][@sd < 12.5k] {
+    shield: symbol('file://symbols/ford.svg');
+    :shield { fill: #0092da };
+  };
+
+  [type = 'fire_station'][@sd < 12.5k] {
+    shield: symbol('file://symbols/firestation.svg');
+    :shield { fill: #734a08 };
+  };
+
+  [type = 'guest_house'][@sd < 6k] {
+    shield: url('symbols/guest_house.p.16.png');
+  };
+
+  [type = 'embassy'][@sd < 6k] {
+    shield: symbol('file://symbols/embassy.svg');
+    :shield { fill: #0092da };
+  };
+
+  [type = 'library'][@sd < 12.5k] {
+    shield: symbol('file://symbols/library.svg');
+    :shield { fill: #734a08 };
+  };
+
+  [type = 'courthouse'][@sd < 12.5k] {
+    shield: symbol('file://symbols/courthouse.svg');
+    :shield { fill: #734a08 };
+  };
+
+  [type = 'townhall'][@sd < 12.5k] {
+    shield: symbol('file://symbols/town_hall.svg');
+    :shield { fill: #734a08 };
+  };
+
+  [type = 'mast'][@sd < 6k] {
+    shield: symbol('file://symbols/communications.svg');
+    :shield { fill: #555 };
+  };
+
+  [type = 'cross'][@sd < 6k],
+  [type = 'historic_wayside_cross'][@sd < 6k] {
+    shield: symbol('file://symbols/christian.9.svg');
+    :shield { fill: #000000 };
+  };
+
+  [type = 'police'][@sd < 12.5k] {
+    shield: symbol('file://symbols/police.svg');
+    :shield { fill: #734a08 };
+  };
+
+  [type = 'post_box'][@sd < 6k] {
+    shield: symbol('file://symbols/post_box.12.svg');
+    :shield { fill: #734a08 };
+  };
+
+  [type = 'post_office'][@sd < 6k] {
+    shield: symbol('file://symbols/post_office.svg');
+    :shield { fill: #734a08 };
+  };
+
+  [type = 'recycling'][@sd < 6k] {
+    shield: symbol('file://symbols/recycling.svg');
+    :shield { fill: #734a08 };
+    [access <> ''][access <> 'permissive'][access <> 'yes'] {
+      :shield { fill-opacity: 0.33 };
+    };
+  };
+
+  [type = 'telephone'][@sd < 6k] {
+    shield: symbol('file://symbols/telephone.svg');
+    :shield { fill: #734a08 };
+  };
+
+  [type = 'emergency_phone'][@sd < 6k] {
+    shield: symbol('file://symbols/emergency_phone.svg');
+    :shield { fill: #734a08 };
+  };
+
+  [type = 'toilets'][@sd < 6k] {
+    shield: symbol('file://symbols/toilets.svg');
+    :shield { fill: #734a08 };
+  };
+
+  [type = 'prison'][@sd < 6k] {
+    shield: symbol('file://symbols/prison.svg');
+    :shield { fill: #734a08 };
+  };
+
+  [type = 'water_tower'][@sd < 6k] {
+    shield: symbol('file://symbols/water_tower.svg');
+    :shield { fill: #555 };
+  };
+
+  [type = 'memorial'][@sd < 6k] {
+    shield: symbol('file://symbols/memorial.svg');
+    :shield { fill: #734a08 };
+  };
+
+  [type = 'obelisk'][@sd < 12.5k],
+  [type = 'monument'][@sd < 12.5k] {
+    shield: symbol('file://symbols/monument.svg');
+    :shield { fill: #734a08 };
+  };
+
+  [type = 'archaeological_site'][@sd < 12.5k] {
+    shield: symbol('file://symbols/archaeological_site.svg');
+    :shield { fill: #734a08 };
+  };
+
+  [type = 'water_park'][@sd < 6k] {
+    shield: symbol('file://symbols/water_park.svg');
+    :shield { fill: #734a08 };
+  };
+
+  [type = 'dog_park'][@sd < 6k] {
+    shield: symbol('file://symbols/shop/pet.svg');
+    :shield { fill: #734a08 };
+  };
+
+  [type = 'playground'][@sd < 6k] {
+    shield: symbol('file://symbols/playground.svg');
+    :shield { fill: #734a08 };
+    [access <> ''][access <> 'permissive'][access <> 'yes'] {
+      :shield { fill-opacity: 0.33 };
+    };
+  };
+
+  [type = 'miniature_golf'][@sd < 6k] {
+    shield: url('symbols/miniature_golf.p.20.png');
+  };
+
+  [type = 'golf_course'][@sd < 25k] {
+    shield: url('symbols/golf.p.20.png');
+  };
+
+  [type = 'picnic_table'][@sd < 6k] {
+    shield: symbol('file://symbols/picnic.svg');
+    :shield { fill: #734a08 };
+  };
+
+  [type = 'slipway'][@sd < 6k] {
+    shield: url('symbols/transport_slipway.p.20.png');
+  };
+
+  [type = 'helipad'][@sd < 12.5k] {
+    shield: symbol('file://symbols/helipad.16.svg');
+    :shield { fill: #8461C4 };
+  };
+
+  [type = 'aerodrome'][@sd < 800k] {
+    shield: symbol('file://symbols/aerodrome.12.svg');
+    :shield { fill: #8461C4 };
+  };
+
+  [type = 'lighthouse'][@sd < 25k] {
+    shield: symbol('file://symbols/lighthouse.svg');
+    :shield { fill: #0092da };
+  };
+
+  /* ??? */
+  /*
+  [type = 'spring'][@sd < 50k] {
+  shield: symbol('file://symbols/spring.svg');
+};
+  */
+
+  /* generator:source not exist */
+  /*[type = 'generator']['generator:source' = 'wind'],*/
+  [type = 'generator'][power_source = 'wind'] {
+    [@sd < 25k] {
+      shield: symbol('file://symbols/power_wind.svg');
+      :shield { fill: black };
+    }
+  };
+
+  [type = 'windmill'][@sd < 12.5k] {
+    shield: symbol('file://symbols/windmill.svg');
+    :shield { fill: #734a08 };
+  };
+
+  [type = 'hunting_stand'][@sd < 12.5k] {
+    shield: symbol('file://symbols/hunting_stand.svg');
+    :shield { fill: #555 };
+  };
+
+  /*
+  * TODO: Missing man_made, barrier, tree, historical, power_source
+  */
+}
+
+
+[@sd <= 400k] {
+  z-index: 0;
+  label-geometry: [centroid(geometry)];
+  font-size: 10;
+  font-family: 'Noto Sans Regular'
+    'Noto Sans Adlam Regular'
+    'Noto Sans Adlam Unjoined Regular'
+    'Noto Sans Armenian Regular'
+    'Noto Sans Balinese Regular'
+    'Noto Sans Bamum Regular'
+    'Noto Sans Batak Regular'
+    'Noto Sans Bengali UI Regular'
+    'Noto Sans Buginese Regular'
+    'Noto Sans Buhid Regular'
+    'Noto Sans Canadian Aboriginal Regular'
+    'Noto Sans Chakma Regular'
+    'Noto Sans Cham Regular'
+    'Noto Sans Cherokee Regular'
+    'Noto Sans Coptic Regular'
+    'Noto Sans Devanagari UI Regular'
+    'Noto Sans Ethiopic Regular'
+    'Noto Sans Georgian Regular'
+    'Noto Sans Gujarati UI Regular'
+    'Noto Sans Gurmukhi UI Regular'
+    'Noto Sans Hanunoo Regular'
+    'Noto Sans Hebrew Regular'
+    'Noto Sans Javanese Regular'
+    'Noto Sans Kannada UI Regular'
+    'Noto Sans Kayah Li Regular'
+    'Noto Sans Khmer UI Regular'
+    'Noto Sans Lao UI Regular'
+    'Noto Sans Lepcha Regular'
+    'Noto Sans Limbu Regular'
+    'Noto Sans Lisu Regular'
+    'Noto Sans Malayalam UI Regular'
+    'Noto Sans Mandaic Regular'
+    'Noto Sans Mongolian Regular'
+    'Noto Sans Myanmar UI Regular'
+    'Noto Sans New Tai Lue Regular'
+    'Noto Sans NKo Regular'
+    'Noto Sans Ol Chiki Regular'
+    'Noto Sans Oriya UI Regular'
+    'Noto Sans Osage Regular'
+    'Noto Sans Osmanya Regular'
+    'Noto Sans Samaritan Regular'
+    'Noto Sans Saurashtra Regular'
+    'Noto Sans Shavian Regular'
+    'Noto Sans Sinhala UI Regular'
+    'Noto Sans Sinhala Regular'
+    'Noto Sans Sundanese Regular'
+    'Noto Sans Symbols Regular'
+    'Noto Sans Symbols2 Regular'
+    'Noto Sans Syriac Eastern Regular'
+    'Noto Sans Tagalog Regular'
+    'Noto Sans Tagbanwa Regular'
+    'Noto Sans Tai Le Regular'
+    'Noto Sans Tai Tham Regular'
+    'Noto Sans Tai Viet Regular'
+    'Noto Sans Tamil UI Regular'
+    'Noto Sans Telugu UI Regular'
+    'Noto Sans Thaana Regular'
+    'Noto Sans Thai UI Regular'
+    'Noto Sans Tibetan Regular'
+    'Noto Sans Tifinagh Regular'
+    'Noto Sans Vai Regular'
+    'Noto Sans Yi Regular'
+    'Noto Sans Arabic UI Regular'
+    'Noto Emoji Regular'
+    'Noto Naskh Arabic UI Regular'
+    'DejaVu Sans Book'
+    'HanaMinA Regular'
+    'HanaMinB Regular'
+    'Unifont Medium'
+    'unifont Medium'
+    'Unifont Upper Medium';
+  halo-radius: 1;
+  halo-opacity: 0.6;
+  label-anchor: 0.5 1.0;
+  label-offset: 0 -12;
+  -gt-label-auto-wrap: 50;
+  label-group: true;
+  label-priority: 2100;
+
+  [type in (
+    'pub',
+    'restaurant',
+    'food_court',
+    'cafe',
+    'fast_food',
+    'biergarten',
+    'bar',
+    'ice_cream',
+    'nightclub'
+  )][@sd < 6k] {
+    label: [name];
+    font-fill: #734a08;
+    halo-color: #ffffff;
+    [type = 'bar']{
+      label-offset: 0 -13;
+    };
+    [type = 'nightclub']{
+      label-offset: 0 -12;
+    };
+  };
+
+  [type in (
+    'library',
+    'museum',
+    'theatre',
+    'cinema',
+    'arts_centre',
+    'community_centre',
+    'archaeological_site'
+  )][@sd < 6k] {
+    label: [name];
+    font-fill: #734a08;
+    halo-color: #ffffff;
+    [type = 'community_centrer']{
+      label-offset: 0 -10;
+    };
+  };
+
+  [type = 'public_bath'][@sd < 6k] {
+    label: [name];
+    font-fill: #734a08;
+    halo-color: #ffffff;
+  };
+
+  [type = 'sauna'][@sd < 6k] {
+    label: [name];
+    font-fill: #0c8416;
+    halo-color: #ffffff;
+  };
+
+  [type in (
+    'car_rental',
+    'bicycle_rental',
+    'toll_booth',
+    'slipway'
+  )][@sd < 6k] {
+    label: [name];
+    font-fill: #0066ff;
+    halo-color: #ffffff;
+    [type in ('bicycle_rental', 'car_rental')] {
+      label-offset: 0 -10;
+    };
+    [type in ('toll_booth', 'slipway')] {
+      label-offset: 0 -13;
+    };
+  };
+
+  [type in (
+    'parking',
+    'bicycle_parking',
+    'motorcycle_parking'
+  )][@sd < 6k] {
+    label: [name];
+    font-fill: #0066ff;
+    halo-color: #ffffff;
+    label-offset: 0 -11;
+    /*add access to landuse or separated layer*/
+    /*[access <> ''][access <> 'permissive'][access <> 'yes'] {
+    font-fill-opacity: 0.33;
+    halo-radius: 0;
+  };*/
+    [type in ('motorcycle_parking', 'bicycle_parking')] {
+      label-offset: 0 -14;
+    };
+  };
+
+  [type in (
+    'courthouse',
+    'townhall',
+    'police',
+    'social_facility',
+    'fire_station',
+    'post_office',
+    'prison',
+    'embassy',
+    'bank'
+  )][@sd < 6k] {
+    label: [name];
+    font-fill: #734a08;
+    halo-color: #ffffff;
+    [type in ('courthouse', 'townhall')] {
+      label-offset: 0 -14;
+    };
+    [type = 'prison'] {
+      label-offset: 0 -13;
+    };
+    [type = 'embassy'] {
+      label-offset: 0 -11;
+    };
+    [type = 'bank'] {
+      label-offset: 0 -10;
+    };
+  };
+
+  [type in (
+    'car_wash',
+    'drinking_water',
+    'picnic_site',
+    'beach_resort',
+    'picnic_table'
+  )][@sd < 6k] {
+    label: [name];
+    font-fill: #734a08;
+    halo-color: #ffffff;
+    label-offset: 0 -11;
+    [type in ('picnic_site', 'beach_resort')] {
+      font-fill: #0c8416;
+    };
+  };
+
+  [type = 'place_of_worship'][@sd < 6k] {
+    label: [name];
+    font-fill: #000033;
+    halo-color: #ffffff;
+    -gt-label-auto-wrap: 80;
+  };
+
+  [type = 'marketplace'][@sd < 6k] {
+    label: [name];
+    font-fill: #939;
+    halo-color: #ffffff;
+    label-offset: 0 -11;
+  };
+
+  [type = 'peak'][@sd <= 100k],
+  [type = 'volcano'][@sd <= 100k],
+  [type = 'saddle'][@sd <= 25k],
+  [type = 'viewpoint'][@sd <= 12.5k] {
+    label: [name];
+    font-fill: #6e441e;
+    halo-color: #ffffff;
+    label-offset: 0 -9;
+    [type = 'viewpoint'] {
+      label-offset: 0 -11;
+    };
+    [type = 'volcano'] {
+      font-fill: #d40000;
+    };
+  };
+
+  [type = 'information'][@sd <= 19],
+  [type = 'office'][@sd <= 17] {
+    label: [name];
+    font-fill: #000000;
+    halo-color: #ffffff;
+    label-offset: 0 -11;
+    [type = 'office'] {
+      font-fill: #734a08;
+    };
+  };
+
+  [type in (
+    'memorial',
+    'artwork'
+  )][@sd <= 6k],
+  [type = 'memorial_plaque'][@sd < 1.5k],
+  [type in (
+    'obelisk',
+    'monument',
+    'fort',
+    'castle',
+    'manor'
+  )][@sd <= 12.5k] {
+    label: [name];
+    font-fill: #734a08;
+    halo-color: #ffffff;
+    label-offset: 0 -11;
+  };
+
+  [type in (
+    'bunker',
+    'wayside_shrine'
+  )][@sd <= 6k] {
+    label: [name];
+    font-fill: #555;
+    halo-color: #ffffff;
+    label-offset: 0 -11;
+  };
+
+  [type = 'miniature_golf'][@sd <= 6k],
+  [type = 'golf_course'][@sd <= 25k] {
+    label: [name];
+    font-fill: #0c8416;
+    halo-color: #ffffff;
+    label-offset: 0 -13;
+  };
+
+  [type = 'water_park'][@sd <= 6k] {
+    label: [name];
+    font-fill: #0c8416;
+    halo-color: #ffffff;
+    label-offset: 0 -11;
+  };
+
+  [type = 'swimming_pool'][@sd <= 6k] {
+    /* change font size based on way length */
+    label: [name];
+    font-fill: #576ddf;
+    halo-color: #ffffff;
+  };
+
+  [type in (
+    'playground',
+    'dog_park',
+    'fitness_centre',
+    'fitness_station'
+  )][@sd <= 6k]  {
+    /* change font size based on way length */
+    label: [name];
+    font-fill: #0c8416;
+    halo-color: #ffffff;
+    label-offset: 0 -13;
+    /*add access to landuse or separated layer*/
+    /*[access <> ''][access <> 'permissive'][access <> 'yes'] {
+    font-fill: #10b31d;
+  };*/
+  };
+
+  [type in (
+    'military',
+    'wood',
+    'forest',
+    'national_park',
+    'nature_reserve'
+  )][@sd <= 6k]  {
+    /* change font size based on way length */
+    label: [name];
+    font-fill: #0c8416;
+    halo-color: #ffffff;
+    font-style: italic;
+    [type = 'military'] {
+      font-fill: #880000;
+    };
+    [type = 'wood'],
+    [type = 'forest'] {
+      font-fill: #46673b;
+    };
+    [type = 'national_park'],
+    [type = 'nature_reserve'] {
+      font-fill: #10b31d;
+    };
+  };
+
+  [type = 'danger_area'][@sd <= 6k]  {
+    /* change font size based on way length */
+    label: [name];
+    font-fill: #ee0000;
+    halo-color: #ffffff;
+    font-style: italic;
+  };
+
+  [type = 'garages'][@sd <= 6k] {
+    label: [name];
+    font-fill: #696545;
+    halo-color: #ffffff;
+    font-style: italic;
+  };
+
+  [type in ('art',
+    'bag',
+    'bakery',
+    'beauty',
+    'bed',
+    'beverages',
+    'books',
+    'clothes',
+    'coffee',
+    'computer',
+    'fashion',
+    'convenience',
+    'confectionery',
+    'pastry',
+    'chocolate',
+    'copyshop',
+    'deli',
+    'doityourself',
+    'dry_cleaning',
+    'hardware',
+    'hairdresser',
+    'hifi',
+    'houseware',
+    'ice_cream',
+    'butcher',
+    'car',
+    'car_repair',
+    'car_parts',
+    'cosmetics',
+    'dairy',
+    'bicycle',
+    'farm',
+    'fishmonger',
+    'florist',
+    'garden_centre',
+    'greengrocer',
+    'pet',
+    'photo',
+    'photo_studio',
+    'photography',
+    'shoes',
+    'gift',
+    'electronics',
+    'alcohol',
+    'optician',
+    'outdoor',
+    'perfumery',
+    'furniture',
+    'kiosk',
+    'medical_supply',
+    'mobile_phone',
+    'motorcycle',
+    'music',
+    'musical_instrument',
+    'newsagent',
+    'jewelry',
+    'jewellery',
+    'laundry',
+    'chemist',
+    'toys',
+    'travel_agency',
+    'seafood',
+    'sports',
+    'stationery',
+    'tobacco',
+    'tea',
+    'ticket',
+    'tyres',
+    'variety_store',
+    'video_games',
+    'wine',
+    'other')][@sd <= 1.5k] {
+      label: [name];
+      halo-color: #ffffff;
+      font-fill: #939;
+      label-offset: 0 -12;
+      [type = 'car_repair'] {
+        font-fill: #734a08;
+      };
+    };
+
+  [type in ('alpine_hut', 'wilderness_hut')][@sd <= 50k],
+  [type in (
+    'shelter',
+    'hotel',
+    'motel',
+    'hostel',
+    'chalet',
+    'guest_house',
+    'camp_site',
+    'caravan_site'
+  )][@sd <= 6k],
+  [type = 'apartment'][@sd <= 3k] {
+    label: [name];
+    label-offset: 0 -11;
+    halo-color: #ffffff;
+    font-fill: #0066ff; /*check accomodation text*/
+    [type = 'motel'] {
+      label-offset: 0 -13;
+    };
+    [type = 'camp_site'],
+    [type = 'caravan_site'] {
+      label-offset: 0 -15;
+    };
+    [type = 'shelter'] {
+      font-fill: #734a08;
+    };
+  };
+  [type = 'hospital'][@sd <= 12.5k] {
+    label: [name];
+    halo-color: #ffffff;
+    font-fill: #da0092;/*check healt color*/
+    label-offset: 0 -10;
+  };
+
+  [type in (
+    'clinic',
+    'pharmacy',
+    'doctors',
+    'dentist',
+    'veterinary'
+  )][@sd <= 6k]{
+    label: [name];
+    halo-color: #ffffff;
+    font-fill: #da0092;/*check healt color*/
+    label-offset: 0 -12;
+  };
+
+  [type in (
+    'nursing_home',
+    'childcare'
+  )][@sd <= 3k] {
+    label: [name];
+    halo-color: #ffffff;
+    font-fill: #47471b;/*check healt color*/
+    label-offset: 0 -8;
+  };
+
+  [type = 'taxi'][@sd <= 6k] {
+    label: [name];
+    halo-color: #ffffff;
+    font-fill: #0066ff;
+    label-offset: 0 -11;
+  };
+
+  [type in (
+    'bus_stop',
+    'charging_station',
+    'fuel',
+    'bus_station'
+  )][@sd <= 6k] {
+    label: [name];
+    halo-color: #ffffff;
+    font-fill: #0066ff;
+    label-offset: 0 -11;
+    [type = 'highway_bus_stop'] {
+      label-offset: 0 -9;
+    };
+  };
+
+  [type = 'aerodrome'][@sd < 400k] {
+    label: [name];
+    halo-color: #ffffff;
+    font-fill: #5e3b9e;
+    label-offset: 0 -10;
+    font-style: italic;
+  };
+
+}

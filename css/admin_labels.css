@@ -1,0 +1,180 @@
+@mode 'Flat';
+
+/*[admin_level = 2][@sd < 100000000][@sd >= 500k]*/
+[admin_level = 2][@sd < 2M][@sd >= 500k] {
+  label: [name];
+  label-anchor: 0.5 0.5;
+  font-fill: darken(#ac46ac, 15%);
+  font-size: [interpolate(env('wms_scale_denominator', 100000000), 800000, 16, 100000000, 12)];
+  label-geometry: [centroid(geometry)];
+  font-family: 'Noto Sans Regular'
+    'Noto Sans Adlam Regular'
+    'Noto Sans Adlam Unjoined Regular'
+    'Noto Sans Armenian Regular'
+    'Noto Sans Balinese Regular'
+    'Noto Sans Bamum Regular'
+    'Noto Sans Batak Regular'
+    'Noto Sans Bengali UI Regular'
+    'Noto Sans Buginese Regular'
+    'Noto Sans Buhid Regular'
+    'Noto Sans Canadian Aboriginal Regular'
+    'Noto Sans Chakma Regular'
+    'Noto Sans Cham Regular'
+    'Noto Sans Cherokee Regular'
+    'Noto Sans Coptic Regular'
+    'Noto Sans Devanagari UI Regular'
+    'Noto Sans Ethiopic Regular'
+    'Noto Sans Georgian Regular'
+    'Noto Sans Gujarati UI Regular'
+    'Noto Sans Gurmukhi UI Regular'
+    'Noto Sans Hanunoo Regular'
+    'Noto Sans Hebrew Regular'
+    'Noto Sans Javanese Regular'
+    'Noto Sans Kannada UI Regular'
+    'Noto Sans Kayah Li Regular'
+    'Noto Sans Khmer UI Regular'
+    'Noto Sans Lao UI Regular'
+    'Noto Sans Lepcha Regular'
+    'Noto Sans Limbu Regular'
+    'Noto Sans Lisu Regular'
+    'Noto Sans Malayalam UI Regular'
+    'Noto Sans Mandaic Regular'
+    'Noto Sans Mongolian Regular'
+    'Noto Sans Myanmar UI Regular'
+    'Noto Sans New Tai Lue Regular'
+    'Noto Sans NKo Regular'
+    'Noto Sans Ol Chiki Regular'
+    'Noto Sans Oriya UI Regular'
+    'Noto Sans Osage Regular'
+    'Noto Sans Osmanya Regular'
+    'Noto Sans Samaritan Regular'
+    'Noto Sans Saurashtra Regular'
+    'Noto Sans Shavian Regular'
+    'Noto Sans Sinhala UI Regular'
+    'Noto Sans Sinhala Regular'
+    'Noto Sans Sundanese Regular'
+    'Noto Sans Symbols Regular'
+    'Noto Sans Symbols2 Regular'
+    'Noto Sans Syriac Eastern Regular'
+    'Noto Sans Tagalog Regular'
+    'Noto Sans Tagbanwa Regular'
+    'Noto Sans Tai Le Regular'
+    'Noto Sans Tai Tham Regular'
+    'Noto Sans Tai Viet Regular'
+    'Noto Sans Tamil UI Regular'
+    'Noto Sans Telugu UI Regular'
+    'Noto Sans Thaana Regular'
+    'Noto Sans Thai UI Regular'
+    'Noto Sans Tibetan Regular'
+    'Noto Sans Tifinagh Regular'
+    'Noto Sans Vai Regular'
+    'Noto Sans Yi Regular'
+    'Noto Sans Arabic UI Regular'
+    'Noto Emoji Regular'
+    'Noto Naskh Arabic UI Regular'
+    'DejaVu Sans Book'
+    'HanaMinA Regular'
+    'HanaMinB Regular'
+    'Unifont Medium'
+    'unifont Medium'
+    'Unifont Upper Medium';
+  halo-color: white;
+  halo-radius: 1.5;
+  halo-opacity: 0.8;
+  -gt-label-padding: 7;
+  -gt-label-auto-wrap: 75;
+  label-priority: 2600;
+}
+
+/* [admin_level = 4][@sd < 50000000][@sd >= 250k] */
+
+[admin_level = 4][@sd < 2M][@sd >= 250k] {
+  label: [name];
+  label-anchor: 0.5 0.5;
+  font-fill: desaturate(darken(#ac46ac, 15%), 20%);
+  
+  label-geometry: [centroid(geometry)];
+
+  
+  font-size: 12;
+  font-family: 'Noto Sans Regular'
+    'Noto Sans Adlam Regular'
+    'Noto Sans Adlam Unjoined Regular'
+    'Noto Sans Armenian Regular'
+    'Noto Sans Balinese Regular'
+    'Noto Sans Bamum Regular'
+    'Noto Sans Batak Regular'
+    'Noto Sans Bengali UI Regular'
+    'Noto Sans Buginese Regular'
+    'Noto Sans Buhid Regular'
+    'Noto Sans Canadian Aboriginal Regular'
+    'Noto Sans Chakma Regular'
+    'Noto Sans Cham Regular'
+    'Noto Sans Cherokee Regular'
+    'Noto Sans Coptic Regular'
+    'Noto Sans Devanagari UI Regular'
+    'Noto Sans Ethiopic Regular'
+    'Noto Sans Georgian Regular'
+    'Noto Sans Gujarati UI Regular'
+    'Noto Sans Gurmukhi UI Regular'
+    'Noto Sans Hanunoo Regular'
+    'Noto Sans Hebrew Regular'
+    'Noto Sans Javanese Regular'
+    'Noto Sans Kannada UI Regular'
+    'Noto Sans Kayah Li Regular'
+    'Noto Sans Khmer UI Regular'
+    'Noto Sans Lao UI Regular'
+    'Noto Sans Lepcha Regular'
+    'Noto Sans Limbu Regular'
+    'Noto Sans Lisu Regular'
+    'Noto Sans Malayalam UI Regular'
+    'Noto Sans Mandaic Regular'
+    'Noto Sans Mongolian Regular'
+    'Noto Sans Myanmar UI Regular'
+    'Noto Sans New Tai Lue Regular'
+    'Noto Sans NKo Regular'
+    'Noto Sans Ol Chiki Regular'
+    'Noto Sans Oriya UI Regular'
+    'Noto Sans Osage Regular'
+    'Noto Sans Osmanya Regular'
+    'Noto Sans Samaritan Regular'
+    'Noto Sans Saurashtra Regular'
+    'Noto Sans Shavian Regular'
+    'Noto Sans Sinhala UI Regular'
+    'Noto Sans Sinhala Regular'
+    'Noto Sans Sundanese Regular'
+    'Noto Sans Symbols Regular'
+    'Noto Sans Symbols2 Regular'
+    'Noto Sans Syriac Eastern Regular'
+    'Noto Sans Tagalog Regular'
+    'Noto Sans Tagbanwa Regular'
+    'Noto Sans Tai Le Regular'
+    'Noto Sans Tai Tham Regular'
+    'Noto Sans Tai Viet Regular'
+    'Noto Sans Tamil UI Regular'
+    'Noto Sans Telugu UI Regular'
+    'Noto Sans Thaana Regular'
+    'Noto Sans Thai UI Regular'
+    'Noto Sans Tibetan Regular'
+    'Noto Sans Tifinagh Regular'
+    'Noto Sans Vai Regular'
+    'Noto Sans Yi Regular'
+    'Noto Sans Arabic UI Regular'
+    'Noto Emoji Regular'
+    'Noto Naskh Arabic UI Regular'
+    'DejaVu Sans Book'
+    'HanaMinA Regular'
+    'HanaMinB Regular'
+    'Unifont Medium'
+    'unifont Medium'
+    'Unifont Upper Medium';
+  font-style: italic;
+  halo-color: white;
+  halo-radius: 1.5;
+  halo-opacity: 0.8;
+  -gt-label-padding: 7;
+  -gt-label-auto-wrap: 75;
+  
+  label-priority: 2600;
+
+}

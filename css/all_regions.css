@@ -1,0 +1,5 @@
+[@sd < 50M][@sd > 250k][scalerank not in (0, 10, 11)] {
+  stroke: #ac46ac;
+  stroke-opacity: 0.3;
+  stroke-width: 0.1;
+}

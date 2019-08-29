@@ -1,0 +1,630 @@
+@mode 'Flat';
+
+* {
+  sort-by: 'z_order';
+
+
+  [@sd < 100k][type in ('mud', 'tidalflat')] {
+    fill: #CBB19A;
+    fill-opacity: 0.3;
+  };
+
+  [@sd < 50k][type = 'swimming_pool'] {
+    fill: #b5d0d0;
+    stroke: #2c8d8d;
+    stroke-width: 0.5;
+  };
+
+  [@sd < 50k][type = 'playground'] {
+    fill: #dffce2;
+    stroke: #0e9b19;
+    stroke-width: 0.3;
+  };
+
+  [@sd < 50k][type in ('camp_site', 'caravan_site', 'picnic_site')] {
+    fill: #def6c0;
+    [@sd < 100k] {
+      stroke: #498400;
+      stroke-width: 0.3;
+    };
+  };
+
+  [@sd < 100k][type = 'quarry'] {
+    fill: #c5c3c3, url('symbols/quarry.png');
+    [@sd < 50k] {
+      stroke: #808080;
+      stroke-width: 0.5;
+    };
+  };
+
+  [@sd < 100k][type in ('vineyard', 'orchard')] {
+    fill: #aedfa3;
+    [@sd < 50k][type = 'vineyard'] {
+      fill: #aedfa3, url('symbols/vineyard.png');
+    };
+    [@sd < 50k][type = 'orchard'] {
+      fill: #aedfa3, url('symbols/orchard.png');
+    };
+  };
+
+  [@sd < 100k][type in ('cemetery', 'grave_yard')] {
+    fill: #aacbaf;
+    [@sd < 50k] {
+      [religion = 'jewish'] {
+        fill: #aacbaf, url('symbols/grave_yard_jewish.png');
+      };
+      [religion = 'christian'] {
+        fill: #aacbaf, url('symbols/grave_yard_christian.png');
+      };
+      [religion = 'INT-generic'] {
+        fill: #aacbaf, url('symbols/grave_yard_generic.png');
+      };
+    };
+  };
+
+  [@sd < 50k][type in ('place_of_worship')] {
+    fill: #cdccc9;
+    [@sd < 50k] {
+      stroke: #111111;
+      stroke-width: 0.3;
+    };
+  };
+
+  [@sd < 50k][type in ('prison')] {
+    fill: url('symbols/grey_vertical_hatch.png');
+    stroke: #888;
+    stroke-width: 3;
+    stroke-opacity: 0.3;
+  };
+
+  [@sd < 100k][type in ('residential')] {
+    fill: #e0dfdf;
+    [@sd < 12.5k] {
+      stroke: #b9b9b9;
+      stroke-width: 0.5;
+      [name <> ''] {
+        stroke-width: 0.7;
+      };
+    };
+  };
+
+  [@sd < 50k][type in ('garages')] {
+    fill: #dfddce;
+  };
+
+  /*1.5M*/
+  [@sd < 100k][type in ('danger_area')] {
+    fill: #FFC0CB;
+    fill-opacity: 0.3;
+    [@sd < 40000] {
+      fill: url('symbols/danger.png');
+    };
+  };
+
+  [@sd < 100k][type in ('park', 'recreation_ground')] {
+    fill: #c8facc;
+  };
+
+  [@sd < 50k][type in ('dog_park')] {
+    fill: #dffce2;
+    [@sd < 12.5k] {
+      fill: #dffce2, url('symbols/dog_park.png');
+    };
+  };
+
+  [@sd < 100k][type in ('golf_course')] {
+    fill: #b5e3b5;
+  };
+
+  [@sd < 100k][type in ('allotments')] {
+    fill: #eecfb3;
+    [@sd < 50k] {
+      fill: #eecfb3, url('symbols/allotments.png');
+    };
+  };
+  /* old landusages_forest_fill: #add19e; */
+  [@sd < 1.5M][type = 'forest'],
+  [@sd < 100k][type = 'wood'] {
+    fill: #cee3c5;
+  };
+
+  [@sd < 100k][type in ('farmyard')] {
+    fill: #f5dcba;
+    [@sd < 12.5k] {
+      stroke: #d1b48c;
+      stroke-width: 0.5;
+      [name <> ''] {
+        stroke-width: 0.7;
+      };
+    };
+  };
+  [@sd < 1.5M][type = 'farmland'],
+  [@sd < 100k][type in ('farm', 'greenhouse_horticulture')] {
+    fill: #fbecd7;
+    [@sd < 12.5k] {
+      stroke: #d6c4ab;
+      stroke-width: 0.5;
+    };
+  };
+
+  [@sd < 100k][type in ('meadow', 'grassland', 'grass', 'recreation_ground', 'village_green', 'common', 'garden')] {
+    fill: #cdebb0;
+  };
+
+  [@sd < 50k][type in ('retail')] {
+    fill: #ffd6d1;
+    [@sd < 12.5k] {
+      stroke: #d99c95;
+      stroke-width: 0.5;
+      [name <> ''] {
+        stroke-width: 0.7;
+      };
+    };
+  };
+
+  [@sd < 100k][type in ('industrial')] {
+    fill: #ebdbe8;
+    [@sd < 12.5k] {
+      stroke: #c6b3c3;
+      stroke-width: 0.5;
+      [name <> ''] {
+        stroke-width: 0.7;
+      };
+    };
+  };
+
+  [@sd < 100k][type in ('railway')] {
+    fill: #ebdbe8;
+    [@sd < 12.5k][name <> ''] {
+      stroke: #c6b3c3;
+      stroke-width: 0.5;
+    };
+  };
+  /*
+  duplicate ?
+  [@sd < 800k][type in ('station')] {
+  fill: #d4aaaa;
+  };
+  */
+  [@sd < 200k][type in ('station', 'generator')],
+  [@sd < 100k][type in ('sub_station', 'substation')] {
+    fill: #ebdbe8;
+    [@sd < 25k] {
+      fill: #e2cbde;
+    };
+    [@sd < 12.5k] {
+      stroke: #bba4b7;
+      stroke-width: 0.5;
+      [name <> ''] {
+        stroke-width: 0.7;
+      };
+    };
+  };
+
+  [@sd < 100k][type in ('commercial')] {
+    fill: #f2dad9;
+    [@sd < 12.5k] {
+      stroke: #d1b2b0;
+      stroke-width: 0.5;
+      [name <> ''] {
+        stroke-width: 0.7;
+      };
+    };
+  };
+
+  [@sd < 100k][type in ('brownfield', 'construction')] {
+    fill: #c7c7b4;
+  };
+
+  [@sd < 100k][type in ('landfill')] {
+    fill: #b6b592;
+  };
+
+  /*1.5M*/
+  [@sd < 400k][type in ('bare_rock', 'scree', 'shingle')] {
+    fill: #eee5dc;
+    [@sd < 100k] {
+      fill: #eee5dc, url('symbols/scree_overlay.png');
+      [type = 'bare_rock'] {
+        fill: #eee5dc, url('symbols/rock_overlay.png');
+      };
+    };
+  };
+
+  /* 1.5M */
+  [@sd < 100k][type in ('sand')] {
+    fill: #f5e9c6;
+  };
+
+  [@sd < 100k][type in ('heath')] {
+    fill: #d6d99f;
+  };
+
+  [@sd < 50k][type in ('scrub')] {
+    fill: #b5e3b5;
+  };
+
+  /* 1.5M */
+  [@sd < 100k][type in ('swamp')] {
+    fill: #add19e;
+  };
+
+  [@sd < 100k][type in ('bog', 'string_bog')] {
+    fill: #d6d99f;
+  };
+
+  [@sd < 100k][type in ('marsh', 'wet_meadow')] {
+    fill: #cdebb0;
+  };
+
+  [@sd < 50k][type in ('hospital', 'clinic', 'university', 'college', 'school', 'kindergarten')] {
+    fill: #e0dfdf;
+    [@sd < 200k] {
+      fill: #f0f0d8;
+    };
+  };
+
+  [@sd < 50k][type in ('parking', 'bicycle_parking', 'motorcycle_parking')] {
+    fill: #f7efb7;
+    [@sd < 25k] {
+      stroke: #e2c600;
+      stroke-width: 0.3;
+    };
+  };
+
+  [@sd < 400k][type in ('apron')] {
+    fill: #e9d1ff;
+  };
+
+  [@sd < 400k][type in ('aerodrome')] {
+    fill: #e9e7e2;
+  };
+
+  [@sd < 400k][type in ('beach', 'shoal')] {
+    fill: #fff1ba;
+  };
+
+  [@sd < 100k][type in ('service', 'rest_area')] {
+    fill: #efc8c8;
+  };
+
+  [@sd < 100k][type in ('sports_centre', 'stadium')] {
+    fill: #f0f0d8;
+  };
+
+  [@sd < 100k][type in ('track', 'pitch')] {
+    fill: #aae0cb;
+    [@sd < 25k] {
+      stroke: #28c98a;
+      stroke-width: 0.5;
+    };
+  };
+
+  [@sd < 100k][type = 'wetland'] {
+    fill: url('symbols/wetland.png');
+  };
+
+  /* LABELS */
+
+  [@sd <= 75k] {
+    label-geometry: [centroid(geometry)];
+    font-size: 10;
+    font-family: 'Noto Sans Regular'
+      'Noto Sans Adlam Regular'
+      'Noto Sans Adlam Unjoined Regular'
+      'Noto Sans Armenian Regular'
+      'Noto Sans Balinese Regular'
+      'Noto Sans Bamum Regular'
+      'Noto Sans Batak Regular'
+      'Noto Sans Bengali UI Regular'
+      'Noto Sans Buginese Regular'
+      'Noto Sans Buhid Regular'
+      'Noto Sans Canadian Aboriginal Regular'
+      'Noto Sans Chakma Regular'
+      'Noto Sans Cham Regular'
+      'Noto Sans Cherokee Regular'
+      'Noto Sans Coptic Regular'
+      'Noto Sans Devanagari UI Regular'
+      'Noto Sans Ethiopic Regular'
+      'Noto Sans Georgian Regular'
+      'Noto Sans Gujarati UI Regular'
+      'Noto Sans Gurmukhi UI Regular'
+      'Noto Sans Hanunoo Regular'
+      'Noto Sans Hebrew Regular'
+      'Noto Sans Javanese Regular'
+      'Noto Sans Kannada UI Regular'
+      'Noto Sans Kayah Li Regular'
+      'Noto Sans Khmer UI Regular'
+      'Noto Sans Lao UI Regular'
+      'Noto Sans Lepcha Regular'
+      'Noto Sans Limbu Regular'
+      'Noto Sans Lisu Regular'
+      'Noto Sans Malayalam UI Regular'
+      'Noto Sans Mandaic Regular'
+      'Noto Sans Mongolian Regular'
+      'Noto Sans Myanmar UI Regular'
+      'Noto Sans New Tai Lue Regular'
+      'Noto Sans NKo Regular'
+      'Noto Sans Ol Chiki Regular'
+      'Noto Sans Oriya UI Regular'
+      'Noto Sans Osage Regular'
+      'Noto Sans Osmanya Regular'
+      'Noto Sans Samaritan Regular'
+      'Noto Sans Saurashtra Regular'
+      'Noto Sans Shavian Regular'
+      'Noto Sans Sinhala UI Regular'
+      'Noto Sans Sinhala Regular'
+      'Noto Sans Sundanese Regular'
+      'Noto Sans Symbols Regular'
+      'Noto Sans Symbols2 Regular'
+      'Noto Sans Syriac Eastern Regular'
+      'Noto Sans Tagalog Regular'
+      'Noto Sans Tagbanwa Regular'
+      'Noto Sans Tai Le Regular'
+      'Noto Sans Tai Tham Regular'
+      'Noto Sans Tai Viet Regular'
+      'Noto Sans Tamil UI Regular'
+      'Noto Sans Telugu UI Regular'
+      'Noto Sans Thaana Regular'
+      'Noto Sans Thai UI Regular'
+      'Noto Sans Tibetan Regular'
+      'Noto Sans Tifinagh Regular'
+      'Noto Sans Vai Regular'
+      'Noto Sans Yi Regular'
+      'Noto Sans Arabic UI Regular'
+      'Noto Emoji Regular'
+      'Noto Naskh Arabic UI Regular'
+      'DejaVu Sans Book'
+      'HanaMinA Regular'
+      'HanaMinB Regular'
+      'Unifont Medium'
+      'unifont Medium'
+      'Unifont Upper Medium';
+    halo-radius: 1;
+    halo-opacity: 0.6;
+    label-anchor: 0.5 1.0;
+    label-offset: 0 -12;
+    -gt-label-auto-wrap: 50;
+    label-group: true;
+    label-priority: 2400;
+  };
+
+  [type = 'water_park'][@sd <= 6k] {
+    label: [name];
+    font-fill: #0c8416;
+    halo-color: #ffffff;
+    label-offset: 0 -11;
+  };
+
+  [type = 'swimming_pool'][@sd <= 6k] {
+
+    label: [name];
+    font-fill: #576ddf;
+    halo-color: #ffffff;
+  };
+
+  [type in (
+    'playground',
+    'dog_park',
+    'fitness_centre',
+    'fitness_station'
+  )][@sd <= 6k]  {
+
+    label: [name];
+    font-fill: #0c8416;
+    halo-color: #ffffff;
+    label-offset: 0 -13;
+  };
+
+  [type in (
+    'military',
+    'wood',
+    'forest',
+    'national_park',
+    'nature_reserve'
+  )] {
+    [@sd <= 75k and area > 1100000],
+    [@sd <= 6k] {
+      label: [name];
+      font-fill: #0c8416;
+      halo-color: #ffffff;
+      font-style: italic;
+      [type = 'military'] {
+        font-fill: #880000;
+      };
+      [type = 'wood'],
+      [type = 'forest'] {
+        font-fill: #46673b;
+      };
+      [type = 'national_park'],
+      [type = 'nature_reserve'] {
+        font-fill: #10b31d;
+      };
+    };
+  };
+
+
+  [type = 'danger_area'][@sd <= 6k]  {
+
+    label: [name];
+    font-fill: #ee0000;
+    halo-color: #ffffff;
+    font-style: italic;
+  };
+
+  [type = 'garages'][@sd <= 6k] {
+    label: [name];
+    font-fill: #696545;
+    halo-color: #ffffff;
+    font-style: italic;
+  };
+
+  [type in ('wetland',
+    'marsh',
+    'mud',
+    'park',
+    'recreation_ground',
+    'recreation_ground',
+    'village_green',
+    'common',
+    'garden',
+    'quarry',
+    'vineyard',
+    'orchard',
+    'plant_nursery',
+    'cemetery',
+    'grave_yard',
+    'residential',
+    'meadow',
+    'grassland',
+    'grass',
+    'allotments',
+    'farmyard',
+    'farmland',
+    'greenhouse_horticulture',
+    'mall',
+    'retail',
+    'industrial',
+    'railway',
+    'works',
+    'commercial',
+    'brownfield',
+    'landfill',
+    'construction',
+    'tourism_theme_park',
+    'tourism_zoo',
+    'tourism_attraction',
+    'kindergarten',
+    'school',
+    'college',
+    'university',
+    'heath',
+    'scrub',
+    'beach',
+    'shoal',
+    'reef',
+    'fitness_centre',
+    'fitness_station',
+    'sports_centre',
+    'stadium',
+    'track',
+    'dog_park')] {
+
+      [@sd <= 20k and area > 70000],
+      [@sd <= 6k] {
+        label: [name];
+        halo-color: #ffffff;
+        font-style: italic;
+
+        [type = 'reef'],
+        [type = 'wetland'],
+        [type = 'marsh'],
+        [type = 'mud'] {
+          font-fill: #0565bf;
+        };
+        [type = 'park'],
+        [type = 'recreation_ground'],
+        [type = 'recreation_ground'],
+        [type = 'village_green'],
+        [type = 'common'],
+        [type = 'garden'] {
+          font-fill:  #0c8416;
+        };
+        [type = 'quarry'] {
+          font-fill: #2c2a2a;
+        };
+        [type = 'vineyard'],
+        [type = 'orchard'],
+        [type = 'plant_nursery'] {
+          font-fill: #2d6122;
+        };
+        [type = 'cemetery'],
+        [type = 'grave_yard'] {
+          font-fill: #2d4931;
+          halo-radius: 1.5; 
+        };
+        [type = 'residential'] {
+          font-fill: #615e5e;
+        };
+        [type = 'meadow'],
+        [type = 'grassland'],
+        [type = 'grass'] {
+          font-fill: #4d7c20;
+        };
+        [type = 'allotments'] {
+          font-fill: #844e1e;
+        };
+        [type = 'farmyard'] {
+          font-fill: #9a6216;
+        };
+        [type = 'farm'],
+        [type = 'farmland'],
+        [type = 'greenhouse_horticulture'] {
+          font-fill: #c07813;
+        };
+        [type = 'mall'],
+        [type = 'retail'] {
+          font-fill: #d11700;
+        };
+        [type = 'industrial'],
+        [type = 'railway'],
+        [type = 'works'] {
+          font-fill: #804775;
+        };
+        [type = 'commercial'] {
+          font-fill: #983834;
+        };
+        [type = 'brownfield'],
+        [type = 'landfill'],
+        [type = 'construction'] {
+          font-fill: #474735;
+        };
+        [type = 'caravan_site'] {
+          font-fill: #63a017;
+          label-offset: 0 -15;
+        };
+        [type = 'theme_park'],
+        [type = 'zoo'] {
+          font-fill: #734a08;
+          font-weight: bold;
+        };
+        [type = 'attraction'] {
+          font-fill: #660033;
+          font-style: normal;
+        };
+        [type = 'kindergarten'],
+        [type = 'school'],
+        [type = 'college'],
+        [type = 'university'] {
+          font-fill: #47471b;
+        };
+        [type = 'heath'] {
+          font-fill: #777b31;
+        };
+        [type = 'scrub'] {
+          font-fill: #1c4a1c;
+        };
+        [type = 'beach'],
+        [type = 'shoal'] {
+          font-fill: #544300;
+        };
+        [type = 'sports_centre'],
+        [type = 'stadium'] {
+          font-fill: #0c8416;
+        };
+        [type = 'dog_park'],
+        [type = 'fitness_centre'],
+        [type = 'fitness_station'],
+        [type = 'dog_park'] {
+          font-fill: #0c8416;
+          halo-radius: 1.5; 
+        };
+        [type = 'track'] {
+          font-fill: #338b69;
+        };
+        [type = 'pitch'] {
+          font-fill: #338b69;
+        };
+      };
+    };
+}

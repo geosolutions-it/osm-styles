@@ -1,0 +1,159 @@
+@mode 'Flat';
+
+* {
+  font-family: 'Noto Sans Regular'
+    'Noto Sans Adlam Regular'
+    'Noto Sans Adlam Unjoined Regular'
+    'Noto Sans Armenian Regular'
+    'Noto Sans Balinese Regular'
+    'Noto Sans Bamum Regular'
+    'Noto Sans Batak Regular'
+    'Noto Sans Bengali UI Regular'
+    'Noto Sans Buginese Regular'
+    'Noto Sans Buhid Regular'
+    'Noto Sans Canadian Aboriginal Regular'
+    'Noto Sans Chakma Regular'
+    'Noto Sans Cham Regular'
+    'Noto Sans Cherokee Regular'
+    'Noto Sans Coptic Regular'
+    'Noto Sans Devanagari UI Regular'
+    'Noto Sans Ethiopic Regular'
+    'Noto Sans Georgian Regular'
+    'Noto Sans Gujarati UI Regular'
+    'Noto Sans Gurmukhi UI Regular'
+    'Noto Sans Hanunoo Regular'
+    'Noto Sans Hebrew Regular'
+    'Noto Sans Javanese Regular'
+    'Noto Sans Kannada UI Regular'
+    'Noto Sans Kayah Li Regular'
+    'Noto Sans Khmer UI Regular'
+    'Noto Sans Lao UI Regular'
+    'Noto Sans Lepcha Regular'
+    'Noto Sans Limbu Regular'
+    'Noto Sans Lisu Regular'
+    'Noto Sans Malayalam UI Regular'
+    'Noto Sans Mandaic Regular'
+    'Noto Sans Mongolian Regular'
+    'Noto Sans Myanmar UI Regular'
+    'Noto Sans New Tai Lue Regular'
+    'Noto Sans NKo Regular'
+    'Noto Sans Ol Chiki Regular'
+    'Noto Sans Oriya UI Regular'
+    'Noto Sans Osage Regular'
+    'Noto Sans Osmanya Regular'
+    'Noto Sans Samaritan Regular'
+    'Noto Sans Saurashtra Regular'
+    'Noto Sans Shavian Regular'
+    'Noto Sans Sinhala UI Regular'
+    'Noto Sans Sinhala Regular'
+    'Noto Sans Sundanese Regular'
+    'Noto Sans Symbols Regular'
+    'Noto Sans Symbols2 Regular'
+    'Noto Sans Syriac Eastern Regular'
+    'Noto Sans Tagalog Regular'
+    'Noto Sans Tagbanwa Regular'
+    'Noto Sans Tai Le Regular'
+    'Noto Sans Tai Tham Regular'
+    'Noto Sans Tai Viet Regular'
+    'Noto Sans Tamil UI Regular'
+    'Noto Sans Telugu UI Regular'
+    'Noto Sans Thaana Regular'
+    'Noto Sans Thai UI Regular'
+    'Noto Sans Tibetan Regular'
+    'Noto Sans Tifinagh Regular'
+    'Noto Sans Vai Regular'
+    'Noto Sans Yi Regular'
+    'Noto Sans Arabic UI Regular'
+    'Noto Emoji Regular'
+    'Noto Naskh Arabic UI Regular'
+    'DejaVu Sans Book'
+    'HanaMinA Regular'
+    'HanaMinB Regular'
+    'Unifont Medium'
+    'unifont Medium'
+    'Unifont Upper Medium';
+  font-fill: #222;
+  label-anchor: 0.5 0.5;
+  halo-radius: 1.5;
+  halo-opacity: 0.7;
+  halo-color: white;
+  sort-by: population D;
+  -gt-label-priority: [population];
+  -gt-label-padding: 3;
+  -gt-label-auto-wrap: 80;
+  label-priority: 2700;
+}
+
+/* @title Capitals */
+[capital = 'yes' and name is not null][@scale < 50000000] {
+  [@scale > 3000000] {
+    mark: url('./symbols/place/place-capital-6.svg');
+    mark-size: 9;
+    mark-mime: 'image/svg+xml';
+    label-anchor: 0.5 1;
+    label-offset: 0 -12;
+
+  };
+  label: [name];
+  font-size: [interpolate(env('wms_scale_denominator', 50000000), 400000, 14, 100000000, 11)];
+  label-priority: 2740;
+}
+
+[capital = '4' and name is not null][@scale < 25000000] {
+  [@scale > 3000000] {
+    mark: url('./symbols/place/place-6.svg');
+    mark-mime: 'image/svg+xml';
+    label-anchor: 0.5 0;
+    label-offset: 0 2;
+
+  };
+  label: [name];
+  font-size: [interpolate(env('wms_scale_denominator', 25000000), 400000, 14, 25000000, 11)];
+}
+
+[capital = '6' and name is not null][@scale < 12500000] {
+  [@scale > 3000000] {
+    mark: url('./symbols/place/place-4.svg');
+    mark-mime: 'image/svg+xml';
+    label-anchor: 0.5 0;
+    label-offset: 0 3;
+  };
+  label: [name];
+  font-size: [interpolate(env('wms_scale_denominator', 12500000), 400000, 14, 12500000, 7)];
+}
+
+[capital = '' and type in ('city', 'town') and name is not null][@scale < 1.5M] {
+  label: [name];
+  /*font-size: [interpolate(env('wms_scale_denominator', 1500000), 400000, 14, 1500000, 7)];*/
+  font-size: categorize(@sd,
+    15, 50k,
+    13, 200k,
+	11,	400k,
+    10, 1.5M,
+    9);
+  label-priority: 2730;
+
+}
+
+[capital = '' and type in ('suburb', 'village') and name is not null][@scale < 200k] {
+  label: [name];
+  /*font-size: [interpolate(env('wms_scale_denominator', 200000), 400000, 14, 200000, 7)];*/
+  font-size: categorize(@sd,
+    15, 10k,
+    14, 25k,
+    13, 50k,
+    11, 100k,
+    10, 200k,
+    9);
+  label-priority: 2720;
+}
+
+[capital = '' and type in ('hamlet', 'locality', 'neighbourhood', 'isolated_dwelling', 'farm') and name is not null][@scale < 25k] {
+  label: [name];
+  /*font-size: [interpolate(env('wms_scale_denominator', 25000), 60000, 11, 25000, 7)];*/
+  font-size: categorize(@sd,
+    12, 10k,
+    10, 25k,
+    9);
+  label-priority: 2710;
+}

@@ -1,0 +1,5 @@
+[@sd < 300M][@sd > 750k] {
+  stroke: #ac46ac;
+  stroke-width: [interpolate(env('wms_scale_denominator', 50000000), 800000, 2.5, 50000000, 0.6)];
+  stroke-opacity: 0.4;
+}

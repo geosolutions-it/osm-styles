@@ -1,33 +1,33 @@
 <featureType>
-  <id>FeatureTypeInfoImpl-36aaa4ab:164ef7c5ab5:-7ffc</id>
-  <name>ne_10m_admin_0_countries_points</name>
-  <nativeName>ne_10m_admin_0_countries_points</nativeName>
+  <id>FeatureTypeInfoImpl-7c55092f:164b291b05d:587f</id>
+  <name>simplified_water_polygons</name>
+  <nativeName>simplified_water_polygons</nativeName>
   <namespace>
     <id>NamespaceInfoImpl-41697926:164a2136a44:-7fe3</id>
   </namespace>
-  <title>ne_10m_admin_0_countries_points</title>
+  <title>simplified_water_polygons</title>
   <keywords>
     <string>features</string>
-    <string>ne_10m_admin_0_countries_points</string>
+    <string>simplified_water_polygons</string>
   </keywords>
-  <srs>EPSG:4326</srs>
+  <srs>EPSG:3857</srs>
   <nativeBoundingBox>
-    <minx>-178.152213873015</minx>
-    <maxx>178.684370812282</maxx>
-    <miny>-76.6056454404999</miny>
-    <maxy>79.8517723655</maxy>
+    <minx>-2.0237936E7</minx>
+    <maxx>2.0237936E7</maxx>
+    <miny>-2.0237784E7</miny>
+    <maxy>2.0237934E7</maxy>
   </nativeBoundingBox>
   <latLonBoundingBox>
-    <minx>-178.152213873015</minx>
-    <maxx>178.684370812282</maxx>
-    <miny>-76.6056454404999</miny>
-    <maxy>79.8517723655</maxy>
+    <minx>-181.8004722783269</minx>
+    <maxx>181.8004722783269</maxx>
+    <miny>-85.20392916350697</miny>
+    <maxy>85.20404182373363</maxy>
     <crs>EPSG:4326</crs>
   </latLonBoundingBox>
   <projectionPolicy>FORCE_DECLARED</projectionPolicy>
   <enabled>true</enabled>
   <store class="dataStore">
-    <id>DataStoreInfoImpl-7c55092f:164b291b05d:586a</id>
+    <id>DataStoreInfoImpl-456d5536:170ab190bef:-7ffe</id>
   </store>
   <serviceConfiguration>false</serviceConfiguration>
   <maxFeatures>0</maxFeatures>

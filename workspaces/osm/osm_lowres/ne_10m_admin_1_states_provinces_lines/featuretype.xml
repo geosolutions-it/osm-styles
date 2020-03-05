@@ -1,33 +1,33 @@
 <featureType>
-  <id>FeatureTypeInfoImpl-7c55092f:164b291b05d:586b</id>
-  <name>builtup_area</name>
-  <nativeName>builtup_area</nativeName>
+  <id>FeatureTypeInfoImpl-7c55092f:164b291b05d:5877</id>
+  <name>ne_10m_admin_1_states_provinces_lines</name>
+  <nativeName>ne_10m_admin_1_states_provinces_lines</nativeName>
   <namespace>
     <id>NamespaceInfoImpl-41697926:164a2136a44:-7fe3</id>
   </namespace>
-  <title>builtup_area</title>
+  <title>ne_10m_admin_1_states_provinces_lines</title>
   <keywords>
     <string>features</string>
-    <string>builtup_area</string>
+    <string>ne_10m_admin_1_states_provinces_lines</string>
   </keywords>
-  <srs>EPSG:3857</srs>
+  <srs>EPSG:4326</srs>
   <nativeBoundingBox>
-    <minx>-1.9940616765734956E7</minx>
-    <maxx>1.9864212010861725E7</maxx>
-    <miny>-6979803.136120869</miny>
-    <maxy>1.1359336056859573E7</maxy>
+    <minx>-140.647750854492</minx>
+    <maxx>180.036163330078</maxx>
+    <miny>-47.2567481994629</miny>
+    <maxy>81.7672653198242</maxy>
   </nativeBoundingBox>
   <latLonBoundingBox>
-    <minx>-179.1296081542969</minx>
-    <maxx>178.44325256347662</maxx>
-    <miny>-52.982724914179855</miny>
-    <maxy>70.87402746981633</maxy>
+    <minx>-140.647750854492</minx>
+    <maxx>180.036163330078</maxx>
+    <miny>-47.2567481994629</miny>
+    <maxy>81.7672653198242</maxy>
     <crs>EPSG:4326</crs>
   </latLonBoundingBox>
   <projectionPolicy>FORCE_DECLARED</projectionPolicy>
   <enabled>true</enabled>
   <store class="dataStore">
-    <id>DataStoreInfoImpl-7c55092f:164b291b05d:586a</id>
+    <id>DataStoreInfoImpl-456d5536:170ab190bef:-7ffe</id>
   </store>
   <serviceConfiguration>false</serviceConfiguration>
   <maxFeatures>0</maxFeatures>

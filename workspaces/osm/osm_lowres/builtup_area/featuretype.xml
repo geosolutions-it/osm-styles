@@ -1,33 +1,33 @@
 <featureType>
-  <id>FeatureTypeInfoImpl--3dd870dd:164ead628cf:5afd</id>
-  <name>water_polygons</name>
-  <nativeName>water_polygons</nativeName>
+  <id>FeatureTypeInfoImpl-7c55092f:164b291b05d:586b</id>
+  <name>builtup_area</name>
+  <nativeName>builtup_area</nativeName>
   <namespace>
     <id>NamespaceInfoImpl-41697926:164a2136a44:-7fe3</id>
   </namespace>
-  <title>water_polygons</title>
+  <title>builtup_area</title>
   <keywords>
     <string>features</string>
-    <string>water_polygons</string>
+    <string>builtup_area</string>
   </keywords>
   <srs>EPSG:3857</srs>
   <nativeBoundingBox>
-    <minx>-2.0237886E7</minx>
-    <maxx>2.0237886E7</maxx>
-    <miny>-1.4947463E7</miny>
-    <maxy>2.0211564E7</maxy>
+    <minx>-1.9940616765734956E7</minx>
+    <maxx>1.9864212010861725E7</maxx>
+    <miny>-6979803.136120869</miny>
+    <maxy>1.1359336056859573E7</maxy>
   </nativeBoundingBox>
   <latLonBoundingBox>
-    <minx>-2.0237886E7</minx>
-    <maxx>2.0237886E7</maxx>
-    <miny>-1.4947463E7</miny>
-    <maxy>2.0211564E7</maxy>
+    <minx>-179.1296081542969</minx>
+    <maxx>178.44325256347662</maxx>
+    <miny>-52.982724914179855</miny>
+    <maxy>70.87402746981633</maxy>
     <crs>EPSG:4326</crs>
   </latLonBoundingBox>
   <projectionPolicy>FORCE_DECLARED</projectionPolicy>
   <enabled>true</enabled>
   <store class="dataStore">
-    <id>DataStoreInfoImpl-7c55092f:164b291b05d:586a</id>
+    <id>DataStoreInfoImpl-456d5536:170ab190bef:-7ffe</id>
   </store>
   <serviceConfiguration>false</serviceConfiguration>
   <maxFeatures>0</maxFeatures>

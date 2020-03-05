@@ -1,0 +1,19 @@
+<dataStore>
+  <id>DataStoreInfoImpl-456d5536:170ab190bef:-7ffe</id>
+  <name>osm_lowres</name>
+  <type>GeoPackage</type>
+  <enabled>true</enabled>
+  <workspace>
+    <id>WorkspaceInfoImpl-41697926:164a2136a44:-7fe4</id>
+  </workspace>
+  <connectionParameters>
+    <entry key="Batch insert size">1</entry>
+    <entry key="database">file:data/osm-lowres.gpkg</entry>
+    <entry key="fetch size">1000</entry>
+    <entry key="Expose primary keys">false</entry>
+    <entry key="dbtype">geopkg</entry>
+    <entry key="namespace">http://geoserver.org/osm</entry>
+  </connectionParameters>
+  <__default>false</__default>
+  <dateCreated>2020-03-05 14:42:21.78 UTC</dateCreated>
+</dataStore>

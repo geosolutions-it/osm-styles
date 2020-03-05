@@ -1,33 +1,33 @@
 <featureType>
-  <id>FeatureTypeInfoImpl-7c55092f:164b291b05d:5877</id>
-  <name>ne_10m_admin_1_states_provinces_lines</name>
-  <nativeName>ne_10m_admin_1_states_provinces_lines</nativeName>
+  <id>FeatureTypeInfoImpl-7c55092f:164b291b05d:5873</id>
+  <name>ne_10m_admin_0_boundary_lines_land</name>
+  <nativeName>ne_10m_admin_0_boundary_lines_land</nativeName>
   <namespace>
     <id>NamespaceInfoImpl-41697926:164a2136a44:-7fe3</id>
   </namespace>
-  <title>ne_10m_admin_1_states_provinces_lines</title>
+  <title>ne_10m_admin_0_boundary_lines_land</title>
   <keywords>
     <string>features</string>
-    <string>ne_10m_admin_1_states_provinces_lines</string>
+    <string>ne_10m_admin_0_boundary_lines_land</string>
   </keywords>
   <srs>EPSG:4326</srs>
   <nativeBoundingBox>
-    <minx>-140.647750854492</minx>
-    <maxx>180.036163330078</maxx>
-    <miny>-47.2567481994629</miny>
-    <maxy>81.7672653198242</maxy>
+    <minx>-142.415466308594</minx>
+    <maxx>142.387542724609</maxx>
+    <miny>-55.7469062805176</miny>
+    <maxy>70.701301574707</maxy>
   </nativeBoundingBox>
   <latLonBoundingBox>
-    <minx>-140.647750854492</minx>
-    <maxx>180.036163330078</maxx>
-    <miny>-47.2567481994629</miny>
-    <maxy>81.7672653198242</maxy>
+    <minx>-142.415466308594</minx>
+    <maxx>142.387542724609</maxx>
+    <miny>-55.7469062805176</miny>
+    <maxy>70.701301574707</maxy>
     <crs>EPSG:4326</crs>
   </latLonBoundingBox>
   <projectionPolicy>FORCE_DECLARED</projectionPolicy>
   <enabled>true</enabled>
   <store class="dataStore">
-    <id>DataStoreInfoImpl-7c55092f:164b291b05d:586a</id>
+    <id>DataStoreInfoImpl-456d5536:170ab190bef:-7ffe</id>
   </store>
   <serviceConfiguration>false</serviceConfiguration>
   <maxFeatures>0</maxFeatures>

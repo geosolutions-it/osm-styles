@@ -1,15 +1,7 @@
 <global>
   <settings>
     <id>SettingsInfoImpl-68f6c583:154ca420c47:-8000</id>
-    <contact>
-      <addressCity>Alexandria</addressCity>
-      <addressCountry>Egypt</addressCountry>
-      <addressType>Work</addressType>
-      <contactEmail>claudius.ptolomaeus@gmail.com</contactEmail>
-      <contactOrganization>The Ancient Geographers</contactOrganization>
-      <contactPerson>Claudius Ptolomaeus</contactPerson>
-      <contactPosition>Chief Geographer</contactPosition>
-    </contact>
+    <contact/>
     <charset>UTF-8</charset>
     <numDecimals>8</numDecimals>
     <onlineResource>http://geoserver.org</onlineResource>
@@ -73,7 +65,7 @@
     <queueType>UNBOUNDED</queueType>
     <imageIOCacheThreshold>10240</imageIOCacheThreshold>
   </coverageAccess>
-  <updateSequence>239</updateSequence>
+  <updateSequence>240</updateSequence>
   <featureTypeCacheSize>0</featureTypeCacheSize>
   <globalServices>true</globalServices>
   <xmlPostRequestLogBufferSize>1024</xmlPostRequestLogBufferSize>

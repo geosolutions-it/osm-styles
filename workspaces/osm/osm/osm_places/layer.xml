@@ -1,0 +1,15 @@
+<layer>
+  <name>osm_places</name>
+  <id>LayerInfoImpl--701ea3ec:164a226a811:-7fe2</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl-41697926:164a2136a44:-8000</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl--701ea3ec:164a226a811:-7fe3</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+</layer>

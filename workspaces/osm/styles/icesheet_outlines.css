@@ -1,0 +1,8 @@
+/* @Title Icesheet outline */
+[@sd < 12500000][@sd > 250k][ice_edge='ice_ocean' OR ice_edge = 'ice_land'] {
+  stroke: #9cf;
+  stroke-width: 0.5;
+  [@scale <= 800000] {
+    stroke-dasharray: 4, 3;
+  };
+}

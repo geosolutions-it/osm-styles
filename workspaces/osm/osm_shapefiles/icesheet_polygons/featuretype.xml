@@ -1,0 +1,40 @@
+<featureType>
+  <id>FeatureTypeInfoImpl-7c55092f:164b291b05d:586f</id>
+  <name>icesheet_polygons</name>
+  <nativeName>icesheet_polygons</nativeName>
+  <namespace>
+    <id>NamespaceInfoImpl-41697926:164a2136a44:-7fe3</id>
+  </namespace>
+  <title>icesheet_polygons</title>
+  <keywords>
+    <string>features</string>
+    <string>icesheet_polygons</string>
+  </keywords>
+  <srs>EPSG:3857</srs>
+  <nativeBoundingBox>
+    <minx>-2.022941E7</minx>
+    <maxx>2.023784E7</maxx>
+    <miny>-2.0095302E7</miny>
+    <maxy>-8421446.0</maxy>
+  </nativeBoundingBox>
+  <latLonBoundingBox>
+    <minx>-181.7238819172029</minx>
+    <maxx>181.79960989565419</maxx>
+    <miny>-85.09571426459677</miny>
+    <maxy>-60.09736003238481</maxy>
+    <crs>EPSG:4326</crs>
+  </latLonBoundingBox>
+  <projectionPolicy>FORCE_DECLARED</projectionPolicy>
+  <enabled>true</enabled>
+  <store class="dataStore">
+    <id>DataStoreInfoImpl-7c55092f:164b291b05d:586a</id>
+  </store>
+  <serviceConfiguration>false</serviceConfiguration>
+  <maxFeatures>0</maxFeatures>
+  <numDecimals>0</numDecimals>
+  <padWithZeros>false</padWithZeros>
+  <forcedDecimal>false</forcedDecimal>
+  <overridingServiceSRS>false</overridingServiceSRS>
+  <skipNumberMatched>false</skipNumberMatched>
+  <circularArcPresent>false</circularArcPresent>
+</featureType>

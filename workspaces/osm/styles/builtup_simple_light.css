@@ -1,0 +1,5 @@
+/* @title Built up */
+[@scale < 3M] {
+  fill: darken('#F2F2F0', 5%);
+  stroke: darken('#F2F2F0', 10%);
+}

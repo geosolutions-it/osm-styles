@@ -1,0 +1,153 @@
+<layerGroup>
+  <id>LayerGroupInfoImpl--6717fd44:164a392c4e5:315b</id>
+  <name>osm</name>
+  <mode>SINGLE</mode>
+  <title>osm</title>
+  <workspace>
+    <id>WorkspaceInfoImpl-41697926:164a2136a44:-7fe4</id>
+  </workspace>
+  <publishables>
+    <published type="layer">
+      <id>LayerInfoImpl-7c55092f:164b291b05d:5880</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl--3dd870dd:164ead628cf:5afe</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl-7c55092f:164b291b05d:5872</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl-7c55092f:164b291b05d:587e</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl-7c55092f:164b291b05d:5870</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl-7c55092f:164b291b05d:586e</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl-7c55092f:164b291b05d:5878</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl-6056aac0:164a21c08bd:-7ff9</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl-6056aac0:164a21c08bd:-7ff5</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl-6056aac0:164a21c08bd:-7ff3</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl-7c55092f:164b291b05d:586c</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl-7c55092f:164b291b05d:5874</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl--701ea3ec:164a226a811:-7fe6</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl--701ea3ec:164a226a811:-7fe0</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl--701ea3ec:164a226a811:-7fde</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl-439f7d1d:164a3b3a94a:5711</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl-36aaa4ab:164ef7c5ab5:-7ffb</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl--701ea3ec:164a226a811:-7fda</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl--701ea3ec:164a226a811:-7fe4</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl--701ea3ec:164a226a811:-7fe2</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl--701ea3ec:164a226a811:-7fdc</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl--b31e793:164a310f7fa:-2570</id>
+    </published>
+  </publishables>
+  <styles>
+    <style>
+      <id>StyleInfoImpl-5b43a54c:164ac5f5cab:4d35</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl--3dd870dd:164ead628cf:5b00</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl-5b43a54c:164ac5f5cab:4d34</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl-5b43a54c:164ac5f5cab:4d33</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl-5b43a54c:164ac45403b:781a</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl-5b43a54c:164ac45403b:7819</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl-5b43a54c:164ac594200:-5a6f</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl-5b43a54c:164ac594200:-5a72</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl-5b43a54c:164ac5f5cab:4e39</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl-5b43a54c:164ac5f5cab:55a2</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl-5b43a54c:164ac45403b:7818</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl-5b43a54c:164ac594200:-5a71</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl-5b43a54c:164ac594200:-5a69</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl-5b43a54c:164ac594200:-5a65</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl-5b43a54c:164ac594200:-5a68</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl-5b43a54c:164ac5f5cab:4d32</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl-5b43a54c:164ac594200:-5a70</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl-5b43a54c:164ac594200:-5a67</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl-5b43a54c:164ac594200:-5a6b</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl-5b43a54c:164ac594200:-5a66</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl-5b43a54c:164ac594200:-5a6a</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl-5b43a54c:164ac594200:-5a64</id>
+    </style>
+  </styles>
+  <bounds>
+    <minx>-2.0037508342789244E7</minx>
+    <maxx>2.0037508342789244E7</maxx>
+    <miny>-2.00489661040146E7</miny>
+    <maxy>2.0048966104014594E7</maxy>
+    <crs class="projected">EPSG:3857</crs>
+  </bounds>
+  <dateModified>2020-03-05 13:56:04.160 UTC</dateModified>
+</layerGroup>

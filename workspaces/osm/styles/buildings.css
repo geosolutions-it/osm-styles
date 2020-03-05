@@ -1,0 +1,20 @@
+@mode 'Flat';
+
+/* @title gold polygon */
+[@sd < 50k] {
+  fill: #d1c6bd;
+  stroke-width: 0.5;
+  [@sd < 25k] {
+    fill: #d9d0c9;
+    stroke: #b9a99c;
+  };
+  [amenity = 'place_of_worship'],
+  [building = 'train_station'],
+  [aeroway = 'terminal'] {
+    fill: #af9c8d;
+    [@sd < 25k] {
+      stroke-width: 0.75;
+      stroke: #605043;
+    };
+  };
+}

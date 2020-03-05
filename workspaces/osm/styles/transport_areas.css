@@ -1,0 +1,11 @@
+@mode 'Flat';
+
+[type = 'apron'][@sd < 800k] {
+  fill: #e9d1ff;
+}
+
+[type = 'platform'][@sd < 15k] {
+  fill: #bbbbbb;
+  stroke: #808080;
+  stroke-width: 0.5;
+}

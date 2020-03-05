@@ -1,0 +1,40 @@
+<featureType>
+  <id>FeatureTypeInfoImpl-7c55092f:164b291b05d:587d</id>
+  <name>simplified_land_polygons</name>
+  <nativeName>simplified_land_polygons</nativeName>
+  <namespace>
+    <id>NamespaceInfoImpl-41697926:164a2136a44:-7fe3</id>
+  </namespace>
+  <title>simplified_land_polygons</title>
+  <keywords>
+    <string>features</string>
+    <string>simplified_land_polygons</string>
+  </keywords>
+  <srs>EPSG:3857</srs>
+  <nativeBoundingBox>
+    <minx>-2.0237886E7</minx>
+    <maxx>2.0237886E7</maxx>
+    <miny>-1.4137982E7</miny>
+    <maxy>1.8623692E7</maxy>
+  </nativeBoundingBox>
+  <latLonBoundingBox>
+    <minx>-181.80002312068487</minx>
+    <maxx>181.80002312068487</maxx>
+    <miny>-77.5614079156303</miny>
+    <maxy>83.82518457494866</maxy>
+    <crs>EPSG:4326</crs>
+  </latLonBoundingBox>
+  <projectionPolicy>FORCE_DECLARED</projectionPolicy>
+  <enabled>true</enabled>
+  <store class="dataStore">
+    <id>DataStoreInfoImpl-7c55092f:164b291b05d:586a</id>
+  </store>
+  <serviceConfiguration>false</serviceConfiguration>
+  <maxFeatures>0</maxFeatures>
+  <numDecimals>0</numDecimals>
+  <padWithZeros>false</padWithZeros>
+  <forcedDecimal>false</forcedDecimal>
+  <overridingServiceSRS>false</overridingServiceSRS>
+  <skipNumberMatched>false</skipNumberMatched>
+  <circularArcPresent>false</circularArcPresent>
+</featureType>

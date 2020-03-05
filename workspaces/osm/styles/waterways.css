@@ -1,0 +1,223 @@
+@mode 'Flat';
+
+[type = 'river'][@scale < 3000000][@scale > 200000] {
+  stroke: #aad3df;
+  stroke-width: [interpolate(env('wms_scale_denominator', 3000000), 800000, 1.6, 3000000, 0.7)];
+}
+
+[type in ('canal', 'river')][@scale < 200000],[type = 'wadi'][@scale < 100000] {
+  stroke: #aad3df;
+  stroke-width: [interpolate(env('wms_scale_denominator', 200000), 3000, 12, 10000, 4, 200000, 2)];
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  [intermittent = true][@scale > 50000],[type = 'wadi'][@scale > 50000] {
+    [bridge = 'yes'] {
+      stroke: white, #aad3df;
+      stroke-width: [interpolate(env('wms_scale_denominator', 50000), 3000, 14, 50000, 7)], [interpolate(env('wms_scale_denominator', 200000), 3000, 12, 50000, 5, 200000, 2)];
+      z-index: 0, 1;
+    };
+    stroke-dasharray: 4 3;
+    stroke-linecap: butt;
+  };
+  [bridge = 'yes'][@scale > 50000] {
+    stroke: black, #aad3df;
+    stroke-width: [interpolate(env('wms_scale_denominator', 50000), 3000, 13, 50000, 6)], [interpolate(env('wms_scale_denominator', 200000), 3000, 12, 50000, 5, 200000, 2)];
+    z-index: 0, 1;
+  };
+  [tunnel in ('yes', 'culvert')] {
+    stroke-dasharray: 4 2;
+    stroke-linecap: butt;
+    stroke-linejoin: miter;
+  }
+}
+
+[type in ('stream', 'ditch', 'drain')][@scale < 100000] {
+  stroke: #aad3df;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  [intermittent = true][@scale > 50000],[type = 'wadi'][@scale > 50000] {
+    stroke-dasharray: 4 3;
+    stroke-linecap: butt;
+  };
+  [bridge = 'yes'][@scale > 50000] {
+    stroke: black, #aad3df;
+    stroke-width: 4;
+    z-index: 0, 1;
+  };
+  [tunnel in ('yes', 'culvert')] {
+    stroke-width: 3.5;
+    stroke-dasharray: 4 2;
+    stroke-linecap: butt;
+    stroke-linejoin: miter;
+  }
+}
+
+[type = 'derelict_canal'][@scale < 200000] {
+  stroke: #aad3df;
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  [@scale < 100000] {
+    stroke-width: 2.5;
+    stroke-dasharray: 4 6;
+  };
+  [@scale < 500000] {
+    stroke-width: 4.5;
+    stroke-dasharray: 4 8;
+  }
+}
+
+[lock <> 'yes'][not(tunnel in ('yes', 'culvert'))] {
+  font-family: 'Noto Sans Regular'
+    'Noto Sans Adlam Regular'
+    'Noto Sans Adlam Unjoined Regular'
+    'Noto Sans Armenian Regular'
+    'Noto Sans Balinese Regular'
+    'Noto Sans Bamum Regular'
+    'Noto Sans Batak Regular'
+    'Noto Sans Bengali UI Regular'
+    'Noto Sans Buginese Regular'
+    'Noto Sans Buhid Regular'
+    'Noto Sans Canadian Aboriginal Regular'
+    'Noto Sans Chakma Regular'
+    'Noto Sans Cham Regular'
+    'Noto Sans Cherokee Regular'
+    'Noto Sans Coptic Regular'
+    'Noto Sans Devanagari UI Regular'
+    'Noto Sans Ethiopic Regular'
+    'Noto Sans Georgian Regular'
+    'Noto Sans Gujarati UI Regular'
+    'Noto Sans Gurmukhi UI Regular'
+    'Noto Sans Hanunoo Regular'
+    'Noto Sans Hebrew Regular'
+    'Noto Sans Javanese Regular'
+    'Noto Sans Kannada UI Regular'
+    'Noto Sans Kayah Li Regular'
+    'Noto Sans Khmer UI Regular'
+    'Noto Sans Lao UI Regular'
+    'Noto Sans Lepcha Regular'
+    'Noto Sans Limbu Regular'
+    'Noto Sans Lisu Regular'
+    'Noto Sans Malayalam UI Regular'
+    'Noto Sans Mandaic Regular'
+    'Noto Sans Mongolian Regular'
+    'Noto Sans Myanmar UI Regular'
+    'Noto Sans New Tai Lue Regular'
+    'Noto Sans NKo Regular'
+    'Noto Sans Ol Chiki Regular'
+    'Noto Sans Oriya UI Regular'
+    'Noto Sans Osage Regular'
+    'Noto Sans Osmanya Regular'
+    'Noto Sans Samaritan Regular'
+    'Noto Sans Saurashtra Regular'
+    'Noto Sans Shavian Regular'
+    'Noto Sans Sinhala UI Regular'
+    'Noto Sans Sinhala Regular'
+    'Noto Sans Sundanese Regular'
+    'Noto Sans Symbols Regular'
+    'Noto Sans Symbols2 Regular'
+    'Noto Sans Syriac Eastern Regular'
+    'Noto Sans Tagalog Regular'
+    'Noto Sans Tagbanwa Regular'
+    'Noto Sans Tai Le Regular'
+    'Noto Sans Tai Tham Regular'
+    'Noto Sans Tai Viet Regular'
+    'Noto Sans Tamil UI Regular'
+    'Noto Sans Telugu UI Regular'
+    'Noto Sans Thaana Regular'
+    'Noto Sans Thai UI Regular'
+    'Noto Sans Tibetan Regular'
+    'Noto Sans Tifinagh Regular'
+    'Noto Sans Vai Regular'
+    'Noto Sans Yi Regular'
+    'Noto Sans Arabic UI Regular'
+    'Noto Emoji Regular'
+    'Noto Naskh Arabic UI Regular'
+    'DejaVu Sans Book'
+    'HanaMinA Regular'
+    'HanaMinB Regular'
+    'Unifont Medium'
+    'unifont Medium'
+    'Unifont Upper Medium';
+  font-fill: #4d80b3;
+  halo-radius: 1;
+  halo-color: white;
+  halo-opacity: 0.7;
+  -gt-label-follow-line: true;
+  -gt-label-repeat: 400;
+  -gt-label-group: true;
+  -gt-label-all-group: true;
+  label-priority: 2400;
+
+  [type = 'river'][@scale < 100000] {
+    label: [name];
+    font-style: italic;
+    font-size: 10;
+    [@scale < 50000] {
+      font-size: 12;
+    }
+  };
+  [type = 'canal'][@scale < 100000][@scale > 50000] {
+    label: [name];
+    font-style: italic;
+    font-size: 10;
+  };
+  [type = 'stream'][@scale < 25000] {
+    label: [name];
+    font-style: italic;
+    font-size: 10;
+    -gt-label-repeat: 600;
+    /* Missing perpendicular offset here */
+  };
+  [type = 'canal'][@scale < 50000] {
+    label: [name];
+    font-style: italic;
+    font-fill: #4d80b3;
+    font-size: 10;
+    -gt-label-repeat: 600;
+    [@scale < 25000] { font-size: 12 }
+  };
+  [type = 'derelict_canal'][@scale < 100000] {
+    label: [name];
+    font-style: italic;
+    font-size: 10;
+    -gt-label-repeat: 600;
+  };
+
+  [type in ('ditch', 'drain')][@scale < 25000] {
+    label: [name];
+    font-style: italic;
+    font-size: 10;
+    -gt-label-repeat: 600;
+  };
+}
+
+[type = 'dam'][@scale < 100000] {
+  stroke: #444444;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+[type = 'weir'][@scale < 100000] {
+  stroke: #aaa;
+  stroke-width: 2;
+  stroke-dasharray: 2 2;
+}
+
+[type = 'lock_gate'][@scale < 100000] {
+  stroke: #aaa;
+  stroke-width: 2;
+}
+
+[type = 'pier'][@scale < 400000] {
+  stroke: #f2efe9;
+  stroke-width: [interpolate(env('wms_scale_denominator', 400000), 7, 16, 400000, 2.5)];
+}
+
+[type in ('breakwater', 'groyne')][@scale < 400000] {
+  stroke: #aaa;
+  stroke-width: [interpolate(env('wms_scale_denominator', 400000), 4, 16, 400000, 1)];
+}

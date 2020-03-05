@@ -1,0 +1,60 @@
+<featureType>
+  <id>FeatureTypeInfoImpl-6056aac0:164a21c08bd:-7ff4</id>
+  <name>waterways</name>
+  <nativeName>waterways</nativeName>
+  <namespace>
+    <id>NamespaceInfoImpl-41697926:164a2136a44:-7fe3</id>
+  </namespace>
+  <title>osm_waterways</title>
+  <keywords>
+    <string>features</string>
+    <string>osm_waterways</string>
+    <string>pregeneralized)</string>
+  </keywords>
+  <nativeCRS class="projected">PROJCS[&quot;WGS 84 / Pseudo-Mercator&quot;, &#xd;
+  GEOGCS[&quot;WGS 84&quot;, &#xd;
+    DATUM[&quot;World Geodetic System 1984&quot;, &#xd;
+      SPHEROID[&quot;WGS 84&quot;, 6378137.0, 298.257223563, AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]], &#xd;
+      AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]], &#xd;
+    PRIMEM[&quot;Greenwich&quot;, 0.0, AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]], &#xd;
+    UNIT[&quot;degree&quot;, 0.017453292519943295], &#xd;
+    AXIS[&quot;Geodetic longitude&quot;, EAST], &#xd;
+    AXIS[&quot;Geodetic latitude&quot;, NORTH], &#xd;
+    AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]], &#xd;
+  PROJECTION[&quot;Popular Visualisation Pseudo Mercator&quot;, AUTHORITY[&quot;EPSG&quot;,&quot;1024&quot;]], &#xd;
+  PARAMETER[&quot;semi_minor&quot;, 6378137.0], &#xd;
+  PARAMETER[&quot;latitude_of_origin&quot;, 0.0], &#xd;
+  PARAMETER[&quot;central_meridian&quot;, 0.0], &#xd;
+  PARAMETER[&quot;scale_factor&quot;, 1.0], &#xd;
+  PARAMETER[&quot;false_easting&quot;, 0.0], &#xd;
+  PARAMETER[&quot;false_northing&quot;, 0.0], &#xd;
+  UNIT[&quot;m&quot;, 1.0], &#xd;
+  AXIS[&quot;Easting&quot;, EAST], &#xd;
+  AXIS[&quot;Northing&quot;, NORTH], &#xd;
+  AUTHORITY[&quot;EPSG&quot;,&quot;3857&quot;]]</nativeCRS>
+  <srs>EPSG:3857</srs>
+  <nativeBoundingBox>
+    <minx>276447.25</minx>
+    <maxx>718865.25</maxx>
+    <miny>6384931.0</miny>
+    <maxy>6726816.5</maxy>
+    <crs class="projected">EPSG:3857</crs>
+  </nativeBoundingBox>
+  <latLonBoundingBox>
+    <minx>2.483367899278104</minx>
+    <maxx>6.457676412974008</maxx>
+    <miny>49.64447312943993</miny>
+    <maxy>51.592720659934635</maxy>
+    <crs>EPSG:4326</crs>
+  </latLonBoundingBox>
+  <projectionPolicy>FORCE_DECLARED</projectionPolicy>
+  <enabled>true</enabled>
+  <store class="dataStore">
+    <id>DataStoreInfoImpl-6056aac0:164a21c08bd:-7ffb</id>
+  </store>
+  <maxFeatures>0</maxFeatures>
+  <numDecimals>0</numDecimals>
+  <overridingServiceSRS>false</overridingServiceSRS>
+  <skipNumberMatched>false</skipNumberMatched>
+  <circularArcPresent>false</circularArcPresent>
+</featureType>

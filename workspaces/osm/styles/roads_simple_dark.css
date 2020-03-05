@@ -1,0 +1,19 @@
+@mode 'Flat';
+
+* {
+  sort-by: 'z_order';
+  rule-evaluation: 'first';
+}
+
+[class = 'highway' and type in ('motorway', 'motorway_link')][@sd < 7M],
+[class = 'highway' and type in ('trunk', 'trunk_link')][@sd < 7M],
+[class = 'highway' and type in ('primary', 'primary_link')][@sd < 3M],
+[class = 'railway'][@sd < 3M] {
+  stroke: #707070;
+  stroke-width:
+    [categorize(@sd,
+      1.4, 400k,
+      0.2, 6M,
+      0.1)];
+  stroke-linecap: round;
+}

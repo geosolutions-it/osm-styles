@@ -1,0 +1,15 @@
+<layer>
+  <name>ne_10m_urban_areas</name>
+  <id>LayerInfoImpl--3dd870dd:164ea9ea120:-7ffb</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl-41697926:164a2136a44:-7ffe</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl--3dd870dd:164ea9ea120:-7ffc</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+</layer>

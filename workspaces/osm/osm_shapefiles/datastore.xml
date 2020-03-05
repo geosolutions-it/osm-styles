@@ -1,0 +1,40 @@
+<dataStore>
+  <id>DataStoreInfoImpl-7c55092f:164b291b05d:586a</id>
+  <name>osm_shapefiles</name>
+  <type>PostGIS</type>
+  <enabled>true</enabled>
+  <workspace>
+    <id>WorkspaceInfoImpl-41697926:164a2136a44:-7fe4</id>
+  </workspace>
+  <connectionParameters>
+    <entry key="schema">${OSM_SHAPEFILES_SCHEMA}</entry>
+    <entry key="Evictor run periodicity">300</entry>
+    <entry key="Max open prepared statements">50</entry>
+    <entry key="encode functions">true</entry>
+    <entry key="Batch insert size">1</entry>
+    <entry key="preparedStatements">true</entry>
+    <entry key="database">${OSM_SHAPEFILES_DB}</entry>
+    <entry key="host">${POSTGRES_ENPOINT}</entry>
+    <entry key="Loose bbox">true</entry>
+    <entry key="SSL mode">DISABLE</entry>
+    <entry key="Estimated extends">true</entry>
+    <entry key="fetch size">2000</entry>
+    <entry key="Expose primary keys">false</entry>
+    <entry key="validate connections">true</entry>
+    <entry key="Support on the fly geometry simplification">true</entry>
+    <entry key="Connection timeout">5</entry>
+    <entry key="create database">false</entry>
+    <entry key="port">${POSTGRES_PORT}</entry>
+    <entry key="passwd">plain:${POSTGRES_PASSWORD}</entry>
+    <entry key="min connections">20</entry>
+    <entry key="dbtype">postgis</entry>
+    <entry key="namespace">http://geoserver.org/osm</entry>
+    <entry key="max connections">30</entry>
+    <entry key="Evictor tests per run">3</entry>
+    <entry key="Test while idle">true</entry>
+    <entry key="user">${POSTGRES_USER}</entry>
+    <entry key="Max connection idle time">300</entry>
+  </connectionParameters>
+  <__default>false</__default>
+  <dateModified>2020-02-07 11:37:49.42 UTC</dateModified>
+</dataStore>

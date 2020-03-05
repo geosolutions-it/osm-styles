@@ -1,0 +1,71 @@
+@mode 'Flat';
+
+/* Borders */
+
+/*
+modified scale denominators
+
+[type = 'administrative'] {
+  [admin_level <= 4][@sd < 750k],
+  [admin_level = 5 or admin_level = 6]
+  [@scale <= 400000],
+  [admin_level = 7 or admin_level = 8]
+  [@scale <= 200k],
+  [admin_level = 9 or admin_level = 10]
+  [@scale <= 100k]
+*/
+
+[@sd < 300M]
+[type = 'administrative'] {
+  [admin_level <= 4][@sd < 750k],
+  [admin_level = 5 or admin_level = 6] [@scale <= 400000],
+  [admin_level = 7 or admin_level = 8] [@scale <= 100k],
+  [admin_level = 9 or admin_level = 10] [@scale <= 50k] {
+
+    [admin_level = 2] {
+      stroke-width: [interpolate(env('wms_scale_denominator', 50000000), 800000, 2.5, 50000000, 0.6)];
+      stroke: #d69bd6;
+      stroke-linejoin: round;
+      /*stroke-composite: darken;*/
+      stroke-linecap: round;
+      [@sd < 800k] {
+        stroke-width: 6;
+      };
+    };
+
+    [admin_level <> 2][@sd < 50M] {
+      stroke: #d69bd6;
+      /*stroke-composite: darken;*/ 
+      [admin_level = 3] {
+        stroke-width: [interpolate(env('wms_scale_denominator', 50000000), 800000, 1.5, 50000000, 0.6)];
+        [@scale <= 800k] {
+          stroke-dasharray: 4 2;
+          stroke-width: 4;
+        };
+      };
+      [admin_level = 4] {
+        stroke-width: [interpolate(env('wms_scale_denominator', 50000000), 200000, 1, 50000000, 0.5)];
+        stroke-dasharray: 4 3;
+        [@scale <= 200k] {
+          stroke-width: 3;
+        };
+      };
+      [admin_level = 5][@sd < 50M] {
+        stroke-width: 2;
+        stroke-dasharray: 6 3 2 3 2 3;
+      };
+      [admin_level = 6] {
+        stroke-width: 2;
+        stroke-dasharray: 6 3 2 3;
+      };
+      [admin_level = 7 or admin_level = 8] {
+        stroke-width: 1.5;
+        stroke-dasharray: 5 2;
+      };
+      [admin_level = 9 or admin_level = 10] {
+        stroke-width: 2;
+        stroke-dasharray: 2 3;
+      };
+    };
+  };
+}

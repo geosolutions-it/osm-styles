@@ -1,7 +1,0 @@
-[@sd > 800000] {
-  fill: #f2efe9;
-  [@sd < 100M] {
-    stroke: #5ab0c9;
-    stroke-width: 0.1;
-  };
-}

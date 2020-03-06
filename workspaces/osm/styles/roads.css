@@ -2,7 +2,6 @@
 
 * {
   sort-by: 'z_order';
-  rule-evaluation: 'first';
 
   [class = 'highway' and type in ('motorway', 'motorway_link')][@sd < 15M] {
     [type = 'motorway'],

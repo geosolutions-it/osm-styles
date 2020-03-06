@@ -3,7 +3,7 @@
   <id>LayerInfoImpl--b31e793:164a310f7fa:-2570</id>
   <type>VECTOR</type>
   <defaultStyle>
-    <id>StyleInfoImpl-41697926:164a2136a44:-8000</id>
+    <id>StyleInfoImpl-5b43a54c:164ac594200:-5a64</id>
   </defaultStyle>
   <resource class="featureType">
     <id>FeatureTypeInfoImpl--b31e793:164a310f7fa:-2571</id>
@@ -12,4 +12,5 @@
     <logoWidth>0</logoWidth>
     <logoHeight>0</logoHeight>
   </attribution>
+  <dateModified>2020-03-06 14:17:00.930 UTC</dateModified>
 </layer>

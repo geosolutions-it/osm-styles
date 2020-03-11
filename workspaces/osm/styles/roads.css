@@ -745,28 +745,6 @@
 
 
     [type in (
-      'motorway_link',
-      'trunk_link',
-      'primary_link',
-      'secondary_link',
-      'tertiary_link'
-    )][@sd < 10k] {
-
-      [oneway = 1] {
-      label: ' ?';
-      };
-      [oneway = -1] {
-      label: '? ';
-      };
-      font-size: categorize(@sd, 12, 1500, 11, 6k, 10);
-      halo-radius: 1;
-      [type = 'motorway'] { halo-color: #e892a2; };
-      [type = 'trunk'] { halo-color: #f9b29c; };
-      [type = 'primary'] { halo-color: #fcd6a4; };
-
-    };
-
-    [type in (
       'motorway',
       'trunk',
       'primary'
@@ -778,22 +756,8 @@
       'primary'
     )] {
       [@sd < 100k] {
-        [oneway = 0],
         [@sd > 10k] {
           label: [name];
-        };
-        [oneway = 1][@sd <= 10k] {
-        label: [name]' ?';
-        };
-        [oneway = -1][@sd <= 10k] {
-        label: '? '[name];
-        };
-        font-size: categorize(@sd, 12, 1500, 11, 6k, 10, 25k, 9, 50k, 8);
-        [tunnel = 0] {
-          halo-radius: 1;
-          [type = 'motorway'] { halo-color: #e892a2; };
-          [type = 'trunk'] { halo-color: #f9b29c; };
-          [type = 'primary'] { halo-color: #fcd6a4; };
         };
       };
     };
@@ -806,16 +770,7 @@
       'secondary'
     )] {
       [@sd < 100k] {
-        [oneway = 0],
-        [@sd > 10k] {
           label: [name];
-        };
-        [oneway = 1][@sd <= 10k] {
-        label: [name]' ?';
-        };
-        [oneway = -1][@sd <= 10k] {
-        label: '? '[name];
-        };
         font-size:
           categorize(@sd, 
             12, 1500,
@@ -836,16 +791,7 @@
       'tertiary'
     )] {
       [@sd < 50k] {
-        [oneway = 0],
-        [@sd > 10k] {
-          label: [name];
-        };
-        [oneway = 1][@sd <= 10k] {
-        label: [name]' ?';
-        };
-        [oneway = -1][@sd <= 10k] {
-        label: '? '[name];
-        };
+        label: [name];
         font-size:
           categorize(@sd, 
             12, 1500,
@@ -885,16 +831,7 @@
       'road'
     )] {
       [@sd < 25k] {
-        [oneway = 0],
-        [@sd > 10k] {
-          label: [name];
-        };
-        [oneway = 1][@sd <= 10k] {
-        label: [name]' ?';
-        };
-        [oneway = -1][@sd <= 10k] {
-        label: '? '[name];
-        };
+        label: [name];
         font-size:
           categorize(@sd, 
             12, 1500,
@@ -903,9 +840,7 @@
             8);
         halo-radius: 1;
         halo-color: #ffffff;
-        [@sd < 6k] {
-          label-max-displacement: 400;
-        };
+        label-max-displacement: 50;
       };
     };
 

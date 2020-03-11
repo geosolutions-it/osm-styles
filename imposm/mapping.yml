@@ -10,17 +10,6 @@ generalized_tables:
     source: landusages
     sql_filter: ST_Area(geometry)>50000.000000
     tolerance: 50.0
-  roads_gen0:
-    source: roads_gen1
-    tolerance: 200.0
-  roads_gen1:
-    source: roads
-    sql_filter:
-      type IN (
-        'motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary',
-        'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link')
-      OR class IN('railway')
-    tolerance: 50.0
   waterareas_gen0:
     source: waterareas_gen1
     sql_filter: ST_Area(geometry)>500000.000000
@@ -31,10 +20,28 @@ generalized_tables:
     tolerance: 50.0
   waterways_gen0:
     source: waterways_gen1
-    tolerance: 200
+    sql_filter: type = 'river'
+    tolerance: 120
   waterways_gen1:
     source: waterways
-    tolerance: 50.0
+    sql_filter: type IN ('river', 'pier', 'breakwater', 'groyne')
+    tolerance: 60.0
+  roads_gen0:
+    source: roads_gen1
+    sql_filter: class = 'highway' and type in ('motorway', 'trunk')
+    tolerance: 900.0
+  roads_gen1:
+    source: roads_gen2
+    sql_filter: (class = 'highway' and type IN ('motorway', 'trunk', 'primary')) OR (class = 'railway' and type IN ('funicular','light_rail','narrow_gauge'))
+    tolerance: 450.0
+  roads_gen2:
+    source: roads_gen3
+    sql_filter: (class = 'highway' and type IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link')) OR (class = 'railway' and type IN ('funicular','light_rail','narrow_gauge'))
+    tolerance: 300.0
+  roads_gen3:
+    source: roads
+    sql_filter: type IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link') OR class = 'railway'
+    tolerance: 30.0
 tables:
   admin:
     fields:

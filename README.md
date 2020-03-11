@@ -74,7 +74,9 @@ With this in mind:
 
 4. Run the "write" part of the import process (replace the ``$user``, ``$password``, ``$host`` and ``$database`` with actual values for your database). The ``optimize`` parameter includes a long process of table clustering for optimal serve performance, it's not mandatory and can take a lot of time. 
 
-    ``$IMPOSM_DIR/imposm import -mapping mapping.yml -write -connection postgis://$user:$password@$host/$database -overwritecache -optimize``
+    ``$IMPOSM_DIR/imposm import -mapping mapping.yml -write -connection postgis://$user:$password@$host/$database -overwritecache``
+    
+....It's possible to add a ``-optimize`` extra option at the end of the above command to have optimal record layout in the database. However, caution is recommended, that step can take much more time than importing the data itself.
 
 5. Congratulations, you have succesfully imported the data in PostGIS
 

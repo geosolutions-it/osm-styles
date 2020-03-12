@@ -82,6 +82,9 @@ With this in mind:
 
 5. Congratulations, you have succesfully imported the data in PostGIS
 
+### Setting up the Noto Fonts
+
+OSM data can have labels in many languages. The styles use the [Google Noto Fonts](https://www.google.com/get/noto/) to render them all in the various scripts. The Noto Fonts website allows you to download single fonts, or to download them all in a single large zip file (look for the "Download all fonts" link). The Noto web site has instructions on [how to install](https://www.google.com/get/noto/help/install/) the fonts for some common operating systems.
 
 ### Parametrizing GeoServer and starting it up
 

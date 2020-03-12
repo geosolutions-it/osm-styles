@@ -78,7 +78,7 @@ With this in mind:
 
     ``$IMPOSM_DIR/imposm import -mapping mapping.yml -write -connection postgis://$user:$password@$host/$database -overwritecache``
     
-....It's possible to add a ``-optimize`` extra option at the end of the above command to have optimal record layout in the database. However, caution is recommended, that step can take much more time than importing the data itself.
+   It's possible to add a ``-optimize`` extra option at the end of the above command to have optimal record layout in the database. However, caution is recommended, that step can take much more time than importing the data itself.
 
 5. Congratulations, you have succesfully imported the data in PostGIS
 

@@ -99,6 +99,9 @@ If you decide to follow the second, make sure to pass the following to the comma
 
 ``POSTGRES_ENPOINT=127.0.0.1;POSTGRES_PORT=5432;POSTGRES_PASSWORD=$password;POSTGRES_USER=$user;OSM_DB=$database;OSM_SCHEMA=import`` 
 
+### Found an issue? Contribute a fix!
+
+If you find any issue with instructions or styling, pull requests are more than welcomed!
 
 ## License
 This data directory is licensed as MIT, as per the [license](https://github.com/geosolutions-it/osm-styles/blob/master/LICENSE.md) file.

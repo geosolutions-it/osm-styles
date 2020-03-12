@@ -4,6 +4,8 @@ This is a GeoServer data directory with OSM layer and styles mimicking a OSM-bri
 
 ![Sample output map](map.png)
 
+Live example [here](https://dev.mapstore.geo-solutions.it/mapstore/#/viewer/openlayers/8444)
+
 
 ## Getting started
 

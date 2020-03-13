@@ -12,7 +12,7 @@
     <entry key="Max open prepared statements">50</entry>
     <entry key="encode functions">true</entry>
     <entry key="Batch insert size">1</entry>
-    <entry key="preparedStatements">true</entry>
+    <entry key="preparedStatements">false</entry>
     <entry key="database">${OSM_DB}</entry>
     <entry key="host">${POSTGRES_ENPOINT}</entry>
     <entry key="Loose bbox">true</entry>

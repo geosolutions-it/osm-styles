@@ -55,8 +55,7 @@ The data directory is already configured to lookup the GeoPackage from this loca
 ### The OSM PostGIS database
 
 The large part of the data comes from OpenStreetMap. The import process can be very long for large
-areas, it is recommended to start with a small country to practice the process, before moving to larger
-imports.
+areas, it is recommended to start with a small country to practice the process, before moving to larger imports.
 
 To provide a reference, on a Ryzen 1700x with local SSD (Samsung EVO 960) and 32GB of memory,
 on a Linux Mint 19.2 with stock PostgreSQL 9.5.4 and PostGIS 2.21, importing the full Europe OpenStreeMap dataset required:
@@ -64,6 +63,8 @@ on a Linux Mint 19.2 with stock PostgreSQL 9.5.4 and PostGIS 2.21, importing the
 * 250GB of disk space (allocated fully on SSD), split between 22.5GB of OSM PBF file, 45GB of Imposm working cache,
   and over 130GB of resulting PostgreSQL database (the Imposm cache can be removed at the end of the process) 
 * 4 hours of processing 
+
+Also, the tool used to parse, reclassify and import the data into PostgreSQL, called ``imposm``, **works only on Linux**. We have prepared a command line tool that can be run on Linux to prepare a PostgreSQL database dump, which can then be moved to a Windows machine and restored.
 
 With this in mind:
 
@@ -84,9 +85,15 @@ With this in mind:
 
 ### Setting up the Noto Fonts
 
-OSM data can have labels in many languages. The styles use the [Google Noto Fonts](https://www.google.com/get/noto/) to render them all in the various scripts. The Noto Fonts website allows you to download single fonts, or to download them all in a single large zip file (look for the "Download all fonts" link). The Noto web site has instructions on [how to install](https://www.google.com/get/noto/help/install/) the fonts for some common operating systems.
+OSM data can have labels in many languages. The styles use the [Google Noto Fonts](https://www.google.com/get/noto/) to render them all in the various scripts. The Noto Fonts website allows you to download single fonts, or to download them all in a single large zip file (look for the "Download all fonts" link). 
 
-### Parametrizing GeoServer and starting it up
+The Noto web site has instructions on [how to install](https://www.google.com/get/noto/help/install/) the fonts for some common operating systems.
+Specifically for **Windows**, make sure the fonts are installed for all users, it's possible to do by selecting the font file, right click, and then selecting "install for all users".
+The Java runtime will not see the fonts installed for the current user alone.
+
+Failing to install the fonts won't prevent the map from showing up, but will result in a fallback to be chosen instead.
+
+### Parameterizing GeoServer and starting it up
 
 The data directory contains paramers in place of database connection values for user, password, host and database. This is to make it easy to move it around, in different environment, without changing its contents.
 

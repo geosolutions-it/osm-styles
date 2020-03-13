@@ -6,7 +6,7 @@ PG_CONTAINER=$PG_CONTAINER_DEFAULT
 PG_IMAGE_VERSION_DEFAULT=12.1
 PG_IMAGE_VERSION=$PG_IMAGE_VERSION_DEFAULT
 PG_CONTAINER_REMOVE_DEFAULT=true
-PG_CONTAINER_REMOVE=PG_CONTAINER_REMOVE_DEFAULT
+PG_CONTAINER_REMOVE=$PG_CONTAINER_REMOVE_DEFAULT
 
 # Parse input parameters
 set -e
@@ -30,7 +30,8 @@ then
      echo "  -p Local port to use for the PostgreSQL container, defaults to $PG_PORT_DEFAULT"
      echo "  -v Version of the Kartoza PostGIS Image to be used, defaults to $PG_IMAGE_VERSION_DEFAULT"
      echo "  -c Name of the container used for the PostgreSQL container, defaults to $PG_CONTAINER_DEFAULT"
-     echo "  -r Remove the database container and its data after import, either true or false, defaults to "
+     echo "  -r Remove the database container and its data after import, either true or false, defaults to $PG_CONTAINER_REMOVE"
+
      exit 1
 fi
 if [ ! -f "$PBF_LOCATION" ]; then
@@ -40,7 +41,7 @@ fi
 
 echo -e "----------- Starting up PostGIS docker image $PG_CONTAINER"
 mkdir -p work
-docker run --name "$PG_CONTAINER" -p $PG_PORT:5432 -d  -v `pwd`/work:/root/work -t kartoza/postgis:$PG_IMAGE_VERSION
+docker run --name "$PG_CONTAINER" -p $PG_PORT:5432 -d  -v `pwd`/work:/tmp/work -t kartoza/postgis:$PG_IMAGE_VERSION
 
 echo -e "\n----------- Downloading and unpacking Imposm 3"
 wget -q --show-progress -c https://github.com/omniscale/imposm3/releases/download/v0.10.0/imposm-0.10.0-linux-x86-64.tar.gz -P work
@@ -63,8 +64,8 @@ echo -e "\n----------- Running imposm, write to database"
 work/imposm-0.10.0-linux-x86-64/imposm import -mapping mapping.yml -cachedir work/tmp -write -connection "postgis://docker:docker@localhost:$PG_PORT/gis"
 
 echo -e "\n----------- Dumping the backup"
-docker exec -it -e PGPASSWORD=docker $PG_CONTAINER pg_dump -v -x -U docker -h 127.0.0.1 gis -f /root/work/gis.backup -F c
-echo "Backup available at "`pwd`/work/gis.backup
+docker exec -it osm-postgis useradd -u $UID gis
+docker exec -it -u $UID -e PGPASSWORD=docker $PG_CONTAINER pg_dump -v -x -U docker -h 127.0.0.1 gis -f /tmp/work/gis.backup -F c
 
 echo -e "\n----------- Shutting down the database container"
 docker stop $PG_CONTAINER
@@ -73,3 +74,5 @@ if [ "$PG_CONTAINER_REMOVE" == 'true' ]; then
     echo -e "\n----------- Deleting the database container"
     docker rm $PG_CONTAINER
 fi
+
+echo "Backup available at "`pwd`/work/gis.backup

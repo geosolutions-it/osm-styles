@@ -462,7 +462,7 @@ Backup available at /home/aaime/devel/osm-styles/imposm/work/gis.backup
 osm-postgis
 ```
    
-4. If all worked, the backup is available    
+4. If all worked, the backup is available at ``work/gis.backup``
    
 In case or script failure, the PostgreSQL database might be left up and running, if you don't care about its contents and want to start over, the container can be removed using ``docker rm``, e.g.:
 

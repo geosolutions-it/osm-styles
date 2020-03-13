@@ -64,7 +64,7 @@ on a Linux Mint 19.2 with stock PostgreSQL 9.5.4 and PostGIS 2.21, importing the
   and over 130GB of resulting PostgreSQL database (the Imposm cache can be removed at the end of the process) 
 * 4 hours of processing 
 
-Also, the tool used to parse, reclassify and import the data into PostgreSQL, called ``imposm``, **works only on Linux**. We have prepared a command line tool that can be run on Linux to prepare a PostgreSQL database dump, which can then be moved to a Windows machine and restored.
+Also, the tool used to parse, reclassify and import the data into PostgreSQL, called ``imposm``, **works only on Linux**. We have prepared a [command line tool](imposm/README.md) that can be run on Linux to prepare a PostgreSQL database dump, which can then be moved to a Windows machine and restored.
 
 With this in mind:
 

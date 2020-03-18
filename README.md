@@ -32,6 +32,7 @@ In addition, the following plugins need to be included:
   to parse and use the styles included in this data directory. 
 * The [Pregeneralized Features extension](https://docs.geoserver.org/stable/en/user/data/vector/featurepregen.html), 
   used to access simplified overview tables of layers that are particularly big, and only partially displayed at lower zoom levels.
+  Place the file pregeneralized.xml inside the geoserver-data directory.
 
 ### The low resolution GeoPackage
 

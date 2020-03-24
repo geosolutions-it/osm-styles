@@ -77,14 +77,13 @@ if [ $UID ]; then
 else
     USERID=$SUDO_UID
 fi
-echo -e "Using user id $USERID"
 docker exec -it osm-postgis useradd -u $USERID gis
 docker exec -it -u $USERID -e PGPASSWORD=docker $PG_CONTAINER pg_dump -v -x -U docker -h 127.0.0.1 gis -f /tmp/work/gis.backup -F c
 
 echo -e "\n----------- Shutting down the database container"
 docker stop $PG_CONTAINER
 
-if [ "$PG_CONTAINER_REMOVE" == 'true' ]; then
+if [ "$PG_CONTAINER_REMOVE" == true ]; then
     echo -e "\n----------- Deleting the database container"
     docker rm $PG_CONTAINER
 fi

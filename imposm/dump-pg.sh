@@ -64,6 +64,8 @@ rm -rf work/tmp/*
 work/imposm-0.10.0-linux-x86-64/imposm import -mapping mapping.yml -read $PBF_LOCATION -cachedir work/tmp 
 echo -e "\n----------- Running imposm, write to database"
 work/imposm-0.10.0-linux-x86-64/imposm import -mapping mapping.yml -cachedir work/tmp -write -connection "postgis://docker:docker@localhost:$PG_PORT/gis"
+echo -e "\n----------- Deploy imported tables to production"
+work/imposm-0.10.0-linux-x86-64/imposm import -mapping mapping.yml -connection "postgis://docker:docker@localhost:$PG_PORT/gis" -deployproduction
 
 echo -e "\n----------- Dumping the backup"
 if [ $UID ]; then

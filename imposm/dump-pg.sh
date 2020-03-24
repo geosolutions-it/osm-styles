@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Variables and defaults
 PG_PORT_DEFAULT=25432
 PG_PORT=$PG_PORT_DEFAULT
@@ -52,7 +54,7 @@ echo -e "\n----------- Waiting for PostgreSQL to be up and running"
 RETRIES=30
 # wait and kill the cron extension at the first successful attempt, it's not part of the Windows installers, can cause issues on restore
 until docker exec -it -e PGPASSWORD=docker $PG_CONTAINER  /bin/bash -c 'psql -h 127.0.0.1 -U docker -p 5432 gis -c "drop extension pg_cron" > /dev/null 2>&1' || [ $RETRIES -eq 0 ]; do
-  echo "Waiting for PostgreSQL, $((RETRIES--)) remaining attempts..."
+  echo "Waiting for PostgreSQL, $((RETRIES-=1)) remaining attempts..."
   sleep 2
 done
 
@@ -64,8 +66,14 @@ echo -e "\n----------- Running imposm, write to database"
 work/imposm-0.10.0-linux-x86-64/imposm import -mapping mapping.yml -cachedir work/tmp -write -connection "postgis://docker:docker@localhost:$PG_PORT/gis"
 
 echo -e "\n----------- Dumping the backup"
-docker exec -it osm-postgis useradd -u $UID gis
-docker exec -it -u $UID -e PGPASSWORD=docker $PG_CONTAINER pg_dump -v -x -U docker -h 127.0.0.1 gis -f /tmp/work/gis.backup -F c
+if [ $UID ]; then
+    USERID=$UID
+else
+    USERID=$SUDO_UID
+fi
+echo -e "Using user id $USERID"
+docker exec -it osm-postgis useradd -u $USERID gis
+docker exec -it -u $USERID -e PGPASSWORD=docker $PG_CONTAINER pg_dump -v -x -U docker -h 127.0.0.1 gis -f /tmp/work/gis.backup -F c
 
 echo -e "\n----------- Shutting down the database container"
 docker stop $PG_CONTAINER

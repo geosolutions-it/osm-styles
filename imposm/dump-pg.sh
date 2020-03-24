@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 # Variables and defaults
 PG_PORT_DEFAULT=25432

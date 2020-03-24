@@ -1,4 +1,4 @@
-#!/bin/bash
+!/bin/bash
 
 # Variables and defaults
 PG_PORT_DEFAULT=25432
@@ -44,7 +44,15 @@ if [ ! -f "$PBF_LOCATION" ]; then
 fi
 
 echo -e "----------- Starting up PostGIS docker image $PG_CONTAINER"
+USERID=$UID
+USERNAME=$USER
+if [ $SUDO_UID ]; then
+    USERID=$SUDO_UID
+    USERNAME=$SUDO_USER
+fi
+echo -e "\n---------- Using user id $USERID"
 mkdir -p work
+chown $USERNAME: work
 docker run --name "$PG_CONTAINER" -p $PG_PORT:5432 -d  -v `pwd`/work:/tmp/work -t kartoza/postgis:$PG_IMAGE_VERSION
 
 echo -e "\n----------- Downloading and unpacking Imposm 3"
@@ -63,7 +71,7 @@ done
 echo -e "\n----------- Running imposm, read from pbf"
 mkdir -p work/tmp
 rm -rf work/tmp/*
-work/imposm-${IMPOSM_VERSION}-linux-x86-64/imposm import -mapping mapping.yml -read $PBF_LOCATION -cachedir work/tmp 
+work/imposm-${IMPOSM_VERSION}-linux-x86-64/imposm import -mapping mapping.yml -read $PBF_LOCATION -cachedir work/tmp
 echo -e "\n----------- Running imposm, write to database"
 work/imposm-${IMPOSM_VERSION}-linux-x86-64/imposm import -mapping mapping.yml -cachedir work/tmp -write -connection "postgis://docker:docker@localhost:$PG_PORT/gis"
 echo -e "\n----------- Deploy imported tables to production"
@@ -72,18 +80,13 @@ echo -e "\n----------- Remove backup scheme"
 work/imposm-${IMPOSM_VERSION}-linux-x86-64/imposm import -mapping mapping.yml -connection "postgis://docker:docker@localhost:$PG_PORT/gis" -removebackup
 
 echo -e "\n----------- Dumping the backup"
-if [ $UID ]; then
-    USERID=$UID
-else
-    USERID=$SUDO_UID
-fi
 docker exec -it osm-postgis useradd -u $USERID gis
 docker exec -it -u $USERID -e PGPASSWORD=docker $PG_CONTAINER pg_dump -v -x -U docker -h 127.0.0.1 gis -f /tmp/work/gis.backup -F c
 
 echo -e "\n----------- Shutting down the database container"
 docker stop $PG_CONTAINER
 
-if [ "$PG_CONTAINER_REMOVE" == true ]; then
+if [ "$PG_CONTAINER_REMOVE" = true ]; then
     echo -e "\n----------- Deleting the database container"
     docker rm $PG_CONTAINER
 fi

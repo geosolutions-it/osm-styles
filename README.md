@@ -80,14 +80,32 @@ With this in mind:
     ``$IMPOSM_DIR/imposm import -mapping mapping.yml -write -connection postgis://$user:$password@$host/$database -overwritecache``
     
    It's possible to add a ``-optimize`` extra option at the end of the above command to have optimal record layout in the database. However, caution is recommended, that step can take much more time than importing the data itself.
-
+   
 5. Congratulations, you have succesfully imported the data in PostGIS
 
-### Setting up the Noto Fonts
+Optionally, one can also run the "production deploy" steps, which involve moving the tables from the ``import`` schema to the ``public`` one, while moving eventual pre-existing tables to a ``backup`` schema, and eventually removing the backup schema itself.
+This allows continued usage of the database while the import is running:
 
-OSM data can have labels in many languages. The styles use the [Google Noto Fonts](https://www.google.com/get/noto/) to render them all in the various scripts. The Noto Fonts website allows you to download single fonts, or to download them all in a single large zip file (look for the "Download all fonts" link). 
+1. ``$IMPOSM_DIR/imposm import -mapping mapping.yml -connection postgis://$user:$password@$host/$database -deployproduction``
 
-The Noto web site has instructions on [how to install](https://www.google.com/get/noto/help/install/) the fonts for some common operating systems.
+2. ``$IMPOSM_DIR/imposm import -mapping mapping.yml -connection postgis://$user:$password@$host/$database -removebackup``
+
+``imposm`` also support incremental updates of the data using OSM change files. Please consult the [imposm guide](https://imposm.org/docs/imposm3/latest/tutorial.html#updating) to learn more about this functionality.
+
+
+### Setting up the Fonts
+
+OSM data can have labels in many languages. The styles use the following fonts to support rendering in the many scripts labels need:
+
+* [Google Noto](https://www.google.com/get/noto/) 
+* [DejaVu](http://dejavu-fonts.org/)
+* [Hanazono](http://fonts.jp/hanazono/)
+* [Unifont](http://unifoundry.com/)
+
+The fonts can be downloaded from the respective web sites and installed separately. For your convenience, we have prepared a [zip file](https://www.dropbox.com/s/12iieqjtn5qm8gp/osm-fonts.zip?dl=1) with the subset of fonts that you'll need (not each single font available in the web sites above are needed, e.g., Google Noto contains hundreds of different fonts).
+
+In terms of installation, the Noto web site has instructions on [how to install](https://www.google.com/get/noto/help/install/) the fonts for some common operating systems.
+
 Specifically for **Windows**, make sure the fonts are installed for all users, it's possible to do by selecting the font file, right click, and then selecting "install for all users".
 The Java runtime will not see the fonts installed for the current user alone.
 
@@ -104,7 +122,7 @@ You have two options:
 
 If you decide to follow the second, make sure to pass the following to the command line starting up the Java virtual machine (e.g., ``startup.sh`` if running the GeoServer binary package, Tomcat own ``catalina.sh`` or ``JAVA_OPTS`` variable, and os on). Replace the variables to match your setup:
 
-``POSTGRES_ENPOINT=127.0.0.1;POSTGRES_PORT=5432;POSTGRES_PASSWORD=$password;POSTGRES_USER=$user;OSM_DB=$database;OSM_SCHEMA=import`` 
+``POSTGRES_ENPOINT=127.0.0.1;POSTGRES_PORT=5432;POSTGRES_PASSWORD=$password;POSTGRES_USER=$user;OSM_DB=$database;OSM_SCHEMA=$schema`` 
 
 ### Found an issue? Contribute a fix!
 

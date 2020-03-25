@@ -43,14 +43,16 @@ if [ ! -f "$PBF_LOCATION" ]; then
     exit 2
 fi
 
-echo -e "----------- Starting up PostGIS docker image $PG_CONTAINER"
+# Resolve userid and username in case the command has been called using SUDO
 USERID=$UID
 USERNAME=$USER
 if [ $SUDO_UID ]; then
     USERID=$SUDO_UID
     USERNAME=$SUDO_USER
 fi
-echo -e "\n---------- Using user id $USERID"
+echo -e "---------- Using user id $USERID and username $USERNAME"
+
+echo -e "\n----------- Starting up PostGIS docker image $PG_CONTAINER"
 mkdir -p work
 chown $USERNAME: work
 docker run --name "$PG_CONTAINER" -p $PG_PORT:5432 -d  -v `pwd`/work:/tmp/work -t kartoza/postgis:$PG_IMAGE_VERSION

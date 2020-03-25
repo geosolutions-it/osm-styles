@@ -12,11 +12,12 @@ will run in a local Docker container.
 The command self-describes as follows (when run without parameters):
 
 ```
- Usage dump-pg.sh -i osm_pbf_location [-p postgresqlPort] [-c postgresqlContainerName]
-   -i Location of the PBF file to import
-   -p Local port to use for the PostgreSQL container, defaults to 25432
-   -v Version of the Kartoza PostGIS Image to be used, defaults to 12.1
-   -c Name of the container used for the PostgreSQL container, defaults to osm-postgis
+Usage dump-pg.sh -i osm_pbf_location [-p postgresqlPort] [-c postgresqlContainerName]
+  -i Location of the PBF file to import
+  -p Local port to use for the PostgreSQL container, defaults to 25432
+  -v Version of the Kartoza PostGIS Image to be used, defaults to 12.1
+  -c Name of the container used for the PostgreSQL container, defaults to osm-postgis
+  -r Remove the database container and its data after import, either true or false, defaults to true
 ```
 
 For the restore to work properly attention must be paid to the **version numbers**, PostgreSQL can
@@ -38,141 +39,189 @@ The Kartoza PostGIS images used to run the import and backup can be [found on do
 4. Wait for the processing to occurr, the output will look similar to:
 
 ```
+---------- Using user id 1000 and username yourUser
+
 ----------- Starting up PostGIS docker image osm-postgis
-ac514c387f30a69c014432bcdfeded2bc9cf473303d060ef2e4eeb82614bff5c
+e4bbcc93bd7a29b9ae53874d3cc4bf483fa9e6131e6ddcc6378088078f431044
 
 ----------- Downloading and unpacking Imposm 3
+imposm-0.10.0-linux-x86-64.tar.gz                           100%[=========================================================================================================================================>]  16,34M   275KB/s    in 27s     
 Done
 
 ----------- Waiting for PostgreSQL to be up and running
-Waiting for PostgreSQL, 30 remaining attempts...
-Waiting for PostgreSQL, 29 remaining attempts...
-Waiting for PostgreSQL, 28 remaining attempts...
-Waiting for PostgreSQL, 27 remaining attempts...
 
 ----------- Running imposm, read from pbf
-[2020-03-13T16:10:17+01:00] 0:00:00 [warn]: exclude_tags filter is deprecated and will be removed. See require and reject filter.
-[2020-03-13T16:10:17+01:00] 0:00:00 [warn]: exclude_tags filter is deprecated and will be removed. See require and reject filter.
-[2020-03-13T16:10:17+01:00] 0:00:00 [warn]: exclude_tags filter is deprecated and will be removed. See require and reject filter.
-[2020-03-13T16:10:17+01:00] 0:00:00 [warn] pseudoarea type is deprecated and will be removed. See area and webmerc_area type.
-[2020-03-13T16:10:17+01:00] 0:00:00 [warn]: exclude_tags filter is deprecated and will be removed. See require and reject filter.
-[2020-03-13T16:10:17+01:00] 0:00:00 [warn]: exclude_tags filter is deprecated and will be removed. See require and reject filter.
-[2020-03-13T16:10:17+01:00] 0:00:00 [step] Starting: Imposm
-[2020-03-13T16:10:17+01:00] 0:00:00 [step] Starting: Reading OSM data
-[2020-03-13T16:10:17+01:00] 0:00:00 [info] reading /home/aaime/devel/gisData/osmdata/albania-latest.osm.pbf with data till 2020-03-04 22:59:03 +0100 CET
-[2020-03-13T16:10:20+01:00] 0:00:02 [progress]     2s C:       0/s (6168851) N:       0/s (38959) W:       0/s (385041) R:      0/s (1786)
-[2020-03-13T16:10:20+01:00] 0:00:02 [step] Finished: Reading OSM data in 2.964360771s
-[2020-03-13T16:10:20+01:00] 0:00:02 [step] Finished: Imposm in 2.964400736s
+[2020-03-25T15:41:58+01:00] 0:00:00 [warn]: exclude_tags filter is deprecated and will be removed. See require and reject filter.
+[2020-03-25T15:41:58+01:00] 0:00:00 [warn]: exclude_tags filter is deprecated and will be removed. See require and reject filter.
+[2020-03-25T15:41:58+01:00] 0:00:00 [warn]: exclude_tags filter is deprecated and will be removed. See require and reject filter.
+[2020-03-25T15:41:58+01:00] 0:00:00 [warn] pseudoarea type is deprecated and will be removed. See area and webmerc_area type.
+[2020-03-25T15:41:58+01:00] 0:00:00 [warn]: exclude_tags filter is deprecated and will be removed. See require and reject filter.
+[2020-03-25T15:41:58+01:00] 0:00:00 [warn]: exclude_tags filter is deprecated and will be removed. See require and reject filter.
+[2020-03-25T15:41:58+01:00] 0:00:00 [step] Starting: Imposm
+[2020-03-25T15:41:58+01:00] 0:00:00 [step] Starting: Reading OSM data
+[2020-03-25T15:41:58+01:00] 0:00:00 [info] reading /path/to/albania-latest.osm.pbf with data till 2020-03-04 22:59:03 +0100 CET
+[2020-03-25T15:42:01+01:00] 0:00:02 [progress]     2s C:       0/s (6168851) N:       0/s (38959) W:       0/s (385041) R:      0/s (1786)
+[2020-03-25T15:42:01+01:00] 0:00:02 [step] Finished: Reading OSM data in 2.937524196s
+[2020-03-25T15:42:01+01:00] 0:00:02 [step] Finished: Imposm in 2.937565083s
 
 ----------- Running imposm, write to database
-[2020-03-13T16:10:20+01:00] 0:00:00 [warn]: exclude_tags filter is deprecated and will be removed. See require and reject filter.
-[2020-03-13T16:10:20+01:00] 0:00:00 [warn]: exclude_tags filter is deprecated and will be removed. See require and reject filter.
-[2020-03-13T16:10:20+01:00] 0:00:00 [warn]: exclude_tags filter is deprecated and will be removed. See require and reject filter.
-[2020-03-13T16:10:20+01:00] 0:00:00 [warn] pseudoarea type is deprecated and will be removed. See area and webmerc_area type.
-[2020-03-13T16:10:20+01:00] 0:00:00 [warn]: exclude_tags filter is deprecated and will be removed. See require and reject filter.
-[2020-03-13T16:10:20+01:00] 0:00:00 [warn]: exclude_tags filter is deprecated and will be removed. See require and reject filter.
-[2020-03-13T16:10:20+01:00] 0:00:00 [warn] pseudoarea type is deprecated and will be removed. See area and webmerc_area type.
-[2020-03-13T16:10:20+01:00] 0:00:00 [step] Starting: Imposm
-[2020-03-13T16:10:20+01:00] 0:00:00 [step] Starting: Importing OSM data
-[2020-03-13T16:10:20+01:00] 0:00:00 [step] Starting: Writing OSM data
-[2020-03-13T16:10:33+01:00] 0:00:12 [step] Finished: Writing OSM data in 12.570337077s
-[2020-03-13T16:10:33+01:00] 0:00:12 [step] Starting: Creating generalized tables
-[2020-03-13T16:10:33+01:00] 0:00:12 [step] Starting: Generalizing osm_landusages into osm_landusages_gen1
-[2020-03-13T16:10:33+01:00] 0:00:12 [step] Starting: Generalizing osm_waterways into osm_waterways_gen1
-[2020-03-13T16:10:33+01:00] 0:00:12 [progress]    12s C:       0/s (0) N:       0/s (38959) W:       0/s (385041) R:      0/s (1786)
-[2020-03-13T16:10:33+01:00] 0:00:12 [step] Starting: Generalizing osm_waterareas into osm_waterareas_gen1
-[2020-03-13T16:10:33+01:00] 0:00:12 [step] Starting: Generalizing osm_roads into osm_roads_gen3
-[2020-03-13T16:10:33+01:00] 0:00:12 [step] Finished: Generalizing osm_waterways into osm_waterways_gen1 in 381.7899ms
-[2020-03-13T16:10:33+01:00] 0:00:13 [step] Finished: Generalizing osm_roads into osm_roads_gen3 in 562.531273ms
-[2020-03-13T16:10:33+01:00] 0:00:13 [step] Finished: Generalizing osm_waterareas into osm_waterareas_gen1 in 699.145553ms
-[2020-03-13T16:10:34+01:00] 0:00:14 [step] Finished: Generalizing osm_landusages into osm_landusages_gen1 in 1.563873897s
-[2020-03-13T16:10:34+01:00] 0:00:14 [step] Starting: Generalizing osm_roads into osm_roads_gen2
-[2020-03-13T16:10:34+01:00] 0:00:14 [step] Starting: Generalizing osm_landusages into osm_landusages_gen0
-[2020-03-13T16:10:34+01:00] 0:00:14 [step] Starting: Generalizing osm_waterareas into osm_waterareas_gen0
-[2020-03-13T16:10:34+01:00] 0:00:14 [step] Starting: Generalizing osm_waterways into osm_waterways_gen0
-[2020-03-13T16:10:35+01:00] 0:00:14 [step] Finished: Generalizing osm_roads into osm_roads_gen2 in 297.537723ms
-[2020-03-13T16:10:35+01:00] 0:00:14 [step] Finished: Generalizing osm_waterareas into osm_waterareas_gen0 in 312.483662ms
-[2020-03-13T16:10:35+01:00] 0:00:14 [step] Finished: Generalizing osm_waterways into osm_waterways_gen0 in 321.099481ms
-[2020-03-13T16:10:35+01:00] 0:00:14 [step] Finished: Generalizing osm_landusages into osm_landusages_gen0 in 564.646676ms
-[2020-03-13T16:10:35+01:00] 0:00:14 [step] Starting: Generalizing osm_roads into osm_roads_gen1
-[2020-03-13T16:10:35+01:00] 0:00:14 [step] Finished: Generalizing osm_roads into osm_roads_gen1 in 183.787848ms
-[2020-03-13T16:10:35+01:00] 0:00:14 [step] Starting: Generalizing osm_roads into osm_roads_gen0
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Finished: Generalizing osm_roads into osm_roads_gen0 in 143.832141ms
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Finished: Creating generalized tables in 2.45659347s
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Starting: Creating geometry indices
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_transport_areas
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_roads
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_waterareas
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_barrierways
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_transport_points
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_places
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_buildings
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_amenities
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_barrierpoints
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_housenumbers
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_admin
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_waterways
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_landusages
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_housenumbers_interpolated
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_boundary
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Starting: Creating OSM id index on osm_roads_gen0
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_transport_areas in 40.978449ms
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Starting: Creating OSM id index on osm_roads_gen2
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_housenumbers_interpolated in 80.542964ms
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Starting: Creating OSM id index on osm_waterareas_gen0
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_barrierpoints in 80.559595ms
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_admin in 80.655103ms
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_transport_points in 80.618064ms
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Starting: Creating OSM id index on osm_waterareas_gen1
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Starting: Creating OSM id index on osm_waterways_gen1
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Starting: Creating OSM id index on osm_landusages_gen0
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_barrierways in 174.012864ms
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Starting: Creating OSM id index on osm_waterways_gen0
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_waterareas in 174.16565ms
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Starting: Creating OSM id index on osm_roads_gen3
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_boundary in 174.232314ms
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_places in 174.166071ms
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Starting: Creating OSM id index on osm_roads_gen1
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_waterways in 174.215212ms
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Starting: Creating OSM id index on osm_landusages_gen1
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Finished: Creating OSM id index on osm_roads_gen0 in 198.262538ms
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_roads_gen0
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Finished: Creating OSM id index on osm_waterareas_gen1 in 217.727128ms
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_waterareas_gen1
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Finished: Creating OSM id index on osm_waterways_gen1 in 217.852442ms
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Finished: Creating OSM id index on osm_landusages_gen0 in 217.757765ms
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_landusages_gen0
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Finished: Creating OSM id index on osm_waterareas_gen0 in 217.921882ms
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_waterareas_gen0
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Finished: Creating OSM id index on osm_roads_gen2 in 257.58479ms
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_roads_gen2
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_waterways_gen1
-[2020-03-13T16:10:35+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_housenumbers in 313.501986ms
-[2020-03-13T16:10:36+01:00] 0:00:15 [step] Finished: Creating OSM id index on osm_roads_gen1 in 150.178717ms
-[2020-03-13T16:10:36+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_roads_gen1
-[2020-03-13T16:10:36+01:00] 0:00:15 [step] Finished: Creating OSM id index on osm_roads_gen3 in 150.302618ms
-[2020-03-13T16:10:36+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_roads_gen3
-[2020-03-13T16:10:36+01:00] 0:00:15 [step] Finished: Creating OSM id index on osm_landusages_gen1 in 150.318839ms
-[2020-03-13T16:10:36+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_landusages_gen1
-[2020-03-13T16:10:36+01:00] 0:00:15 [step] Finished: Creating OSM id index on osm_waterways_gen0 in 150.470161ms
-[2020-03-13T16:10:36+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_waterways_gen0
-[2020-03-13T16:10:36+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_amenities in 334.155999ms
-[2020-03-13T16:10:36+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_waterways_gen0 in 19.070782ms
-[2020-03-13T16:10:36+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_waterareas_gen1 in 45.266054ms
-[2020-03-13T16:10:36+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_landusages in 343.770001ms
-[2020-03-13T16:10:36+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_waterareas_gen0 in 45.127524ms
-[2020-03-13T16:10:36+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_roads_gen1 in 28.156258ms
-[2020-03-13T16:10:36+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_roads_gen0 in 162.844636ms
-[2020-03-13T16:10:36+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_landusages_gen0 in 71.242134ms
-[2020-03-13T16:10:36+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_waterways_gen1 in 71.386615ms
-[2020-03-13T16:10:36+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_roads_gen2 in 80.977836ms
-[2020-03-13T16:10:36+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_landusages_gen1 in 66.189129ms
-[2020-03-13T16:10:36+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_roads_gen3 in 66.274207ms
-[2020-03-13T16:10:36+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_roads in 852.709574ms
-[2020-03-13T16:10:36+01:00] 0:00:16 [step] Finished: Creating geometry index on osm_buildings in 1.235546492s
-[2020-03-13T16:10:36+01:00] 0:00:16 [step] Finished: Creating geometry indices in 1.235692154s
-[2020-03-13T16:10:36+01:00] 0:00:16 [step] Finished: Importing OSM data in 16.26270236s
-[2020-03-13T16:10:36+01:00] 0:00:16 [step] Finished: Imposm in 16.262725273s
+[2020-03-25T15:42:01+01:00] 0:00:00 [warn]: exclude_tags filter is deprecated and will be removed. See require and reject filter.
+[2020-03-25T15:42:01+01:00] 0:00:00 [warn]: exclude_tags filter is deprecated and will be removed. See require and reject filter.
+[2020-03-25T15:42:01+01:00] 0:00:00 [warn]: exclude_tags filter is deprecated and will be removed. See require and reject filter.
+[2020-03-25T15:42:01+01:00] 0:00:00 [warn] pseudoarea type is deprecated and will be removed. See area and webmerc_area type.
+[2020-03-25T15:42:01+01:00] 0:00:00 [warn]: exclude_tags filter is deprecated and will be removed. See require and reject filter.
+[2020-03-25T15:42:01+01:00] 0:00:00 [warn]: exclude_tags filter is deprecated and will be removed. See require and reject filter.
+[2020-03-25T15:42:01+01:00] 0:00:00 [warn] pseudoarea type is deprecated and will be removed. See area and webmerc_area type.
+[2020-03-25T15:42:01+01:00] 0:00:00 [step] Starting: Imposm
+[2020-03-25T15:42:01+01:00] 0:00:00 [step] Starting: Importing OSM data
+[2020-03-25T15:42:01+01:00] 0:00:00 [step] Starting: Writing OSM data
+[2020-03-25T15:42:14+01:00] 0:00:13 [step] Finished: Writing OSM data in 13.165211392s
+[2020-03-25T15:42:14+01:00] 0:00:13 [step] Starting: Creating generalized tables
+[2020-03-25T15:42:14+01:00] 0:00:13 [progress]    13s C:       0/s (0) N:       0/s (38959) W:       0/s (385041) R:      0/s (1786)
+[2020-03-25T15:42:14+01:00] 0:00:13 [step] Starting: Generalizing osm_landusages into osm_landusages_gen1
+[2020-03-25T15:42:14+01:00] 0:00:13 [step] Starting: Generalizing osm_roads into osm_roads_gen3
+[2020-03-25T15:42:14+01:00] 0:00:13 [step] Starting: Generalizing osm_waterareas into osm_waterareas_gen1
+[2020-03-25T15:42:14+01:00] 0:00:13 [step] Starting: Generalizing osm_waterways into osm_waterways_gen1
+[2020-03-25T15:42:15+01:00] 0:00:13 [step] Finished: Generalizing osm_waterways into osm_waterways_gen1 in 545.762474ms
+[2020-03-25T15:42:15+01:00] 0:00:13 [step] Finished: Generalizing osm_roads into osm_roads_gen3 in 593.909826ms
+[2020-03-25T15:42:15+01:00] 0:00:13 [step] Finished: Generalizing osm_waterareas into osm_waterareas_gen1 in 739.048668ms
+[2020-03-25T15:42:16+01:00] 0:00:14 [step] Finished: Generalizing osm_landusages into osm_landusages_gen1 in 1.637758846s
+[2020-03-25T15:42:16+01:00] 0:00:14 [step] Starting: Generalizing osm_waterareas into osm_waterareas_gen0
+[2020-03-25T15:42:16+01:00] 0:00:14 [step] Starting: Generalizing osm_roads into osm_roads_gen2
+[2020-03-25T15:42:16+01:00] 0:00:14 [step] Starting: Generalizing osm_waterways into osm_waterways_gen0
+[2020-03-25T15:42:16+01:00] 0:00:14 [step] Starting: Generalizing osm_landusages into osm_landusages_gen0
+[2020-03-25T15:42:16+01:00] 0:00:15 [step] Finished: Generalizing osm_waterareas into osm_waterareas_gen0 in 230.100281ms
+[2020-03-25T15:42:16+01:00] 0:00:15 [step] Finished: Generalizing osm_waterways into osm_waterways_gen0 in 248.803353ms
+[2020-03-25T15:42:16+01:00] 0:00:15 [step] Finished: Generalizing osm_roads into osm_roads_gen2 in 271.544524ms
+[2020-03-25T15:42:16+01:00] 0:00:15 [step] Finished: Generalizing osm_landusages into osm_landusages_gen0 in 575.24669ms
+[2020-03-25T15:42:16+01:00] 0:00:15 [step] Starting: Generalizing osm_roads into osm_roads_gen1
+[2020-03-25T15:42:16+01:00] 0:00:15 [step] Finished: Generalizing osm_roads into osm_roads_gen1 in 141.635902ms
+[2020-03-25T15:42:16+01:00] 0:00:15 [step] Starting: Generalizing osm_roads into osm_roads_gen0
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Finished: Generalizing osm_roads into osm_roads_gen0 in 136.051585ms
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Finished: Creating generalized tables in 2.491146727s
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating geometry indices
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_landusages
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_waterways
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_transport_points
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating OSM id index on osm_waterways_gen0
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_housenumbers_interpolated
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_barrierways
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_buildings
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_places
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_transport_areas
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_roads
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_amenities
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_housenumbers
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_admin
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_barrierpoints
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_boundary
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_waterareas
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_waterways in 58.667965ms
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating OSM id index on osm_roads_gen0
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_transport_points in 87.959298ms
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating OSM id index on osm_landusages_gen1
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Finished: Creating OSM id index on osm_waterways_gen0 in 88.058163ms
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_waterways_gen0
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_waterareas in 88.099762ms
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_places in 88.174833ms
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating OSM id index on osm_waterareas_gen1
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_boundary in 88.203367ms
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_barrierways in 88.238443ms
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating OSM id index on osm_waterareas_gen0
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating OSM id index on osm_roads_gen3
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_housenumbers_interpolated in 88.185082ms
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating OSM id index on osm_roads_gen1
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating OSM id index on osm_waterways_gen1
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_barrierpoints in 88.196744ms
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating OSM id index on osm_roads_gen2
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_admin in 88.167219ms
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating OSM id index on osm_landusages_gen0
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_transport_areas in 88.190643ms
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_waterways_gen0 in 125.712089ms
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Finished: Creating OSM id index on osm_roads_gen0 in 176.65405ms
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_roads_gen0
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_housenumbers in 245.118808ms
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Finished: Creating OSM id index on osm_landusages_gen0 in 166.811001ms
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_landusages_gen0
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Finished: Creating OSM id index on osm_waterareas_gen0 in 167.360416ms
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_waterareas_gen0
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Finished: Creating OSM id index on osm_waterways_gen1 in 167.450796ms
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_waterways_gen1
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Finished: Creating OSM id index on osm_waterareas_gen1 in 167.459492ms
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_waterareas_gen1
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Finished: Creating OSM id index on osm_roads_gen2 in 178.739527ms
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_roads_gen2
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Finished: Creating OSM id index on osm_roads_gen3 in 179.344937ms
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_roads_gen3
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Finished: Creating OSM id index on osm_roads_gen1 in 179.117238ms
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_roads_gen1
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Finished: Creating OSM id index on osm_landusages_gen1 in 179.632658ms
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Starting: Creating geometry index on osm_landusages_gen1
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_landusages in 267.735005ms
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_waterareas_gen0 in 20.72217ms
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_landusages_gen0 in 20.838089ms
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_amenities in 285.781539ms
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_roads_gen0 in 50.478109ms
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_waterways_gen1 in 38.403657ms
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_waterareas_gen1 in 46.756882ms
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_roads_gen1 in 43.922376ms
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_roads_gen2 in 53.268009ms
+[2020-03-25T15:42:17+01:00] 0:00:15 [step] Finished: Creating geometry index on osm_landusages_gen1 in 62.463421ms
+[2020-03-25T15:42:17+01:00] 0:00:16 [step] Finished: Creating geometry index on osm_roads_gen3 in 73.178211ms
+[2020-03-25T15:42:18+01:00] 0:00:17 [step] Finished: Creating geometry index on osm_roads in 1.384418289s
+[2020-03-25T15:42:18+01:00] 0:00:17 [step] Finished: Creating geometry index on osm_buildings in 1.542159162s
+[2020-03-25T15:42:18+01:00] 0:00:17 [step] Finished: Creating geometry indices in 1.542338489s
+[2020-03-25T15:42:18+01:00] 0:00:17 [step] Finished: Importing OSM data in 17.198796416s
+[2020-03-25T15:42:18+01:00] 0:00:17 [step] Finished: Imposm in 17.198827635s
+
+----------- Deploy imported tables to production
+[2020-03-25T15:42:18+01:00] 0:00:00 [warn]: exclude_tags filter is deprecated and will be removed. See require and reject filter.
+[2020-03-25T15:42:18+01:00] 0:00:00 [warn]: exclude_tags filter is deprecated and will be removed. See require and reject filter.
+[2020-03-25T15:42:18+01:00] 0:00:00 [warn]: exclude_tags filter is deprecated and will be removed. See require and reject filter.
+[2020-03-25T15:42:18+01:00] 0:00:00 [warn] pseudoarea type is deprecated and will be removed. See area and webmerc_area type.
+[2020-03-25T15:42:18+01:00] 0:00:00 [warn]: exclude_tags filter is deprecated and will be removed. See require and reject filter.
+[2020-03-25T15:42:18+01:00] 0:00:00 [warn]: exclude_tags filter is deprecated and will be removed. See require and reject filter.
+[2020-03-25T15:42:18+01:00] 0:00:00 [warn] pseudoarea type is deprecated and will be removed. See area and webmerc_area type.
+[2020-03-25T15:42:18+01:00] 0:00:00 [step] Starting: Imposm
+[2020-03-25T15:42:18+01:00] 0:00:00 [step] Starting: Rotating tables
+[2020-03-25T15:42:18+01:00] 0:00:00 [info] Rotating osm_buildings from import -> public -> backup
+[2020-03-25T15:42:18+01:00] 0:00:00 [info] Rotating osm_housenumbers_interpolated from import -> public -> backup
+[2020-03-25T15:42:18+01:00] 0:00:00 [info] Rotating osm_waterways from import -> public -> backup
+[2020-03-25T15:42:18+01:00] 0:00:00 [info] Rotating osm_barrierways from import -> public -> backup
+[2020-03-25T15:42:18+01:00] 0:00:00 [info] Rotating osm_amenities from import -> public -> backup
+[2020-03-25T15:42:18+01:00] 0:00:00 [info] Rotating osm_barrierpoints from import -> public -> backup
+[2020-03-25T15:42:18+01:00] 0:00:00 [info] Rotating osm_places from import -> public -> backup
+[2020-03-25T15:42:18+01:00] 0:00:00 [info] Rotating osm_boundary from import -> public -> backup
+[2020-03-25T15:42:18+01:00] 0:00:00 [info] Rotating osm_waterareas from import -> public -> backup
+[2020-03-25T15:42:18+01:00] 0:00:00 [info] Rotating osm_transport_areas from import -> public -> backup
+[2020-03-25T15:42:18+01:00] 0:00:00 [info] Rotating osm_transport_points from import -> public -> backup
+[2020-03-25T15:42:18+01:00] 0:00:00 [info] Rotating osm_admin from import -> public -> backup
+[2020-03-25T15:42:18+01:00] 0:00:00 [info] Rotating osm_landusages from import -> public -> backup
+[2020-03-25T15:42:18+01:00] 0:00:00 [info] Rotating osm_housenumbers from import -> public -> backup
+[2020-03-25T15:42:18+01:00] 0:00:00 [info] Rotating osm_roads from import -> public -> backup
+[2020-03-25T15:42:18+01:00] 0:00:00 [info] Rotating osm_roads_gen2 from import -> public -> backup
+[2020-03-25T15:42:18+01:00] 0:00:00 [info] Rotating osm_roads_gen3 from import -> public -> backup
+[2020-03-25T15:42:18+01:00] 0:00:00 [info] Rotating osm_landusages_gen0 from import -> public -> backup
+[2020-03-25T15:42:18+01:00] 0:00:00 [info] Rotating osm_roads_gen0 from import -> public -> backup
+[2020-03-25T15:42:18+01:00] 0:00:00 [info] Rotating osm_waterways_gen1 from import -> public -> backup
+[2020-03-25T15:42:18+01:00] 0:00:00 [info] Rotating osm_waterareas_gen0 from import -> public -> backup
+[2020-03-25T15:42:18+01:00] 0:00:00 [info] Rotating osm_waterways_gen0 from import -> public -> backup
+[2020-03-25T15:42:18+01:00] 0:00:00 [info] Rotating osm_waterareas_gen1 from import -> public -> backup
+[2020-03-25T15:42:18+01:00] 0:00:00 [info] Rotating osm_roads_gen1 from import -> public -> backup
+[2020-03-25T15:42:18+01:00] 0:00:00 [info] Rotating osm_landusages_gen1 from import -> public -> backup
+[2020-03-25T15:42:18+01:00] 0:00:00 [step] Finished: Rotating tables in 58.150879ms
+[2020-03-25T15:42:18+01:00] 0:00:00 [step] Finished: Imposm in 58.216603ms
+
+----------- Remove backup scheme
+[2020-03-25T15:42:18+01:00] 0:00:00 [warn]: exclude_tags filter is deprecated and will be removed. See require and reject filter.
+[2020-03-25T15:42:18+01:00] 0:00:00 [warn]: exclude_tags filter is deprecated and will be removed. See require and reject filter.
+[2020-03-25T15:42:18+01:00] 0:00:00 [warn]: exclude_tags filter is deprecated and will be removed. See require and reject filter.
+[2020-03-25T15:42:18+01:00] 0:00:00 [warn] pseudoarea type is deprecated and will be removed. See area and webmerc_area type.
+[2020-03-25T15:42:18+01:00] 0:00:00 [warn]: exclude_tags filter is deprecated and will be removed. See require and reject filter.
+[2020-03-25T15:42:18+01:00] 0:00:00 [warn]: exclude_tags filter is deprecated and will be removed. See require and reject filter.
+[2020-03-25T15:42:18+01:00] 0:00:00 [warn] pseudoarea type is deprecated and will be removed. See area and webmerc_area type.
+[2020-03-25T15:42:18+01:00] 0:00:00 [step] Starting: Imposm
+[2020-03-25T15:42:18+01:00] 0:00:00 [step] Finished: Imposm in 17.904384ms
 
 ----------- Dumping the backup
 pg_dump: last built-in OID is 16383
@@ -214,79 +263,76 @@ pg_dump: finding the columns and types of table "topology.layer"
 pg_dump: finding default expressions of table "topology.layer"
 pg_dump: finding the columns and types of table "public.raster_columns"
 pg_dump: finding the columns and types of table "public.raster_overviews"
-pg_dump: finding the columns and types of table "cron.job"
-pg_dump: finding default expressions of table "cron.job"
-pg_dump: finding the columns and types of table "import.osm_buildings"
-pg_dump: finding default expressions of table "import.osm_buildings"
-pg_dump: finding the columns and types of table "import.osm_amenities"
-pg_dump: finding default expressions of table "import.osm_amenities"
-pg_dump: finding the columns and types of table "import.osm_barrierpoints"
-pg_dump: finding default expressions of table "import.osm_barrierpoints"
-pg_dump: finding the columns and types of table "import.osm_housenumbers"
-pg_dump: finding default expressions of table "import.osm_housenumbers"
-pg_dump: finding the columns and types of table "import.osm_waterways"
-pg_dump: finding default expressions of table "import.osm_waterways"
-pg_dump: finding the columns and types of table "import.osm_admin"
-pg_dump: finding default expressions of table "import.osm_admin"
-pg_dump: finding the columns and types of table "import.osm_landusages"
-pg_dump: finding default expressions of table "import.osm_landusages"
-pg_dump: finding the columns and types of table "import.osm_barrierways"
-pg_dump: finding default expressions of table "import.osm_barrierways"
-pg_dump: finding the columns and types of table "import.osm_transport_points"
-pg_dump: finding default expressions of table "import.osm_transport_points"
-pg_dump: finding the columns and types of table "import.osm_housenumbers_interpolated"
-pg_dump: finding default expressions of table "import.osm_housenumbers_interpolated"
-pg_dump: finding the columns and types of table "import.osm_transport_areas"
-pg_dump: finding default expressions of table "import.osm_transport_areas"
-pg_dump: finding the columns and types of table "import.osm_roads"
-pg_dump: finding default expressions of table "import.osm_roads"
-pg_dump: finding the columns and types of table "import.osm_boundary"
-pg_dump: finding default expressions of table "import.osm_boundary"
-pg_dump: finding the columns and types of table "import.osm_places"
-pg_dump: finding default expressions of table "import.osm_places"
-pg_dump: finding the columns and types of table "import.osm_waterareas"
-pg_dump: finding default expressions of table "import.osm_waterareas"
-pg_dump: finding the columns and types of table "import.osm_waterways_gen1"
-pg_dump: finding the columns and types of table "import.osm_roads_gen3"
-pg_dump: finding the columns and types of table "import.osm_landusages_gen1"
-pg_dump: finding the columns and types of table "import.osm_waterareas_gen1"
-pg_dump: finding the columns and types of table "import.osm_roads_gen2"
-pg_dump: finding the columns and types of table "import.osm_waterways_gen0"
-pg_dump: finding the columns and types of table "import.osm_waterareas_gen0"
-pg_dump: finding the columns and types of table "import.osm_landusages_gen0"
-pg_dump: finding the columns and types of table "import.osm_roads_gen1"
-pg_dump: finding the columns and types of table "import.osm_roads_gen0"
+pg_dump: finding the columns and types of table "public.osm_waterways"
+pg_dump: finding default expressions of table "public.osm_waterways"
+pg_dump: finding the columns and types of table "public.osm_housenumbers_interpolated"
+pg_dump: finding default expressions of table "public.osm_housenumbers_interpolated"
+pg_dump: finding the columns and types of table "public.osm_places"
+pg_dump: finding default expressions of table "public.osm_places"
+pg_dump: finding the columns and types of table "public.osm_boundary"
+pg_dump: finding default expressions of table "public.osm_boundary"
+pg_dump: finding the columns and types of table "public.osm_barrierpoints"
+pg_dump: finding default expressions of table "public.osm_barrierpoints"
+pg_dump: finding the columns and types of table "public.osm_landusages"
+pg_dump: finding default expressions of table "public.osm_landusages"
+pg_dump: finding the columns and types of table "public.osm_waterareas"
+pg_dump: finding default expressions of table "public.osm_waterareas"
+pg_dump: finding the columns and types of table "public.osm_roads"
+pg_dump: finding default expressions of table "public.osm_roads"
+pg_dump: finding the columns and types of table "public.osm_transport_areas"
+pg_dump: finding default expressions of table "public.osm_transport_areas"
+pg_dump: finding the columns and types of table "public.osm_amenities"
+pg_dump: finding default expressions of table "public.osm_amenities"
+pg_dump: finding the columns and types of table "public.osm_buildings"
+pg_dump: finding default expressions of table "public.osm_buildings"
+pg_dump: finding the columns and types of table "public.osm_housenumbers"
+pg_dump: finding default expressions of table "public.osm_housenumbers"
+pg_dump: finding the columns and types of table "public.osm_admin"
+pg_dump: finding default expressions of table "public.osm_admin"
+pg_dump: finding the columns and types of table "public.osm_transport_points"
+pg_dump: finding default expressions of table "public.osm_transport_points"
+pg_dump: finding the columns and types of table "public.osm_barrierways"
+pg_dump: finding default expressions of table "public.osm_barrierways"
+pg_dump: finding the columns and types of table "public.osm_roads_gen3"
+pg_dump: finding the columns and types of table "public.osm_waterways_gen1"
+pg_dump: finding the columns and types of table "public.osm_landusages_gen1"
+pg_dump: finding the columns and types of table "public.osm_waterareas_gen1"
+pg_dump: finding the columns and types of table "public.osm_roads_gen2"
+pg_dump: finding the columns and types of table "public.osm_waterareas_gen0"
+pg_dump: finding the columns and types of table "public.osm_waterways_gen0"
+pg_dump: finding the columns and types of table "public.osm_landusages_gen0"
+pg_dump: finding the columns and types of table "public.osm_roads_gen1"
+pg_dump: finding the columns and types of table "public.osm_roads_gen0"
 pg_dump: flagging inherited columns in subtables
 pg_dump: reading indexes
 pg_dump: reading indexes for table "public.spatial_ref_sys"
 pg_dump: reading indexes for table "topology.topology"
 pg_dump: reading indexes for table "topology.layer"
-pg_dump: reading indexes for table "cron.job"
-pg_dump: reading indexes for table "import.osm_buildings"
-pg_dump: reading indexes for table "import.osm_amenities"
-pg_dump: reading indexes for table "import.osm_barrierpoints"
-pg_dump: reading indexes for table "import.osm_housenumbers"
-pg_dump: reading indexes for table "import.osm_waterways"
-pg_dump: reading indexes for table "import.osm_admin"
-pg_dump: reading indexes for table "import.osm_landusages"
-pg_dump: reading indexes for table "import.osm_barrierways"
-pg_dump: reading indexes for table "import.osm_transport_points"
-pg_dump: reading indexes for table "import.osm_housenumbers_interpolated"
-pg_dump: reading indexes for table "import.osm_transport_areas"
-pg_dump: reading indexes for table "import.osm_roads"
-pg_dump: reading indexes for table "import.osm_boundary"
-pg_dump: reading indexes for table "import.osm_places"
-pg_dump: reading indexes for table "import.osm_waterareas"
-pg_dump: reading indexes for table "import.osm_waterways_gen1"
-pg_dump: reading indexes for table "import.osm_roads_gen3"
-pg_dump: reading indexes for table "import.osm_landusages_gen1"
-pg_dump: reading indexes for table "import.osm_waterareas_gen1"
-pg_dump: reading indexes for table "import.osm_roads_gen2"
-pg_dump: reading indexes for table "import.osm_waterways_gen0"
-pg_dump: reading indexes for table "import.osm_waterareas_gen0"
-pg_dump: reading indexes for table "import.osm_landusages_gen0"
-pg_dump: reading indexes for table "import.osm_roads_gen1"
-pg_dump: reading indexes for table "import.osm_roads_gen0"
+pg_dump: reading indexes for table "public.osm_waterways"
+pg_dump: reading indexes for table "public.osm_housenumbers_interpolated"
+pg_dump: reading indexes for table "public.osm_places"
+pg_dump: reading indexes for table "public.osm_boundary"
+pg_dump: reading indexes for table "public.osm_barrierpoints"
+pg_dump: reading indexes for table "public.osm_landusages"
+pg_dump: reading indexes for table "public.osm_waterareas"
+pg_dump: reading indexes for table "public.osm_roads"
+pg_dump: reading indexes for table "public.osm_transport_areas"
+pg_dump: reading indexes for table "public.osm_amenities"
+pg_dump: reading indexes for table "public.osm_buildings"
+pg_dump: reading indexes for table "public.osm_housenumbers"
+pg_dump: reading indexes for table "public.osm_admin"
+pg_dump: reading indexes for table "public.osm_transport_points"
+pg_dump: reading indexes for table "public.osm_barrierways"
+pg_dump: reading indexes for table "public.osm_roads_gen3"
+pg_dump: reading indexes for table "public.osm_waterways_gen1"
+pg_dump: reading indexes for table "public.osm_landusages_gen1"
+pg_dump: reading indexes for table "public.osm_waterareas_gen1"
+pg_dump: reading indexes for table "public.osm_roads_gen2"
+pg_dump: reading indexes for table "public.osm_waterareas_gen0"
+pg_dump: reading indexes for table "public.osm_waterways_gen0"
+pg_dump: reading indexes for table "public.osm_landusages_gen0"
+pg_dump: reading indexes for table "public.osm_roads_gen1"
+pg_dump: reading indexes for table "public.osm_roads_gen0"
 pg_dump: flagging indexes in partitioned tables
 pg_dump: reading extended statistics
 pg_dump: reading constraints
@@ -309,117 +355,113 @@ pg_dump: reading row security enabled for table "public.raster_columns"
 pg_dump: reading policies for table "public.raster_columns"
 pg_dump: reading row security enabled for table "public.raster_overviews"
 pg_dump: reading policies for table "public.raster_overviews"
-pg_dump: reading row security enabled for table "cron.jobid_seq"
-pg_dump: reading policies for table "cron.jobid_seq"
-pg_dump: reading row security enabled for table "cron.job"
-pg_dump: reading policies for table "cron.job"
-pg_dump: reading row security enabled for table "import.osm_buildings_id_seq"
-pg_dump: reading policies for table "import.osm_buildings_id_seq"
-pg_dump: reading row security enabled for table "import.osm_buildings"
-pg_dump: reading policies for table "import.osm_buildings"
-pg_dump: reading row security enabled for table "import.osm_amenities_id_seq"
-pg_dump: reading policies for table "import.osm_amenities_id_seq"
-pg_dump: reading row security enabled for table "import.osm_amenities"
-pg_dump: reading policies for table "import.osm_amenities"
-pg_dump: reading row security enabled for table "import.osm_barrierpoints_id_seq"
-pg_dump: reading policies for table "import.osm_barrierpoints_id_seq"
-pg_dump: reading row security enabled for table "import.osm_barrierpoints"
-pg_dump: reading policies for table "import.osm_barrierpoints"
-pg_dump: reading row security enabled for table "import.osm_housenumbers_id_seq"
-pg_dump: reading policies for table "import.osm_housenumbers_id_seq"
-pg_dump: reading row security enabled for table "import.osm_housenumbers"
-pg_dump: reading policies for table "import.osm_housenumbers"
-pg_dump: reading row security enabled for table "import.osm_waterways_id_seq"
-pg_dump: reading policies for table "import.osm_waterways_id_seq"
-pg_dump: reading row security enabled for table "import.osm_waterways"
-pg_dump: reading policies for table "import.osm_waterways"
-pg_dump: reading row security enabled for table "import.osm_admin_id_seq"
-pg_dump: reading policies for table "import.osm_admin_id_seq"
-pg_dump: reading row security enabled for table "import.osm_admin"
-pg_dump: reading policies for table "import.osm_admin"
-pg_dump: reading row security enabled for table "import.osm_landusages_id_seq"
-pg_dump: reading policies for table "import.osm_landusages_id_seq"
-pg_dump: reading row security enabled for table "import.osm_landusages"
-pg_dump: reading policies for table "import.osm_landusages"
-pg_dump: reading row security enabled for table "import.osm_barrierways_id_seq"
-pg_dump: reading policies for table "import.osm_barrierways_id_seq"
-pg_dump: reading row security enabled for table "import.osm_barrierways"
-pg_dump: reading policies for table "import.osm_barrierways"
-pg_dump: reading row security enabled for table "import.osm_transport_points_id_seq"
-pg_dump: reading policies for table "import.osm_transport_points_id_seq"
-pg_dump: reading row security enabled for table "import.osm_transport_points"
-pg_dump: reading policies for table "import.osm_transport_points"
-pg_dump: reading row security enabled for table "import.osm_housenumbers_interpolated_id_seq"
-pg_dump: reading policies for table "import.osm_housenumbers_interpolated_id_seq"
-pg_dump: reading row security enabled for table "import.osm_housenumbers_interpolated"
-pg_dump: reading policies for table "import.osm_housenumbers_interpolated"
-pg_dump: reading row security enabled for table "import.osm_transport_areas_id_seq"
-pg_dump: reading policies for table "import.osm_transport_areas_id_seq"
-pg_dump: reading row security enabled for table "import.osm_transport_areas"
-pg_dump: reading policies for table "import.osm_transport_areas"
-pg_dump: reading row security enabled for table "import.osm_roads_id_seq"
-pg_dump: reading policies for table "import.osm_roads_id_seq"
-pg_dump: reading row security enabled for table "import.osm_roads"
-pg_dump: reading policies for table "import.osm_roads"
-pg_dump: reading row security enabled for table "import.osm_boundary_id_seq"
-pg_dump: reading policies for table "import.osm_boundary_id_seq"
-pg_dump: reading row security enabled for table "import.osm_boundary"
-pg_dump: reading policies for table "import.osm_boundary"
-pg_dump: reading row security enabled for table "import.osm_places_id_seq"
-pg_dump: reading policies for table "import.osm_places_id_seq"
-pg_dump: reading row security enabled for table "import.osm_places"
-pg_dump: reading policies for table "import.osm_places"
-pg_dump: reading row security enabled for table "import.osm_waterareas_id_seq"
-pg_dump: reading policies for table "import.osm_waterareas_id_seq"
-pg_dump: reading row security enabled for table "import.osm_waterareas"
-pg_dump: reading policies for table "import.osm_waterareas"
-pg_dump: reading row security enabled for table "import.osm_waterways_gen1"
-pg_dump: reading policies for table "import.osm_waterways_gen1"
-pg_dump: reading row security enabled for table "import.osm_roads_gen3"
-pg_dump: reading policies for table "import.osm_roads_gen3"
-pg_dump: reading row security enabled for table "import.osm_landusages_gen1"
-pg_dump: reading policies for table "import.osm_landusages_gen1"
-pg_dump: reading row security enabled for table "import.osm_waterareas_gen1"
-pg_dump: reading policies for table "import.osm_waterareas_gen1"
-pg_dump: reading row security enabled for table "import.osm_roads_gen2"
-pg_dump: reading policies for table "import.osm_roads_gen2"
-pg_dump: reading row security enabled for table "import.osm_waterways_gen0"
-pg_dump: reading policies for table "import.osm_waterways_gen0"
-pg_dump: reading row security enabled for table "import.osm_waterareas_gen0"
-pg_dump: reading policies for table "import.osm_waterareas_gen0"
-pg_dump: reading row security enabled for table "import.osm_landusages_gen0"
-pg_dump: reading policies for table "import.osm_landusages_gen0"
-pg_dump: reading row security enabled for table "import.osm_roads_gen1"
-pg_dump: reading policies for table "import.osm_roads_gen1"
-pg_dump: reading row security enabled for table "import.osm_roads_gen0"
-pg_dump: reading policies for table "import.osm_roads_gen0"
+pg_dump: reading row security enabled for table "public.osm_waterways_id_seq"
+pg_dump: reading policies for table "public.osm_waterways_id_seq"
+pg_dump: reading row security enabled for table "public.osm_waterways"
+pg_dump: reading policies for table "public.osm_waterways"
+pg_dump: reading row security enabled for table "public.osm_housenumbers_interpolated_id_seq"
+pg_dump: reading policies for table "public.osm_housenumbers_interpolated_id_seq"
+pg_dump: reading row security enabled for table "public.osm_housenumbers_interpolated"
+pg_dump: reading policies for table "public.osm_housenumbers_interpolated"
+pg_dump: reading row security enabled for table "public.osm_places_id_seq"
+pg_dump: reading policies for table "public.osm_places_id_seq"
+pg_dump: reading row security enabled for table "public.osm_places"
+pg_dump: reading policies for table "public.osm_places"
+pg_dump: reading row security enabled for table "public.osm_boundary_id_seq"
+pg_dump: reading policies for table "public.osm_boundary_id_seq"
+pg_dump: reading row security enabled for table "public.osm_boundary"
+pg_dump: reading policies for table "public.osm_boundary"
+pg_dump: reading row security enabled for table "public.osm_barrierpoints_id_seq"
+pg_dump: reading policies for table "public.osm_barrierpoints_id_seq"
+pg_dump: reading row security enabled for table "public.osm_barrierpoints"
+pg_dump: reading policies for table "public.osm_barrierpoints"
+pg_dump: reading row security enabled for table "public.osm_landusages_id_seq"
+pg_dump: reading policies for table "public.osm_landusages_id_seq"
+pg_dump: reading row security enabled for table "public.osm_landusages"
+pg_dump: reading policies for table "public.osm_landusages"
+pg_dump: reading row security enabled for table "public.osm_waterareas_id_seq"
+pg_dump: reading policies for table "public.osm_waterareas_id_seq"
+pg_dump: reading row security enabled for table "public.osm_waterareas"
+pg_dump: reading policies for table "public.osm_waterareas"
+pg_dump: reading row security enabled for table "public.osm_roads_id_seq"
+pg_dump: reading policies for table "public.osm_roads_id_seq"
+pg_dump: reading row security enabled for table "public.osm_roads"
+pg_dump: reading policies for table "public.osm_roads"
+pg_dump: reading row security enabled for table "public.osm_transport_areas_id_seq"
+pg_dump: reading policies for table "public.osm_transport_areas_id_seq"
+pg_dump: reading row security enabled for table "public.osm_transport_areas"
+pg_dump: reading policies for table "public.osm_transport_areas"
+pg_dump: reading row security enabled for table "public.osm_amenities_id_seq"
+pg_dump: reading policies for table "public.osm_amenities_id_seq"
+pg_dump: reading row security enabled for table "public.osm_amenities"
+pg_dump: reading policies for table "public.osm_amenities"
+pg_dump: reading row security enabled for table "public.osm_buildings_id_seq"
+pg_dump: reading policies for table "public.osm_buildings_id_seq"
+pg_dump: reading row security enabled for table "public.osm_buildings"
+pg_dump: reading policies for table "public.osm_buildings"
+pg_dump: reading row security enabled for table "public.osm_housenumbers_id_seq"
+pg_dump: reading policies for table "public.osm_housenumbers_id_seq"
+pg_dump: reading row security enabled for table "public.osm_housenumbers"
+pg_dump: reading policies for table "public.osm_housenumbers"
+pg_dump: reading row security enabled for table "public.osm_admin_id_seq"
+pg_dump: reading policies for table "public.osm_admin_id_seq"
+pg_dump: reading row security enabled for table "public.osm_admin"
+pg_dump: reading policies for table "public.osm_admin"
+pg_dump: reading row security enabled for table "public.osm_transport_points_id_seq"
+pg_dump: reading policies for table "public.osm_transport_points_id_seq"
+pg_dump: reading row security enabled for table "public.osm_transport_points"
+pg_dump: reading policies for table "public.osm_transport_points"
+pg_dump: reading row security enabled for table "public.osm_barrierways_id_seq"
+pg_dump: reading policies for table "public.osm_barrierways_id_seq"
+pg_dump: reading row security enabled for table "public.osm_barrierways"
+pg_dump: reading policies for table "public.osm_barrierways"
+pg_dump: reading row security enabled for table "public.osm_roads_gen3"
+pg_dump: reading policies for table "public.osm_roads_gen3"
+pg_dump: reading row security enabled for table "public.osm_waterways_gen1"
+pg_dump: reading policies for table "public.osm_waterways_gen1"
+pg_dump: reading row security enabled for table "public.osm_landusages_gen1"
+pg_dump: reading policies for table "public.osm_landusages_gen1"
+pg_dump: reading row security enabled for table "public.osm_waterareas_gen1"
+pg_dump: reading policies for table "public.osm_waterareas_gen1"
+pg_dump: reading row security enabled for table "public.osm_roads_gen2"
+pg_dump: reading policies for table "public.osm_roads_gen2"
+pg_dump: reading row security enabled for table "public.osm_waterareas_gen0"
+pg_dump: reading policies for table "public.osm_waterareas_gen0"
+pg_dump: reading row security enabled for table "public.osm_waterways_gen0"
+pg_dump: reading policies for table "public.osm_waterways_gen0"
+pg_dump: reading row security enabled for table "public.osm_landusages_gen0"
+pg_dump: reading policies for table "public.osm_landusages_gen0"
+pg_dump: reading row security enabled for table "public.osm_roads_gen1"
+pg_dump: reading policies for table "public.osm_roads_gen1"
+pg_dump: reading row security enabled for table "public.osm_roads_gen0"
+pg_dump: reading policies for table "public.osm_roads_gen0"
 pg_dump: reading publications
 pg_dump: reading publication membership
-pg_dump: reading publication membership for table "import.osm_buildings"
-pg_dump: reading publication membership for table "import.osm_amenities"
-pg_dump: reading publication membership for table "import.osm_barrierpoints"
-pg_dump: reading publication membership for table "import.osm_housenumbers"
-pg_dump: reading publication membership for table "import.osm_waterways"
-pg_dump: reading publication membership for table "import.osm_admin"
-pg_dump: reading publication membership for table "import.osm_landusages"
-pg_dump: reading publication membership for table "import.osm_barrierways"
-pg_dump: reading publication membership for table "import.osm_transport_points"
-pg_dump: reading publication membership for table "import.osm_housenumbers_interpolated"
-pg_dump: reading publication membership for table "import.osm_transport_areas"
-pg_dump: reading publication membership for table "import.osm_roads"
-pg_dump: reading publication membership for table "import.osm_boundary"
-pg_dump: reading publication membership for table "import.osm_places"
-pg_dump: reading publication membership for table "import.osm_waterareas"
-pg_dump: reading publication membership for table "import.osm_waterways_gen1"
-pg_dump: reading publication membership for table "import.osm_roads_gen3"
-pg_dump: reading publication membership for table "import.osm_landusages_gen1"
-pg_dump: reading publication membership for table "import.osm_waterareas_gen1"
-pg_dump: reading publication membership for table "import.osm_roads_gen2"
-pg_dump: reading publication membership for table "import.osm_waterways_gen0"
-pg_dump: reading publication membership for table "import.osm_waterareas_gen0"
-pg_dump: reading publication membership for table "import.osm_landusages_gen0"
-pg_dump: reading publication membership for table "import.osm_roads_gen1"
-pg_dump: reading publication membership for table "import.osm_roads_gen0"
+pg_dump: reading publication membership for table "public.osm_waterways"
+pg_dump: reading publication membership for table "public.osm_housenumbers_interpolated"
+pg_dump: reading publication membership for table "public.osm_places"
+pg_dump: reading publication membership for table "public.osm_boundary"
+pg_dump: reading publication membership for table "public.osm_barrierpoints"
+pg_dump: reading publication membership for table "public.osm_landusages"
+pg_dump: reading publication membership for table "public.osm_waterareas"
+pg_dump: reading publication membership for table "public.osm_roads"
+pg_dump: reading publication membership for table "public.osm_transport_areas"
+pg_dump: reading publication membership for table "public.osm_amenities"
+pg_dump: reading publication membership for table "public.osm_buildings"
+pg_dump: reading publication membership for table "public.osm_housenumbers"
+pg_dump: reading publication membership for table "public.osm_admin"
+pg_dump: reading publication membership for table "public.osm_transport_points"
+pg_dump: reading publication membership for table "public.osm_barrierways"
+pg_dump: reading publication membership for table "public.osm_roads_gen3"
+pg_dump: reading publication membership for table "public.osm_waterways_gen1"
+pg_dump: reading publication membership for table "public.osm_landusages_gen1"
+pg_dump: reading publication membership for table "public.osm_waterareas_gen1"
+pg_dump: reading publication membership for table "public.osm_roads_gen2"
+pg_dump: reading publication membership for table "public.osm_waterareas_gen0"
+pg_dump: reading publication membership for table "public.osm_waterways_gen0"
+pg_dump: reading publication membership for table "public.osm_landusages_gen0"
+pg_dump: reading publication membership for table "public.osm_roads_gen1"
+pg_dump: reading publication membership for table "public.osm_roads_gen0"
 pg_dump: reading subscriptions
 pg_dump: reading large objects
 pg_dump: reading dependency data
@@ -427,39 +469,41 @@ pg_dump: saving encoding = UTF8
 pg_dump: saving standard_conforming_strings = on
 pg_dump: saving search_path = 
 pg_dump: saving database definition
-pg_dump: dumping contents of table "cron.job"
-pg_dump: dumping contents of table "import.osm_admin"
-pg_dump: dumping contents of table "import.osm_amenities"
-pg_dump: dumping contents of table "import.osm_barrierpoints"
-pg_dump: dumping contents of table "import.osm_barrierways"
-pg_dump: dumping contents of table "import.osm_boundary"
-pg_dump: dumping contents of table "import.osm_buildings"
-pg_dump: dumping contents of table "import.osm_housenumbers"
-pg_dump: dumping contents of table "import.osm_housenumbers_interpolated"
-pg_dump: dumping contents of table "import.osm_landusages"
-pg_dump: dumping contents of table "import.osm_landusages_gen0"
-pg_dump: dumping contents of table "import.osm_landusages_gen1"
-pg_dump: dumping contents of table "import.osm_places"
-pg_dump: dumping contents of table "import.osm_roads"
-pg_dump: dumping contents of table "import.osm_roads_gen0"
-pg_dump: dumping contents of table "import.osm_roads_gen1"
-pg_dump: dumping contents of table "import.osm_roads_gen2"
-pg_dump: dumping contents of table "import.osm_roads_gen3"
-pg_dump: dumping contents of table "import.osm_transport_areas"
-pg_dump: dumping contents of table "import.osm_transport_points"
-pg_dump: dumping contents of table "import.osm_waterareas"
-pg_dump: dumping contents of table "import.osm_waterareas_gen0"
-pg_dump: dumping contents of table "import.osm_waterareas_gen1"
-pg_dump: dumping contents of table "import.osm_waterways"
-pg_dump: dumping contents of table "import.osm_waterways_gen0"
-pg_dump: dumping contents of table "import.osm_waterways_gen1"
+pg_dump: dumping contents of table "public.osm_admin"
+pg_dump: dumping contents of table "public.osm_amenities"
+pg_dump: dumping contents of table "public.osm_barrierpoints"
+pg_dump: dumping contents of table "public.osm_barrierways"
+pg_dump: dumping contents of table "public.osm_boundary"
+pg_dump: dumping contents of table "public.osm_buildings"
+pg_dump: dumping contents of table "public.osm_housenumbers"
+pg_dump: dumping contents of table "public.osm_housenumbers_interpolated"
+pg_dump: dumping contents of table "public.osm_landusages"
+pg_dump: dumping contents of table "public.osm_landusages_gen0"
+pg_dump: dumping contents of table "public.osm_landusages_gen1"
+pg_dump: dumping contents of table "public.osm_places"
+pg_dump: dumping contents of table "public.osm_roads"
+pg_dump: dumping contents of table "public.osm_roads_gen0"
+pg_dump: dumping contents of table "public.osm_roads_gen1"
+pg_dump: dumping contents of table "public.osm_roads_gen2"
+pg_dump: dumping contents of table "public.osm_roads_gen3"
+pg_dump: dumping contents of table "public.osm_transport_areas"
+pg_dump: dumping contents of table "public.osm_transport_points"
+pg_dump: dumping contents of table "public.osm_waterareas"
+pg_dump: dumping contents of table "public.osm_waterareas_gen0"
+pg_dump: dumping contents of table "public.osm_waterareas_gen1"
+pg_dump: dumping contents of table "public.osm_waterways"
+pg_dump: dumping contents of table "public.osm_waterways_gen0"
+pg_dump: dumping contents of table "public.osm_waterways_gen1"
 pg_dump: dumping contents of table "public.spatial_ref_sys"
 pg_dump: dumping contents of table "topology.topology"
 pg_dump: dumping contents of table "topology.layer"
-Backup available at /home/aaime/devel/osm-styles/imposm/work/gis.backup
 
 ----------- Shutting down the database container
 osm-postgis
+
+----------- Deleting the database container
+osm-postgis
+Backup available at /home/user/.../osm-styles/imposm/work/gis.backup
 ```
    
 4. If all worked, the backup is available at ``work/gis.backup``
@@ -489,3 +533,4 @@ These restore instructions assume you have pgAdmin 4 installed, and the backup f
 3. Run the restore.
 
 After doing this, go back to the [general instructions](../README.md) and finish setting up GeoServer.
+The imposm run includes moving tables from the "import" to the "public" schema, so the "public" schema should be used for the GeoServer configuration.

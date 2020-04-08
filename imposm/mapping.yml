@@ -52,6 +52,12 @@ tables:
     - key: name
       name: name
       type: string
+    - key: name:en
+      name: name_en
+      type: string
+    - key: int_name
+      name: int_name
+      type: string
     - name: type
       type: mapping_value
     - key: admin_level
@@ -86,6 +92,12 @@ tables:
       type: geometry
     - key: name
       name: name
+      type: string
+    - key: name:en
+      name: name_en
+      type: string
+    - key: int_name
+      name: int_name
       type: string
     - key: access
       name: access
@@ -325,6 +337,12 @@ tables:
     - key: name
       name: name
       type: string
+    - key: name:en
+      name: name_en
+      type: string
+    - key: int_name
+      name: int_name
+      type: string
     - name: type
       type: mapping_value
     mapping:
@@ -355,6 +373,12 @@ tables:
     - key: name
       name: name
       type: string
+    - key: name:en
+      name: name_en
+      type: string
+    - key: int_name
+      name: int_name
+      type: string
     - name: type
       type: mapping_value
     mapping:
@@ -381,6 +405,12 @@ tables:
       type: geometry
     - key: name
       name: name
+      type: string
+    - key: name:en
+      name: name_en
+      type: string
+    - key: int_name
+      name: int_name
       type: string
     - name: type
       type: mapping_value
@@ -466,6 +496,12 @@ tables:
       type: geometry
     - key: name
       name: name
+      type: string
+    - key: name:en
+      name: name_en
+      type: string
+    - key: int_name
+      name: int_name
       type: string
     - name: type
       type: mapping_value
@@ -648,6 +684,12 @@ tables:
     - key: name
       name: name
       type: string
+    - key: name:en
+      name: name_en
+      type: string
+    - key: int_name
+      name: int_name
+      type: string
     - name: type
       type: mapping_value
     - key : capital
@@ -698,6 +740,12 @@ tables:
       type: string
     - key: name
       name: name
+      type: string
+    - key: name:en
+      name: name_en
+      type: string
+    - key: int_name
+      name: int_name
       type: string
     - key: tunnel
       name: tunnel
@@ -819,6 +867,12 @@ tables:
     - key: name
       name: name
       type: string
+    - key: name:en
+      name: name_en
+      type: string
+    - key: int_name
+      name: int_name
+      type: string
     - name: type
       type: mapping_value
     mapping:
@@ -839,6 +893,12 @@ tables:
       type: geometry
     - key: name
       name: name
+      type: string
+    - key: name:en
+      name: name_en
+      type: string
+    - key: int_name
+      name: int_name
       type: string
     - name: type
       type: mapping_value
@@ -872,6 +932,12 @@ tables:
     - key: name
       name: name
       type: string
+    - key: name:en
+      name: name_en
+      type: string
+    - key: int_name
+      name: int_name
+      type: string
     - name: type
       type: mapping_value
     - name: area
@@ -900,6 +966,12 @@ tables:
       type: geometry
     - key: name
       name: name
+      type: string
+    - key: name:en
+      name: name_en
+      type: string
+    - key: int_name
+      name: int_name
       type: string
     - name: type
       type: mapping_value

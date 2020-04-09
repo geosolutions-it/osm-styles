@@ -40,7 +40,7 @@ that are meant to be viewed at low zoom levels.
  
 These layers have been collected in a (large) GeoPackage for your convenience:
 
-* [Download the data](https://www.dropbox.com/s/oannhf1cf7n1g89/osm-lowres.gpkg?dl=1) - 1.8 GB
+* [Download the data](https://www.dropbox.com/s/oannhf1cf7n1g89/osm-lowres.gpkg?dl=0) - 1.8 GB
 * Place the GeoPackage in the ``data`` folder of the data directory:
 
 ```

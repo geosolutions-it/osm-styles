@@ -40,7 +40,7 @@ that are meant to be viewed at low zoom levels.
  
 These layers have been collected in a (large) GeoPackage for your convenience:
 
-* [Download the data](https://www.dropbox.com/s/oannhf1cf7n1g89/osm-lowres.gpkg?dl=1)
+* [Download the data](https://www.dropbox.com/s/oannhf1cf7n1g89/osm-lowres.gpkg?dl=1) - 1.8 GB
 * Place the GeoPackage in the ``data`` folder of the data directory:
 
 ```
@@ -57,7 +57,8 @@ The data directory is already configured to lookup the GeoPackage from this loca
 The large part of the data comes from OpenStreetMap. The import process can be very long for large
 areas, it is recommended to start with a small country to practice the process, before moving to larger imports.
 
-To provide a reference, on a Ryzen 1700x with local SSD (Samsung EVO 960) and 32GB of memory,
+To provide a reference, on a Ryzen 1700x with local SSD (Samsung EVO 960) and 32
+of memory,
 on a Linux Mint 19.2 with stock PostgreSQL 9.5.4 and PostGIS 2.21, importing the full Europe OpenStreeMap dataset required:
 
 * 250GB of disk space (allocated fully on SSD), split between 22.5GB of OSM PBF file, 45GB of Imposm working cache,

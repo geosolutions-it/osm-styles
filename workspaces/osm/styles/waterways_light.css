@@ -1,0 +1,6 @@
+@mode 'Flat';
+
+[type = 'river'][@scale < 1M] {
+  stroke: #CAD2D3;
+  stroke-width: [interpolate(env('wms_scale_denominator'), 100k, 1, 500k, 0.3)];
+}

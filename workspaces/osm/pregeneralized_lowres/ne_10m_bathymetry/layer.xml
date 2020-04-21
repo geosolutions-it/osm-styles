@@ -1,0 +1,21 @@
+<layer>
+  <name>ne_10m_bathymetry</name>
+  <id>LayerInfoImpl-4e44a927:1719c449104:-4243</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl-2cd79042:1706804ed1c:67ea</id>
+  </defaultStyle>
+  <styles class="linked-hash-set">
+    <style>
+      <id>StyleInfoImpl-2cd79042:1706804ed1c:6720</id>
+    </style>
+  </styles>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl-4e44a927:1719c449104:-4244</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+  <dateCreated>2020-04-21 10:39:33.451 UTC</dateCreated>
+</layer>

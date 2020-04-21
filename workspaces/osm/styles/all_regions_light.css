@@ -1,0 +1,5 @@
+[scalerank not in (0)][(559M / pow(2, min_zoom - 1)) > @sd]  {
+  stroke: darken(#F2F2F0, 20%);
+  stroke-opacity: 0.5;
+  stroke-width: 0.5;
+}

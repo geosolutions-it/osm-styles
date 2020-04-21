@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GeneralizationInfos version="1.0" dataSourceNameSpace="osm" dataSourceName="osm_lowres">
+  <!-- BATHYMETRY -->
+  <GeneralizationInfo featureName="ne_10m_bathymetry" baseFeatureName="ne_10m_bathymetry" geomPropertyName="geom">
+  <Generalization distance="0.001" featureName="ne_10m_bathymetry_gen0" geomPropertyName="geom" />
+    <Generalization distance="0.05" featureName="ne_10m_bathymetry_gen1" geomPropertyName="geom" />
+    <Generalization distance="0.1" featureName="ne_10m_bathymetry_gen2" geomPropertyName="geom" />
+  </GeneralizationInfo>
+</GeneralizationInfos>

@@ -1,0 +1,6 @@
+/* @title bathymetry */
+* {
+    fill: [interpolate(depth, 0, '#606060', 10000, '#202020', 'color')];
+    sort-by: 'depth';
+    background: #606060
+}

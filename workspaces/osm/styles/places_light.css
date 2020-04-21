@@ -1,0 +1,127 @@
+@mode 'Flat';
+
+* {
+  font-family: 'Noto Sans Regular'
+    'Noto Sans Adlam Regular'
+    'Noto Sans Adlam Unjoined Regular'
+    'Noto Sans Armenian Regular'
+    'Noto Sans Balinese Regular'
+    'Noto Sans Bamum Regular'
+    'Noto Sans Batak Regular'
+    'Noto Sans Bengali UI Regular'
+    'Noto Sans Buginese Regular'
+    'Noto Sans Buhid Regular'
+    'Noto Sans Canadian Aboriginal Regular'
+    'Noto Sans Chakma Regular'
+    'Noto Sans Cham Regular'
+    'Noto Sans Cherokee Regular'
+    'Noto Sans Coptic Regular'
+    'Noto Sans Devanagari UI Regular'
+    'Noto Sans Ethiopic Regular'
+    'Noto Sans Georgian Regular'
+    'Noto Sans Gujarati UI Regular'
+    'Noto Sans Gurmukhi UI Regular'
+    'Noto Sans Hanunoo Regular'
+    'Noto Sans Hebrew Regular'
+    'Noto Sans Javanese Regular'
+    'Noto Sans Kannada UI Regular'
+    'Noto Sans Kayah Li Regular'
+    'Noto Sans Khmer UI Regular'
+    'Noto Sans Lao UI Regular'
+    'Noto Sans Lepcha Regular'
+    'Noto Sans Limbu Regular'
+    'Noto Sans Lisu Regular'
+    'Noto Sans Malayalam UI Regular'
+    'Noto Sans Mandaic Regular'
+    'Noto Sans Mongolian Regular'
+    'Noto Sans Myanmar UI Regular'
+    'Noto Sans New Tai Lue Regular'
+    'Noto Sans NKo Regular'
+    'Noto Sans Ol Chiki Regular'
+    'Noto Sans Oriya UI Regular'
+    'Noto Sans Osage Regular'
+    'Noto Sans Osmanya Regular'
+    'Noto Sans Samaritan Regular'
+    'Noto Sans Saurashtra Regular'
+    'Noto Sans Shavian Regular'
+    'Noto Sans Sinhala UI Regular'
+    'Noto Sans Sinhala Regular'
+    'Noto Sans Sundanese Regular'
+    'Noto Sans Symbols Regular'
+    'Noto Sans Symbols2 Regular'
+    'Noto Sans Syriac Eastern Regular'
+    'Noto Sans Tagalog Regular'
+    'Noto Sans Tagbanwa Regular'
+    'Noto Sans Tai Le Regular'
+    'Noto Sans Tai Tham Regular'
+    'Noto Sans Tai Viet Regular'
+    'Noto Sans Tamil UI Regular'
+    'Noto Sans Telugu UI Regular'
+    'Noto Sans Thaana Regular'
+    'Noto Sans Thai UI Regular'
+    'Noto Sans Tibetan Regular'
+    'Noto Sans Tifinagh Regular'
+    'Noto Sans Vai Regular'
+    'Noto Sans Yi Regular'
+    'Noto Sans Arabic UI Regular'
+    'Noto Emoji Regular'
+    'Noto Naskh Arabic UI Regular'
+    'DejaVu Sans Book'
+    'HanaMinA Regular'
+    'HanaMinB Regular'
+    'Unifont Medium'
+    'unifont Medium'
+    'Unifont Upper Medium';
+  font-fill: darken(darkgray, 20%);
+  label-anchor: 0.5 0.5;
+  halo-radius: 1;
+  halo-opacity: 0.6;
+  halo-color: white;
+  sort-by: population D;
+  -gt-label-priority: [population];
+  -gt-label-padding: 20;
+  -gt-label-auto-wrap: 100;
+  label-priority: 2700;
+
+
+  /* @title Capitals */
+  [capital = 'yes' and name is not null][@scale < 50M] {
+    [@scale > 3M] {
+      shield: symbol(circle);
+      shield-size: 4;
+      :shield { stroke: darken(darkgray, 10%); stroke-width: 2};
+      shield-anchor: 0.5 0.5;
+      label-anchor: 0.5 1;
+      label-offset: 0 -5;
+      shield-placement: independent;
+    };
+    label: [name];
+    font-size: [interpolate(env('wms_scale_denominator', 50M), 400k, 16, 100M, 11)];
+    label-priority: [2740 + population / 10000];
+  };
+
+   [capital = '4' and name is not null][@scale < 10M] {
+    label: [name];
+    font-size: [interpolate(env('wms_scale_denominator', 10M), 400k, 15, 10M, 11)];
+     label-priority: [1000 + population / 10000];
+  };
+
+  [capital = '6' and name is not null][@scale < 6M] {
+    label: [name];
+    font-size: [interpolate(env('wms_scale_denominator', 6M), 400k, 12, 6M, 8)];
+    label-priority: [500 + population / 10000];
+  };
+  
+
+  [capital = '' and type in ('city', 'town') and name is not null][@scale < 250k] {
+    label: [name];
+    font-size: categorize(@sd,
+      15, 50k,
+      13,	400k,
+      12);
+    label-priority: [100 + population / 10000];
+
+  };
+
+  
+}

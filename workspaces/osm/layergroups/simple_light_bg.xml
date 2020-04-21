@@ -1,0 +1,69 @@
+<layerGroup>
+  <id>LayerGroupInfoImpl-4e44a927:1719c449104:7631</id>
+  <name>simple_light_bg</name>
+  <mode>SINGLE</mode>
+  <workspace>
+    <id>WorkspaceInfoImpl-41697926:164a2136a44:-7fe4</id>
+  </workspace>
+  <publishables>
+    <published type="layer">
+      <id>LayerInfoImpl-4e44a927:1719c449104:-4243</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl-7c55092f:164b291b05d:587e</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl-7c55092f:164b291b05d:5872</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl-7c55092f:164b291b05d:586c</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl-6056aac0:164a21c08bd:-7ff5</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl-6056aac0:164a21c08bd:-7ff3</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl-7c55092f:164b291b05d:5878</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl-7c55092f:164b291b05d:5874</id>
+    </published>
+  </publishables>
+  <styles>
+    <style>
+      <id>StyleInfoImpl-2cd79042:1706804ed1c:6720</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl-2cd79042:1706804ed1c:67f9</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl-2cd79042:1706804ed1c:6722</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl-2cd79042:1706804ed1c:6721</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl-2cd79042:1706804ed1c:67f7</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl-2cd79042:1706804ed1c:67f8</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl-2cd79042:1706804ed1c:671f</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl-2cd79042:1706804ed1c:671e</id>
+    </style>
+  </styles>
+  <bounds>
+    <minx>-2.0037508342789244E7</minx>
+    <maxx>2.0037508342789244E7</maxx>
+    <miny>-2.00489661040146E7</miny>
+    <maxy>2.0048966104014594E7</maxy>
+    <crs class="projected">EPSG:3857</crs>
+  </bounds>
+  <dateCreated>2020-04-21 13:07:35.674 UTC</dateCreated>
+  <dateModified>2020-04-21 14:28:39.318 UTC</dateModified>
+</layerGroup>

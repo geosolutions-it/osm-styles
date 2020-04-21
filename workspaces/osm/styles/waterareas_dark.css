@@ -1,0 +1,14 @@
+@mode 'Flat';
+
+/* @title Glacier */
+[type = 'glacier'][@sd < 12.5M] {
+  fill: #606060;
+}
+
+/* @title Docks, canals, basin, water, reservoir */
+[type in ('dock', 'canal')][@sd < 1.5M],
+[type = 'basin'][@sd < 6000000],
+[type in ('water', 'reservoir', 'riverbank')][@sd < 12.5M] {
+  /* and not name_en like '%Sea%' and not name_en like '%Gulf%' and not name like '%Firth%' and not name_en like '%Channel%' and not name_en like '%Strait%' and not name like '%Baie%' and not name like '%G?lf%' */
+  fill: #606060;
+}

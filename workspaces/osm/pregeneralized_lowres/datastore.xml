@@ -1,0 +1,17 @@
+<dataStore>
+  <id>DataStoreInfoImpl-4e44a927:1719c449104:-4246</id>
+  <name>pregeneralized_lowres</name>
+  <type>Generalizing data store</type>
+  <enabled>true</enabled>
+  <workspace>
+    <id>WorkspaceInfoImpl-41697926:164a2136a44:-7fe4</id>
+  </workspace>
+  <connectionParameters>
+    <entry key="RepositoryClassName">org.geoserver.data.gen.DSFinderRepository</entry>
+    <entry key="GeneralizationInfosProviderParam">pregeneralized_lowres.xml</entry>
+    <entry key="GeneralizationInfosProviderClassName">org.geoserver.data.gen.info.GeneralizationInfosProviderImpl</entry>
+    <entry key="namespace">http://geoserver.org/osm</entry>
+  </connectionParameters>
+  <__default>false</__default>
+  <dateCreated>2020-04-21 10:32:24.604 UTC</dateCreated>
+</dataStore>

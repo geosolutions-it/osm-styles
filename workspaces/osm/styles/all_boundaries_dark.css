@@ -1,0 +1,5 @@
+[@sd < 300M][@sd > 750k] {
+  stroke: #454545;
+  stroke-width: [interpolate(@sd, 800k, 1, 300M, 0.2)];
+  stroke-opacity: 0.6;
+}

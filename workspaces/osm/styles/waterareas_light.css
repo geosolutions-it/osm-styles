@@ -1,0 +1,13 @@
+@mode 'Flat';
+
+/* @title Glacier */
+[type = 'glacier'][@sd < 12.5M] {
+  fill: #CAD2D3;
+}
+
+/* @title Docks, canals, basin, water, reservoir */
+[type in ('dock', 'canal')][@sd < 1.5M],
+[type = 'basin'][@sd < 6000000],
+[type in ('water', 'reservoir', 'riverbank') and name <> 'Golfo di Genova'][@sd < 12.5M] {
+  fill: #CAD2D3;
+}

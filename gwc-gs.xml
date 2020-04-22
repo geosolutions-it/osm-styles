@@ -32,11 +32,11 @@
     <string>image/jpeg</string>
   </defaultCoverageCacheFormats>
   <defaultVectorCacheFormats>
-    <string>image/png</string>
-    <string>image/jpeg</string>
+    <string>image/png8</string>
   </defaultVectorCacheFormats>
   <defaultOtherCacheFormats>
     <string>image/png</string>
     <string>image/jpeg</string>
+    <string>image/png8</string>
   </defaultOtherCacheFormats>
 </GeoServerGWCConfig>

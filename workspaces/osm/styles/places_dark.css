@@ -78,10 +78,9 @@
   halo-opacity: 0.6;
   halo-color: black;
   sort-by: population D;
-  -gt-label-priority: [population];
-  -gt-label-padding: 20;
-  -gt-label-auto-wrap: 80;
-  label-priority: 2700;
+  label-padding: 20;
+  label-auto-wrap: 80;
+  label-priority: [if_then_else(equalTo(capital,'yes'), 40M + population, if_then_else(greaterThan(population, 0), 40M - (40M - 4000) / population, if_then_else(equalTo(type, 'city'), 3900, if_then_else(equalTo(type, 'town'), 3800, 3700))))];
 
 
   /* @title Capitals */
@@ -98,30 +97,33 @@
     };
     label: [name];
     font-size: [interpolate(env('wms_scale_denominator', 50M), 400k, 16, 100M, 11)];
-    label-priority: [2740 + population];
   };
 
-  [capital = '4' and name is not null][@scale < 10M] {
+  [capital <> 'yes' and type in ('city', 'town') and population > 200k
+    and name is not null][@scale < 10M] {
     label: [name];
     font-size: [interpolate(env('wms_scale_denominator', 10M), 400k, 15, 10M, 11)];
-    label-priority: [1000 + population / 10000];
   };
 
-  [capital = '6' and name is not null][@scale < 6M] {
+  [capital <> 'yes' and type in ('city', 'town') and
+    type in ('city', 'town') and population between 100k and 200k and
+    name is not null][@scale < 12.5M] {
     label: [name];
     font-size: [interpolate(env('wms_scale_denominator', 6M), 400k, 12, 6M, 8)];
-    label-priority: [500 + population / 10000];
   };
 
 
-  [capital = '' and type in ('city', 'town') and name is not null][@scale < 250k] {
+  [capital <> 'yes' and type in ('city', 'town') and
+    population between 50k and 100k and
+    name is not null][@scale < 2.5M],
+  [capital <> 'yes' and type in ('city', 'town') and
+    (population < 50k or population is null) and
+    name is not null][@scale < 1M] {
     label: [name];
     font-size: categorize(@sd,
       15, 50k,
       13,	400k,
       12);
-    label-priority: [100 + population / 10000];
-
   };
 
 

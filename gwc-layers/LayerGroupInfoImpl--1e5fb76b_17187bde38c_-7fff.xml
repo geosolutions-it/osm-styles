@@ -4,8 +4,7 @@
   <inMemoryCached>true</inMemoryCached>
   <name>osm:simple_dark_bg</name>
   <mimeFormats>
-    <string>image/jpeg</string>
-    <string>image/png</string>
+    <string>image/png8</string>
   </mimeFormats>
   <gridSubsets>
     <gridSubset>

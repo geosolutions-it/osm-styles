@@ -1,8 +1,8 @@
 <GeoServerTileLayer>
-  <id>LayerGroupInfoImpl-4e44a927:1719c449104:3fe7</id>
+  <id>LayerGroupInfoImpl--6717fd44:164a392c4e5:315b</id>
   <enabled>true</enabled>
   <inMemoryCached>true</inMemoryCached>
-  <name>osm:simple_dark_labels</name>
+  <name>osm:osm</name>
   <mimeFormats>
     <string>image/png8</string>
   </mimeFormats>

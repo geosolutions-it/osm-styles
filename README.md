@@ -6,6 +6,14 @@ This is a GeoServer data directory with OSM layer and styles mimicking a OSM-bri
 
 Live example [here](https://dev.mapstore.geo-solutions.it/mapstore/#/viewer/openlayers/8444)
 
+## For the impatient
+
+Do you just want to give this data directory a quick spin? We have prepared a couple of options for you, with a sample dataset covering the New York state:
+
+* If you have docker, follow instructions at [Testing Quickly with Docker](https://github.com/geosolutions-it/osm-styles/wiki/Testing-Quickly-with-Docker).
+* Otherwise, you can try the [platform independent binary](https://github.com/geosolutions-it/osm-styles/wiki/Testing-Quickly-With-The-Binary-Independent-Package).
+
+Samples contain the April 22nd 2020 version of the data directory.
 
 ## Getting started
 

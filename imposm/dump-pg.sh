@@ -30,7 +30,7 @@ if [ -z ${PBF_LOCATION+x} ]
 then
      echo "Mandatory parameter '-i' is missing";
      echo "Usage dump-pg.sh -i osm_pbf_location [-p postgresqlPort] [-c postgresqlContainerName]"
-     echo "  -i Location of the PBF file to import"
+     echo "  -i Location of the PBF file to import, or directory containing multiple files with .pbf extensions, to support multi-file import"
      echo "  -p Local port to use for the PostgreSQL container, defaults to $PG_PORT_DEFAULT"
      echo "  -v Version of the Kartoza PostGIS Image to be used, defaults to $PG_IMAGE_VERSION_DEFAULT"
      echo "  -c Name of the container used for the PostgreSQL container, defaults to $PG_CONTAINER_DEFAULT"
@@ -38,7 +38,7 @@ then
 
      exit 1
 fi
-if [ ! -f "$PBF_LOCATION" ]; then
+if [ [! -f "$PBF_LOCATION"] && ! [-d "$PBF_LOCATION"] ]; then
     echo "$PBF_LOCATION does not exist"
     exit 2
 fi
@@ -73,7 +73,13 @@ done
 echo -e "\n----------- Running imposm, read from pbf"
 mkdir -p work/tmp
 rm -rf work/tmp/*
-work/imposm-${IMPOSM_VERSION}-linux-x86-64/imposm import -mapping mapping.yml -read $PBF_LOCATION -cachedir work/tmp
+if [ -f "$PBF_LOCATION" ]; then
+  work/imposm-${IMPOSM_VERSION}-linux-x86-64/imposm import -mapping mapping.yml -read $PBF_LOCATION -cachedir work/tmp
+else
+  for pbf in $PBF_LOCATION/*.pbf; do
+    work/imposm-${IMPOSM_VERSION}-linux-x86-64/imposm import -mapping mapping.yml -read $pbf --appendcache -cachedir work/tmp
+  done
+fi
 echo -e "\n----------- Running imposm, write to database"
 work/imposm-${IMPOSM_VERSION}-linux-x86-64/imposm import -mapping mapping.yml -cachedir work/tmp -write -connection "postgis://docker:docker@localhost:$PG_PORT/gis"
 echo -e "\n----------- Deploy imported tables to production"

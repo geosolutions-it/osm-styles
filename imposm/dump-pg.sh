@@ -38,7 +38,7 @@ then
 
      exit 1
 fi
-if [ [! -f "$PBF_LOCATION"] && ! [-d "$PBF_LOCATION"] ]; then
+if [ [ ! -f "$PBF_LOCATION" ] && ! [ -d "$PBF_LOCATION" ] ]; then
     echo "$PBF_LOCATION does not exist"
     exit 2
 fi

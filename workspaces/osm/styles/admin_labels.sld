@@ -37,6 +37,7 @@
               <sld:CssParameter name="font-family">Noto Sans Chakma Regular</sld:CssParameter>
               <sld:CssParameter name="font-family">Noto Sans Cham Regular</sld:CssParameter>
               <sld:CssParameter name="font-family">Noto Sans Cherokee Regular</sld:CssParameter>
+              <sld:CssParameter name="font-family">Noto Sans CJK KR Regular</sld:CssParameter>
               <sld:CssParameter name="font-family">Noto Sans Coptic Regular</sld:CssParameter>
               <sld:CssParameter name="font-family">Noto Sans Devanagari UI Regular</sld:CssParameter>
               <sld:CssParameter name="font-family">Noto Sans Ethiopic Regular</sld:CssParameter>
@@ -81,7 +82,7 @@
               <sld:CssParameter name="font-family">Noto Sans Telugu UI Regular</sld:CssParameter>
               <sld:CssParameter name="font-family">Noto Sans Thaana Regular</sld:CssParameter>
               <sld:CssParameter name="font-family">Noto Sans Thai UI Regular</sld:CssParameter>
-              <sld:CssParameter name="font-family">Noto Sans Tibetan Regular</sld:CssParameter>
+              <sld:CssParameter name="font-family">Noto Sans Tibetan</sld:CssParameter>
               <sld:CssParameter name="font-family">Noto Sans Tifinagh Regular</sld:CssParameter>
               <sld:CssParameter name="font-family">Noto Sans Vai Regular</sld:CssParameter>
               <sld:CssParameter name="font-family">Noto Sans Yi Regular</sld:CssParameter>
@@ -170,6 +171,7 @@
               <sld:CssParameter name="font-family">Noto Sans Chakma Regular</sld:CssParameter>
               <sld:CssParameter name="font-family">Noto Sans Cham Regular</sld:CssParameter>
               <sld:CssParameter name="font-family">Noto Sans Cherokee Regular</sld:CssParameter>
+              <sld:CssParameter name="font-family">Noto Sans CJK KR Regular</sld:CssParameter>
               <sld:CssParameter name="font-family">Noto Sans Coptic Regular</sld:CssParameter>
               <sld:CssParameter name="font-family">Noto Sans Devanagari UI Regular</sld:CssParameter>
               <sld:CssParameter name="font-family">Noto Sans Ethiopic Regular</sld:CssParameter>
@@ -214,7 +216,7 @@
               <sld:CssParameter name="font-family">Noto Sans Telugu UI Regular</sld:CssParameter>
               <sld:CssParameter name="font-family">Noto Sans Thaana Regular</sld:CssParameter>
               <sld:CssParameter name="font-family">Noto Sans Thai UI Regular</sld:CssParameter>
-              <sld:CssParameter name="font-family">Noto Sans Tibetan Regular</sld:CssParameter>
+              <sld:CssParameter name="font-family">Noto Sans Tibetan</sld:CssParameter>
               <sld:CssParameter name="font-family">Noto Sans Tifinagh Regular</sld:CssParameter>
               <sld:CssParameter name="font-family">Noto Sans Vai Regular</sld:CssParameter>
               <sld:CssParameter name="font-family">Noto Sans Yi Regular</sld:CssParameter>

@@ -113,10 +113,11 @@ OSM data can have labels in many languages. The styles use the following fonts t
 
 The fonts can be downloaded from the respective web sites and installed separately. For your convenience, we have prepared a [zip file](https://www.dropbox.com/s/12iieqjtn5qm8gp/osm-fonts.zip?dl=1) with the subset of fonts that you'll need (not each single font available in the web sites above are needed, e.g., Google Noto contains hundreds of different fonts).
 
-In terms of installation, the Noto web site has instructions on [how to install](https://www.google.com/get/noto/help/install/) the fonts for some common operating systems.
-
 Specifically for **Windows**, make sure the fonts are installed for all users, it's possible to do by selecting the font file, right click, and then selecting "install for all users".
 The Java runtime will not see the fonts installed for the current user alone.
+To facilitate setup, the [zip file](https://www.dropbox.com/s/12iieqjtn5qm8gp/osm-fonts.zip?dl=1) contains a batch script that can be used to mass-install the fonts with a single action. After un-packing the fonts, right click the ``fonts-install.bat`` file, and then choose "Run as administrator".
+
+For other common operating systems, the Noto web site has instructions on [how to install](https://www.google.com/get/noto/help/install/) the fonts.
 
 Failing to install the fonts won't prevent the map from showing up, but will result in a fallback to be chosen instead.
 

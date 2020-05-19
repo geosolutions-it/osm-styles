@@ -141,3 +141,6 @@ If you find any issue with instructions or styling, pull requests with fixes and
 ## License
 This data directory is licensed as MIT, as per the [license](https://github.com/geosolutions-it/osm-styles/blob/master/LICENSE.md) file.
 
+## More info
+You can find additional information in the [wiki](https://github.com/geosolutions-it/osm-styles/wiki).
+As an instance, you can find info on the the [GeoPackage branch](https://github.com/geosolutions-it/osm-styles/wiki/The-GeoPackage-branch) which contains a variant of the configuration where both the low and high resolution datasets are stored in GeoPackage files.

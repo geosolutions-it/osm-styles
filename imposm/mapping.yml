@@ -4,19 +4,27 @@ areas:
 generalized_tables:
   landusages_gen0:
     source: landusages_gen1
-    sql_filter: ST_Area(geometry)>500000.000000
-    tolerance: 200.0
+    sql_filter: ST_Area(geometry)>16000000
+    tolerance: 2000.0
   landusages_gen1:
     source: landusages
-    sql_filter: ST_Area(geometry)>50000.000000
-    tolerance: 50.0
+    sql_filter: ST_Area(geometry)>4000000
+    tolerance: 1000.0
+  landusages_gen2:
+    source: landusages
+    sql_filter: ST_Area(geometry)>1000000
+    tolerance: 500.0
+  landusages_gen3:
+    source: landusages
+    sql_filter: ST_Area(geometry)>60000
+    tolerance: 125.0
   waterareas_gen0:
     source: waterareas_gen1
-    sql_filter: ST_Area(geometry)>500000.000000
+    sql_filter: ST_Area(geometry)>500000
     tolerance: 200.0
   waterareas_gen1:
     source: waterareas
-    sql_filter: ST_Area(geometry)>50000.000000
+    sql_filter: ST_Area(geometry)>50000
     tolerance: 50.0
   waterways_gen0:
     source: waterways_gen1

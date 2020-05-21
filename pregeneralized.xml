@@ -2,15 +2,16 @@
 <GeneralizationInfos version="1.0" dataSourceNameSpace="osm" dataSourceName="osm">
   <!-- ROADS -->
   <GeneralizationInfo featureName="roads" baseFeatureName="osm_roads" geomPropertyName="geometry">
-    <Generalization distance="900" featureName="osm_roads_gen0" geomPropertyName="geometry" />
     <Generalization distance="450" featureName="osm_roads_gen1" geomPropertyName="geometry" />
     <Generalization distance="300" featureName="osm_roads_gen2" geomPropertyName="geometry" />
     <Generalization distance="30" featureName="osm_roads_gen3" geomPropertyName="geometry" />
   </GeneralizationInfo>
   <!-- LAND USAGES -->
   <GeneralizationInfo featureName="landusages" baseFeatureName="osm_landusages" geomPropertyName="geometry">
-    <Generalization distance="200" featureName="osm_landusages_gen0" geomPropertyName="geometry" />
-    <Generalization distance="50" featureName="osm_landusages_gen1" geomPropertyName="geometry" />
+    <Generalization distance="2000" featureName="osm_landusages_gen0" geomPropertyName="geometry" />
+    <Generalization distance="1000" featureName="osm_landusages_gen1" geomPropertyName="geometry" />
+    <Generalization distance="500" featureName="osm_landusages_gen2" geomPropertyName="geometry" />
+    <Generalization distance="125" featureName="osm_landusages_gen3" geomPropertyName="geometry" />
   </GeneralizationInfo>
   <!-- WATER AREAS -->
   <GeneralizationInfo featureName="waterareas" baseFeatureName="osm_waterareas" geomPropertyName="geometry">

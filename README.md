@@ -134,6 +134,13 @@ If you decide to follow the second, make sure to pass the following to the comma
 
 ``POSTGRES_ENPOINT=127.0.0.1;POSTGRES_PORT=5432;POSTGRES_PASSWORD=$password;POSTGRES_USER=$user;OSM_DB=$database;OSM_SCHEMA=$schema`` 
 
+### Communication
+
+We have setup a forum to discuss improvements to this data directory and the associated styles. Everyone interested in contributing to the project is welcomed to join and discuss:
+
+https://groups.google.com/d/forum/geoserver-osm-styling
+
+
 ### Found an issue? Contribute a fix!
 
 If you find any issue with instructions or styling, pull requests with fixes and improvements are more than welcomed!

@@ -117,6 +117,12 @@ Specifically for **Windows**, make sure the fonts are installed for all users, i
 The Java runtime will not see the fonts installed for the current user alone.
 To facilitate setup, the [zip file](https://www.dropbox.com/s/12iieqjtn5qm8gp/osm-fonts.zip?dl=1) contains a batch script that can be used to mass-install the fonts with a single action. After un-packing the fonts, right click the ``fonts-install.bat`` file, and then choose "Run as administrator".
 
+For Debian-based linux distributions, try:
+
+```bash
+sudo apt install fonts-noto fonts-dejavu unifont fonts-hanazono
+```
+
 For other common operating systems, the Noto web site has instructions on [how to install](https://www.google.com/get/noto/help/install/) the fonts.
 
 Failing to install the fonts won't prevent the map from showing up, but will result in a fallback to be chosen instead.

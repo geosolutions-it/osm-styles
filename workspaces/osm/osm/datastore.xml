@@ -14,7 +14,7 @@
     <entry key="Batch insert size">1</entry>
     <entry key="preparedStatements">false</entry>
     <entry key="database">${OSM_DB}</entry>
-    <entry key="host">${POSTGRES_ENPOINT}</entry>
+    <entry key="host">${POSTGRES_ENDPOINT}</entry>
     <entry key="Loose bbox">true</entry>
     <entry key="SSL mode">DISABLE</entry>
     <entry key="Estimated extends">true</entry>

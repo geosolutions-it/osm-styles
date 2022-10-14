@@ -154,8 +154,8 @@
     shield: symbol('file://symbols/shop/newsagent.svg');
     :shield { fill:  #ac39ac };
   };
-  [type = 'supershieldet'][@sd < 12.5k] {
-    shield: symbol('file://symbols/shop/supershieldet.svg');
+  [type = 'supermarket'][@sd < 12.5k] {
+    shield: symbol('file://symbols/shop/supermarket.svg');
     :shield { fill: #ac39ac };
   };
 

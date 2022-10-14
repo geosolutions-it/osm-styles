@@ -7823,7 +7823,7 @@
               </ogc:PropertyIsNotEqualTo>
               <ogc:PropertyIsNotEqualTo>
                 <ogc:PropertyName>type</ogc:PropertyName>
-                <ogc:Literal>supershieldet</ogc:Literal>
+                <ogc:Literal>supermarket</ogc:Literal>
               </ogc:PropertyIsNotEqualTo>
               <ogc:PropertyIsNotEqualTo>
                 <ogc:PropertyName>type</ogc:PropertyName>
@@ -8440,7 +8440,7 @@
               </ogc:PropertyIsNotEqualTo>
               <ogc:PropertyIsNotEqualTo>
                 <ogc:PropertyName>type</ogc:PropertyName>
-                <ogc:Literal>supershieldet</ogc:Literal>
+                <ogc:Literal>supermarket</ogc:Literal>
               </ogc:PropertyIsNotEqualTo>
               <ogc:PropertyIsNotEqualTo>
                 <ogc:PropertyName>type</ogc:PropertyName>
@@ -8658,7 +8658,7 @@
               </ogc:PropertyIsNotEqualTo>
               <ogc:PropertyIsNotEqualTo>
                 <ogc:PropertyName>type</ogc:PropertyName>
-                <ogc:Literal>supershieldet</ogc:Literal>
+                <ogc:Literal>supermarket</ogc:Literal>
               </ogc:PropertyIsNotEqualTo>
               <ogc:PropertyIsNotEqualTo>
                 <ogc:PropertyName>type</ogc:PropertyName>
@@ -9460,7 +9460,7 @@
           <ogc:Filter>
             <ogc:PropertyIsEqualTo>
               <ogc:PropertyName>type</ogc:PropertyName>
-              <ogc:Literal>supershieldet</ogc:Literal>
+              <ogc:Literal>supermarket</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <sld:MaxScaleDenominator>12500.0</sld:MaxScaleDenominator>
@@ -9474,7 +9474,7 @@
             <sld:Fill/>
             <sld:Graphic>
               <sld:Mark>
-                <sld:WellKnownName>file://symbols/shop/supershieldet.svg</sld:WellKnownName>
+                <sld:WellKnownName>file://symbols/shop/supermarket.svg</sld:WellKnownName>
                 <sld:Fill>
                   <sld:CssParameter name="fill">#ac39ac</sld:CssParameter>
                 </sld:Fill>

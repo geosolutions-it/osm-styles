@@ -1,11 +1,11 @@
 ## Using the dump-pg.sh tool to build a PostgreSQL database dump that can be restored on Windows
 
 The [imposm 3](https://imposm.org/) utility used to turn the binary OSM dump into a layered, optimized PostgreSQL database for GeoServer currently runs only on Linux.
-However you mind want to run PostgreSQL (and possibly GeoServer too) on Windows instead.
+However you might want to run PostgreSQL (and possibly GeoServer too) on Windows instead.
 
-This folder contains a small utility, called ``dump-pg.sh``, that can be used to prepare a OSM database dump on a Linux machine, which can then be restored on a Windows machine.
+This folder contains a small utility, called ``dump-pg.sh``, that can be used to prepare an OSM database dump on a Linux machine, which can then be restored on a Windows machine.
 
-In order to use it, one need to have Docker installed and running, as the PostGIS database 
+In order to use it, one needs to have Docker installed and running, as the PostGIS database
 will run in a local Docker container.
 
 
@@ -21,7 +21,7 @@ Usage dump-pg.sh -i osm_pbf_location [-p postgresqlPort] [-c postgresqlContainer
 ```
 
 For the restore to work properly attention must be paid to the **version numbers**, PostgreSQL can
-restore a backup made from the same version, from earlier versions, but not from later version.
+restore a backup made from the same version, from earlier versions, but not from later versions.
 For example, if the target PostgreSQL running on Windows is a version 11, doing a backup using version 11 or 10 will work, but a backup from version 12 may fail to restore.  
 
 The Kartoza PostGIS images used to run the import and backup can be [found on dockerhub](https://hub.docker.com/r/kartoza/postgis/tags) with a variety of versions of PostgreSQL and PostGIS to choose from.

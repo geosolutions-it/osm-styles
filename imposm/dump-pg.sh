@@ -55,7 +55,7 @@ echo -e "---------- Using user id $USERID and username $USERNAME"
 echo -e "\n----------- Starting up PostGIS docker image $PG_CONTAINER"
 mkdir -p work
 chown $USERNAME: work
-docker run --name "$PG_CONTAINER" -p $PG_PORT:5432 -d  -v `pwd`/work:/tmp/work -t kartoza/postgis:$PG_IMAGE_VERSION
+docker run --name "$PG_CONTAINER" -e POSTGRES_PASS=docker -p $PG_PORT:5432 -d -v `pwd`/work:/tmp/work -t kartoza/postgis:$PG_IMAGE_VERSION
 
 echo -e "\n----------- Downloading and unpacking Imposm 3"
 wget -q --show-progress -c https://github.com/omniscale/imposm3/releases/download/v${IMPOSM_VERSION}/imposm-${IMPOSM_VERSION}-linux-x86-64.tar.gz -P work
@@ -65,7 +65,7 @@ echo "Done"
 echo -e "\n----------- Waiting for PostgreSQL to be up and running"
 RETRIES=30
 # wait and kill the cron extension at the first successful attempt, it's not part of the Windows installers, can cause issues on restore
-until docker exec -it -e PGPASSWORD=docker $PG_CONTAINER  /bin/bash -c 'psql -h 127.0.0.1 -U docker -p 5432 gis -c "drop extension pg_cron" > /dev/null 2>&1' || [ $RETRIES -eq 0 ]; do
+until docker exec -it -e PGPASSWORD=docker -e POSTGRES_PASS=docker $PG_CONTAINER /bin/bash -c 'psql -h 127.0.0.1 -U docker -p 5432 gis -c "drop extension pg_cron" > /dev/null 2>&1' || [ $RETRIES -eq 0 ]; do
   echo "Waiting for PostgreSQL, $((RETRIES-=1)) remaining attempts..."
   sleep 2
 done

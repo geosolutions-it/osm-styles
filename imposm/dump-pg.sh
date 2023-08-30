@@ -72,6 +72,7 @@ done
 
 echo -e "\n----------- Running imposm, read from pbf"
 mkdir -p work/tmp
+chown $USERNAME: work/tmp
 rm -rf work/tmp/*
 if [ -f "$PBF_LOCATION" ]; then
   work/imposm-${IMPOSM_VERSION}-linux-x86-64/imposm import -mapping mapping.yml -read $PBF_LOCATION -cachedir work/tmp
